@@ -64,6 +64,7 @@ if (isset($title))
 							<li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggingi
 									prodotto</a>
 							</li>
+							<li><a href="<?=curUrl() ?>listaprodotti.html">Lista Prodotti</a>
 							<li><a href="<?=curUrl() ?>prodotti.html">Tutti i Prodotti</a>
 							</li>
 							<li><a href="<?=curUrl() ?>prodotto/sofa/divano1.html">Sofa</a>
