@@ -93,63 +93,7 @@ require 'views/core/init.php';
 						<li>
 							<a href="<?=curUrl() ?>contact.html">Contatti</a>
 						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="<?=curUrl() ?>services.html">Servizi</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>portfolio-1-col.html">1 Column Portfolio</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>portfolio-2-col.html">2 Column Portfolio</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>portfolio-3-col.html">3 Column Portfolio</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>portfolio-4-col.html">4 Column Portfolio</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>portfolio-item.html">Single Portfolio Item</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="<?=curUrl() ?>blog-home-1.html">Blog Home 1</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>blog-home-2.html">Blog Home 2</a>
-								</li>
-								<li>
-									<a href="<?=curUrl() ?>blog-post.html">Blog Post</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Pages <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="full-width.html">Full Width Page</a>
-								</li>
-								<li>
-									<a href="sidebar.html">Sidebar Page</a>
-								</li>
-								<li>
-									<a href="faq.html">FAQ</a>
-								</li>
-								<li>
-									<a href="404.html">404</a>
-								</li>
-								<li>
-									<a href="pricing.html">Pricing Table</a>
-								</li>
-							</ul>
-						</li>
+						
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
