@@ -93,6 +93,34 @@ class Products {
 	}	
 }
 	
+	
+	public function get_single_product($field, $value){ //in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
+ 
+	$allowed = array('id', 'nome'); 
+	if (!in_array($field, $allowed, true)) {
+	    throw new InvalidArgumentException;
+	}else{
+	
+		$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE $field = ?");
+ 
+		$query->bindValue(1, $value);
+ 
+		try{
+ 
+			$query->execute();
+			
+		} catch(PDOException $e){
+ 
+			die($e->getMessage());
+		}
+ 
+		return $query->fetchAll();
+	}
+}
+
+}
+
+	
 	public function fetch_info($what, $field, $value){
  
 	$allowed = array('id', 'username', 'first_name', 'last_name', 'gender', 'bio', 'email'); // I have only added few, but you can add more. However do not add 'password' even though the parameters will only be given by you and not the user, in our system.
