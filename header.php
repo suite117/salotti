@@ -9,6 +9,8 @@ require 'views/core/init.php';
 <meta name="description" content="">
 <meta name="author" content="">
 
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
 <title><?php
 if (isset($title))
 	echo 'Prodotto ' . $title;
@@ -61,13 +63,15 @@ if (isset($title))
 						data-toggle="dropdown">Prodotti <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
-						<?php
-						if($general -> is_admin() === true) : ?>
+
+
 							<li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi
 									prodotto</a>
-						<?php endif; ?>
 							</li>
+
+
 							<li><a href="<?=curUrl() ?>listaprodotti.html">Lista Prodotti</a>
+							
 							<li><a href="<?=curUrl() ?>prodotti.html">Tutti i Prodotti</a>
 							</li>
 							<li><a href="<?=curUrl() ?>prodotto/sofa/divano1.html">Sofa</a>
@@ -82,8 +86,6 @@ if (isset($title))
 					<li><a href="<?=curUrl() ?>members.html">Lista utenti</a></li>
 
 					<?php else : ?>
-
-
 					<li><a href="<?=curUrl() ?>register.html">Registrati</a>
 					</li>
 					<li><a href="<?=curUrl() ?>login.html">Login</a>
