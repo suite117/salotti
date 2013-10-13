@@ -21,7 +21,7 @@ foreach($db->query($sql) as $row) {
 		<div class="col-md-7 column-left">
 			<div class="row">
 				<div>
-					<img class="img-responsive" src="/slideshow/images/modello.png">
+					<img class="img-responsive" src="<?=curUrl()?>images/modello.png">
 				</div>
 			</div>
 			<div class="row">
@@ -65,7 +65,7 @@ foreach($db->query($sql) as $row) {
 		<div class="col-md-5 column-right">
 			<div class="row">
 				<div class="col-md-12">
-					<img class="img-responsive" src="/slideshow/images/anteprima_modello.png" />
+					<img class="img-responsive" src="<?=curUrl()?>images/anteprima_modello.png" />
 				</div>
 			</div>
 
