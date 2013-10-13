@@ -10,7 +10,7 @@ for($j=0;$j<4;$j++) :
 
 		<div class="col-md-3 portfolio-item">
 
-			<a href="prodotto/generale/prod1.html"><img class="img-responsive" src="<?=curURL() ?>images/modello.png"></a>
+			<a href="prodotto/generale/prod1.html"><img class="img-responsive" src="<?=curUrl() ?>images/modello.png"></a>
 			<div class="row">
 				<div class="col-md-9 col-lg-9">
 					Nome modello

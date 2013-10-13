@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('textarea').text($('textarea').text().trim());
 	
 	// Activates editor
-	$('#editor').summernote();
+	//$('#editor').summernote();
 
 	// Activates the Carousel
 	/* $('.carousel').carousel({

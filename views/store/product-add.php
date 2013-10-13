@@ -25,8 +25,6 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 }
 ?>
 
-<div id="summernote">Hello Summernote</div>
-
 <div class="container">
 
 	<form class="form-horizontal" role="form" method="post" action="">

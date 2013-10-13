@@ -20,7 +20,6 @@ $view = 'views/home.php';
 $title = '';
 $description ='';
 $category = null;
-$site_url = curURL();
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
