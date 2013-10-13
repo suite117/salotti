@@ -11,8 +11,6 @@ function curURL() {
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
 }
 
-var_dump(curURL());
-
 require 'views/core/init.php';
 include 'header.php';
 

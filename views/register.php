@@ -1,20 +1,36 @@
 <?php
-
 # if form is submitted
 if (isset($_POST['submit'])) {
-	if (empty($_POST['password']) || empty($_POST['email']) || empty($_POST['partitaiva']) || empty($_POST['ragionesociale'])) {
+	$firstname= $_POST['firstname'] ? trim($_POST['firstname']) : null;
+	$lastname= $_POST['lastname'] ? trim($_POST['lastname']) : null;
+	$email = $_POST['email'] ? trim($_POST['email']) : null;
+	$password = $_POST['password'] ? trim($_POST['password']) : null;
+	$password_check  = $_POST['password_check'] ? trim($_POST['password_check']) : null;
+
+	$partitaiva = $_POST['partitaiva'] ? trim($_POST['partitaiva']) : null;
+	$ragionesociale = $_POST['ragionesociale'] ? trim($_POST['ragionesociale']) : null;
+
+	$indirizzo  = $_POST['indirizzo'] ? trim($_POST['indirizzo']) : null;
+	$numero_civico  = $_POST['numero_civico'] ? trim($_POST['numero_civico']) : null;
+	$cap = $_POST['cap'] ? trim($_POST['cap']) : null;
+	$citta = $_POST['citta'] ? trim($_POST['citta']) : null;
+	$provincia = $_POST['provincia'] ? trim($_POST['provincia']) : null;
+	$telefono = $_POST['telefono'] ? trim($_POST['telefono']) : null;
+	$cellulare = $_POST['cellulare'] ? trim($_POST['cellulare']) : null;
+
+	if (empty($password) || empty($email) || empty($partitaiva) || empty($ragionesociale)) {
 		$errors[] = 'Devi compilare tutti i campi.';
 	} else {
 		#validating user's input with functions that we will create next
 		if (strlen($_POST['password']) < 6) {
-			$errors[] = 'Your password must be at least 6 characters';
+			$errors[] = 'La password deve essere di almeno 6 caratteri';
 		} else if (strlen($_POST['password']) > 18) {
-			$errors[] = 'Your password cannot be more than 18 characters long';
+			$errors[] = 'La tua password � pi� lunga di 18 caratteri';
 		}
 		if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
-			$errors[] = 'Please enter a valid email address';
-		} else if ($users -> email_exists($_POST['email']) === true) {
-			$errors[] = 'That email already exists.';
+			$errors[] = 'Inserisci un\'email valida.';
+		} else if ($users -> email_exists($email) === true) {
+			$errors[] = 'L\'email'. $email. ' esiste gi�.';
 		}
 	}
 	if (empty($errors) === true) {
