@@ -72,12 +72,10 @@ if (isset($title))
 							</li>
 						</ul>
 					</li>
-					<li><a href="<?=curUrl() ?>logout.html>Logout</a>
-					
+
+					<li><a href="<?=curUrl() ?>logout.html">Logout</a> <?php else : ?>
+
 					</li>
-
-					<?php else : ?>
-
 					<li><a href="<?=curUrl() ?>register.html">Registrati</a>
 					</li>
 					<li><a href="<?=curUrl() ?>login.html">Login</a>
@@ -86,10 +84,10 @@ if (isset($title))
 					<li><a href="<?=curUrl() ?>members.html">Lista utenti</a>
 					</li>
 					<?php endif; ?>
-					
+
 					<li><a href="<?=curUrl() ?>contact.html">Contatti</a>
 					</li>
-					
+
 
 				</ul>
 			</div>
