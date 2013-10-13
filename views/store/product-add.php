@@ -1,5 +1,5 @@
 <?php
-require '/../core/init.php';
+require '../core/init.php';
 # if form is submitted
 if (isset($_POST['submit'])) {
 	if (empty($_POST['title'])) {
