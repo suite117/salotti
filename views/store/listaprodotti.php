@@ -21,8 +21,7 @@ print_r($prodotti) ;
 			?>
 
 	<p>
-		<a href="profile.php?email=<?php echo $nome; ?>"><?php echo $nome?> </a>
-		Inserito il:
+		<a href="prodotto/<?=$nome?>.html"><?=$nome?> </a> Inserito il:
 		<?php //echo date('F j, Y', $prodotto['time']) ?>
 	</p>
 
