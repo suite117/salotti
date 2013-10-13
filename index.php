@@ -1,14 +1,16 @@
 <?php
 //error_reporting(E_ALL ^ E_WARNING);
-	
+
 function curURL() {
-	
-	$uri = $_SERVER['REQUEST_URI']; 
+
+	$uri = $_SERVER['REQUEST_URI'];
 	$paths = explode("/", $uri);
-	
-	return '/'. $paths[1].'/';
+
+	return '/'. $paths[1].'/' . $paths[2] . '/';
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
 }
+
+print_r(curURL());
 
 require 'views/core/init.php';
 include 'header.php';
@@ -59,14 +61,14 @@ if (isset($_GET["controller"])) {
 			$title = "Registrazione ";
 			break;
 		case 'contact':
-		$view = 'views/contact/contact.php';
-		$title = "Contatti ";
+			$view = 'views/contact/contact.php';
+			$title = "Contatti ";
 			break;
-			default:
-				$view = 'views/'. $controller . '.php';
-				$title = $controller;
-				
-				
+		default:
+			$view = 'views/'. $controller . '.php';
+			$title = $controller;
+
+
 	}
 }
 
