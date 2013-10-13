@@ -7,6 +7,7 @@ function curURL() {
 	$paths = explode("/", $uri);
 
 	return '/'. $paths[1].'/' . $paths[2] . '/';
+	
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
 }
 
