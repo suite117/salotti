@@ -7,7 +7,7 @@ function curURL() {
 	$paths = explode("/", $uri);
 
 	return '/'. $paths[1].'/' . $paths[2] . '/';
-	
+
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
 }
 
@@ -51,6 +51,11 @@ if (isset($_GET["controller"])) {
 		case 'prodotto':
 			$view = 'views/store/prodotto.php';
 			$title = "Prodotto " .$_GET["title"];
+			break;
+		case 'listaprodotti':
+			$view  = 'views/store/listaprodotti.php';
+			$title = 'Galleria';
+			$description = 'Lista prodotti';
 			break;
 		case 'login':
 			$view = 'views/login.php';
