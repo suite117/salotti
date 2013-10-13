@@ -1,0 +1,136 @@
+/* globale */
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
+	/* border: 1px solid black; */
+}
+
+/* elimina bordo tratteggiato attorno al link */
+a:active, a:hover, a:focus {
+	outline: none;
+}
+
+nav.navbar {
+	height: 108px;
+	background-repeat: x;
+}
+
+ul.navbar-right {
+	position: relative;
+	top: 28px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: white;
+	text-transform: uppercase;
+}
+
+.breadcrumb {
+	height: 35px;
+	background-color: #EBECEC;
+}
+
+#logo {
+	position: relative;
+	left: 50px;
+}
+
+.header {
+	background-color: #29AFA0;
+	color: white;
+	text-transform: uppercase;
+	padding: 9px 5px;
+}
+
+.row {
+	padding: 5px 0;
+}
+
+.column-left {
+	padding-right: 25px;
+}
+
+.column-right {
+	padding-left: 25px;
+}
+
+.section-colored, .colored {
+	background-color: #EBECEC;
+}
+
+.section-colored a, .colored a {
+	color: #6C6455;
+}
+
+.panel-title a, .panel-title a:focus, .panel-title a:hover {
+	color: white;
+	text-decoration: none;
+}
+
+a.accordion-toggle {
+	width: 100%;
+	display: block;
+}
+
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+	border-top: 0;
+}
+
+label {
+	line-height: 3;
+	position: relative;
+	top : -6px;
+}
+
+/* pannelli */
+.panel-default > .panel-heading {
+	background-color: #29AFA0;
+	border-color: #DDDDDD;
+	color: white;
+}
+
+.panel-default > .marrone {
+	background-color: #6C6455;
+}
+
+/* freccia pannelli */
+.panel-heading .accordion-toggle:after {
+	/* symbol for "opening" panels */
+	font-family: 'Glyphicons Halflings'; /* essential for enabling glyphicon */
+	content: "\e114"; /* adjust as needed, taken from bootstrap.css */
+	float: right; /* adjust as needed */
+	color: white; /* adjust as needed */
+}
+
+.panel-heading .accordion-toggle.collapsed:after {
+	/* symbol for "collapsed" panels */
+	content: "\e080"; /* adjust as needed, taken from bootstrap.css */
+}
+
+/* Carousel */
+#myCarousel {
+	width: 800px;
+	height: 300px;
+	margin: auto;
+}
+
+.carousel img, .modal-dialog {
+	max-width: 90%;
+	width: 800px;
+}
+
+.carousel-control .icon-prev, .carousel-control .icon-next {
+	font-size: 60px;
+	height: 60px;
+	margin-left: -15px;
+	margin-top: -38px;
+	width: 30px;
+}
+
+/* Slideshow custom */
+.cycle-slideshow img {
+	padding: 15px;
+	width: 640px;
+	height: 480px;
+	top: 0;
+	left: 0
+}
+
