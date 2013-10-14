@@ -34,7 +34,8 @@ var_dump($errors);
 	?>
 
 	<form class="form-horizontal" role="form" method="post" action="">
-		<div class="form-group">
+
+		<div class="form-group <?= isset($errors['name']) ? 'has-error' : 'has-success' ?>">
 			<label for="name" class="col-md-2">Titolo</label>
 			<div class="col-md-10">
 				<input type="text" class="form-control" name="name" id="name"
@@ -49,7 +50,7 @@ var_dump($errors);
 					<option value="2">bed</option>
 				</select>
 			</div>
-			<label for="version_id" class="col-md-2">version_ide</label>
+			<label for="version_id" class="col-md-2">Versione</label>
 			<div class="col-md-4">
 				<select class="form-control" name="version_id" id="version_id">
 					<option value="2p">2 posti</option>
