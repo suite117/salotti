@@ -18,6 +18,7 @@ $member_count 	= count($members);
 					<th>Ragione sociale</th>
 					<th>Attivo</th>
 					<th>Iscritto dal</th>
+					<th>Operazioni</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,6 +34,7 @@ $member_count 	= count($members);
 					<td><?= $member['confirmed']?></td>
 					<td><?php echo translateDate(date('j F Y', $member['time'])) ?></td>
 					<?php endforeach; ?>
+					<td>Modifica - Elimina</td>
 				</tr>
 			</tbody>
 		</table>
