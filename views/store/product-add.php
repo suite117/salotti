@@ -1,50 +1,57 @@
 <?php
+$general->logged_out_protect();
 
 # if form is submitted
 if (isset($_POST['submit'])) {
-	if (empty($_POST['title'])) {
-		$errors[] = 'Devi inserire il titolo.';
-	}
-	if (empty($errors) === true) {
-		print_r($_POST);
-		$nome = htmlentities($_POST['title']);
-		//$immagine = $_POST['immagine'];
-		$descrizione = $_POST['description'];
-		$schedatecnica = $_POST['scheda_tecnica'];
-		$idcategoria = $_POST['category'];
-		$idversione = $_POST['version'];
-		$immagine = null;
-		$products -> insert($nome, $immagine, $descrizione, $schedatecnica, $idcategoria, $idversione);
+	if (empty($name))
+		$errors['name'] = 'Devi inserire il titolo.';
+	if(empty($category_id))
+		$errors['category_id'] = 'Devi inserire la categoria.';
+	if(empty($description))
+		$errors['description'] = 'Devi inserire la descrizione.';
+	if(empty($version_id))
+		$errors['version_id'] = 'Devi inserire la versione.';
 
+	if (empty($errors) === true) {
+		$products -> insert($name, null, $description, $scheda_tecnica, $category_id, $version_id);
 		$success= 'Il prodotto è stato inserito correttamente.';
 	}
 }
-if (isset($_GET['success']) && empty($_GET['success'])) {
-	
-}
+
+var_dump($errors);
 ?>
 
 <div class="container">
+	<?php
+	// check for a successful form post
+	if (isset($success))
+		echo "<div class=\"alert alert-success\">" . $success . "</div>";
+
+	// check for a form error
+	elseif (isset($errors))
+	foreach ($errors as $key => $error)
+		echo "<div class=\"alert alert-danger\">" . $error . "</div>";
+	?>
 
 	<form class="form-horizontal" role="form" method="post" action="">
 		<div class="form-group">
-			<label for="title" class="col-md-2">Titolo</label>
+			<label for="name" class="col-md-2">Titolo</label>
 			<div class="col-md-10">
-				<input type="text" class="form-control" name="title" id="title"
+				<input type="text" class="form-control" name="name" id="name"
 					placeholder="Iserisci il nome del prodotto">
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="category" class="col-md-2">Categoria</label>
+			<label for="category_id" class="col-md-2">Categoria</label>
 			<div class="col-md-4">
-				<select class="form-control" name="category" id="category">
+				<select class="form-control" name="category_id" id="category_id">
 					<option value="1">sofa</option>
 					<option value="2">bed</option>
 				</select>
 			</div>
-			<label for="version" class="col-md-2">Versione</label>
+			<label for="version_id" class="col-md-2">version_ide</label>
 			<div class="col-md-4">
-				<select class="form-control" name="version" id="version">
+				<select class="form-control" name="version_id" id="version_id">
 					<option value="2p">2 posti</option>
 					<option value="l2p">laterale 2 posti</option>
 					<option value="2pm">2 posti max</option>
