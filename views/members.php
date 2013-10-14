@@ -1,5 +1,5 @@
 <?php 
-//$general->logged_out_protect();
+$general->logged_out_protect();
 $members 		=$users->get_users(); //Array di utenti
 $member_count 	= count($members);
 //print_r($members);
@@ -31,7 +31,7 @@ $member_count 	= count($members);
 					</a></td>
 					<td><?= $member['partitaiva']?></td>
 					<td><?= $member['ragionesociale']?></td>
-					<td><?= $member['confirmed']?></td>
+					<td><?= $member['confirmed'] ? 'No': 'Si'?></td>
 					<td><?php echo translateDate(date('j F Y', $member['time'])) ?></td>
 					<td>Modifica - Elimina</td>
 
