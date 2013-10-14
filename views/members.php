@@ -7,7 +7,7 @@ $member_count 	= count($members);
 
 <div class="container">
 	<div class="table-responsive">
-		<table class="table">
+		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>Id</th>
