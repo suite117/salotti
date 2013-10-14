@@ -21,4 +21,3 @@ if ($general->logged_in() === true)  { // check if the user is logged in
 	$user 	= $users->userdata($user_id); // getting all the data about the logged in user.
 }
 
-$errors = array();

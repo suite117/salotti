@@ -1,7 +1,7 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-lg-12">
+		<div>
 			<h1 class="page-header"><?=$title ?><?='<small> '.$description.'</small>' ?></h1>
 			<ol class="breadcrumb">
 				<li>
