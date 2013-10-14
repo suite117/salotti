@@ -1,5 +1,14 @@
 <?php
 
+
+function translateDate($dt) {
+	$nmeng = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+	$nmtur = array('Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre');
+	$date = str_ireplace($nmeng, $nmtur, $dt);
+	
+	return $date;
+}
+
 function sendEmail($sender, $to, $subject, $email_content) {
 	// Genera un boundary
 	$mail_boundary = "=_NextPart_" . md5(uniqid(time()));

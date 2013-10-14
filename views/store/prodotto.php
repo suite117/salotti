@@ -1,27 +1,23 @@
 <?php
 $general->logged_out_protect();
-# utilizzo del metodo query()
-// definizione della query
-$sql='SELECT prodotto.id, prodotto.nome, prodotto.idcategoria FROM prodotto LEFT JOIN categoria ON prodotto.idcategoria = categoria.id ORDER BY prodotto.nome';
-// visualizzazione dei risultati
-foreach($db->query($sql) as $row) {
-	//print_r($row);
-	/*echo $row['id'].'<br>';
-	 echo $row['nome'].'<br>';
-	echo $row['idcategoria'].'<br>'; */
-}
-?>
 
+//$prodotto = $products->get_single_product('id', 1);
+$prodotto = array('id' => 1);
+?>
 <div class="container">
 	<div class="row">
 		<div class="panel-group" id="accordion">
-			<div class="panel panel-default">
+			<div class="panel panel-default panel-header">
 				<div class="panel-heading">
 					<h4 class="panel-title">Configura il modello e richiedi il
 						preventivo</h4>
 				</div>
 			</div>
 		</div>
+	</div>
+	<div style="float: right">
+		<a href="<?=curUrl()?>prodotto/<?= $prodotto['id'] ?>/modifica.html"><button
+				type="button" class="btn btn-default">Modifica</button> </a>
 	</div>
 	<div class="row">
 		<div class="col-md-7 column-left">

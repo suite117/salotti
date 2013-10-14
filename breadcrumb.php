@@ -5,7 +5,7 @@
 			<h1 class="page-header"><?=$title ?><?='<small> '.$description.'</small>' ?></h1>
 			<ol class="breadcrumb">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="<?=curURL()?>">Home</a>
 				</li>
 				<?php if (isset($category)): ?>
 					<li>

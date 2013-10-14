@@ -30,12 +30,14 @@ $product_index = 0;
 			<?php endif;?>
 			<div class="row">
 				<div class="col-md-9 col-lg-9">
-					<a href="<?=$prodotto_path?>"><?= @$prodotto['nome'] ?> </a>
+					<a style="line-height: 2" href="<?=$prodotto_path?>"><?= @$prodotto['nome'] ?>
+					</a>
 				</div>
 				<?php if ($general -> logged_in() === true) : ?>
-				<div class="col-md-3 col-lg-3" style="font-size: 20px;">
-					<a class="gallery-lightbox" href="#"><span
-						class="glyphicon glyphicon-zoom-in"></span> </a>
+				<div class="col-md-3 col-lg-3">
+					<a class="gallery-lightbox" href="#" style="text-decoration: none;"><div
+						style="width:30px; height: 30px; background-image: url('<?= curUrl() ?>images/lente.png')">&nbsp;</div>
+					</a>
 				</div>
 				<?php endif; ?>
 			</div>

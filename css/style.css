@@ -106,6 +106,10 @@ label {
 	font-weight: bold;
 }
 
+.panel-header .panel-heading:hover,.panel-header .panel-heading:focus {
+	background-color: #F5F5F5;
+}
+
 .panel-heading:hover,.panel-heading:focus {
 	background-color: #cccccc;
 	box-shadow: 0 0 1px rgba(204, 204, 204, 1) inset;

@@ -67,14 +67,10 @@ if (isset($title))
 						data-toggle="dropdown">Prodotti <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="<?=curUrl() ?>prodotti.html">Tutti i Prodotti</a>
+							<li><a href="<?=curUrl() ?>prodotti.html">Lista Prodotti</a>
 							
 							<li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi
 									prodotto</a></li>
-
-							<li><a href="<?=curUrl() ?>listaprodotti.html">Lista Prodotti</a>
-
-
 							</li>
 							<li><a href="<?=curUrl() ?>prodotto/sofa/divano1.html">Sofa</a>
 							</li>
@@ -83,23 +79,25 @@ if (isset($title))
 						</ul>
 					</li>
 
-					<li><a href="<?=curUrl() ?>members.html">Lista utenti</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Amministrazione<b class="caret"></b>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
+						</ul>
+					</li>
+
 					<?php  else:?>
 					<li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
 					
-					<li><a href="<?=curUrl() ?>contact.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
+					<li><a href="<?=curUrl() ?>contatti.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
 					
 					<li><a href="<?=curUrl() ?>logout.html">Esci</a> <?php else : ?>
 					
 					<li><a href="<?=curUrl() ?>login.html">Accedi</a>
 					</li>
-
-					<?php endif; ?>
-
-
 					</li>
-
-
+					<?php endif; ?>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->

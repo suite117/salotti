@@ -24,8 +24,8 @@ $category = null;
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-//var_dump($_GET);
-//var_dump($_POST);
+var_dump($_GET);
+var_dump($_POST);
 
 // POST CONTROLLER
 $errors = array();
@@ -36,6 +36,9 @@ foreach ($_POST as $key => $value) {
 }
 
 // GET CONTROLLER
+// setta la categoria se esiste
+$category = isset($_GET["category"]) ? $_GET["category"] : null;
+
 $controller = null;
 if (isset($_GET["controller"])) {
 	$controller= $_GET["controller"];
@@ -50,36 +53,35 @@ if (isset($_GET["controller"])) {
 			$title = 'Aggiungi '. $_GET['title'];
 			$description = 'Inserisci un prodotto';
 			break;
-		case 'modifica':
-			$view  = 'views/store/product-add.php';
-			$title = 'Modifica '. $_GET['title'];
-			$description = 'Modifica un prodotto';
-			break;
 		case 'prodotti':
 			$view  = 'views/store/prodotti.php';
 			$title = 'Galleria';
 			$description = 'Visualizza i prodotti';
 			break;
 		case 'prodotto':
-			$view = 'views/store/prodotto.php';
 			$title = $_GET["title"];
-			break;
-		case 'listaprodotti':
-			$view  = 'views/store/listaprodotti.php';
-			$title = 'Galleria';
-			$description = 'Lista prodotti';
+			if ($title !== 'modifica')
+				$view = 'views/store/prodotto.php';
+			else {
+				$view = 'views/store/product-add.php';
+				$category = null;
+			}
 			break;
 		case 'login':
 			$view = 'views/login.php';
-			$title = "Login ";
+			$title = "Login";
 			break;
 		case 'register':
 			$view = 'views/register.php';
-			$title = "Registrazione ";
+			$title = "Registrazione";
+			break;
+		case 'lista-utenti':
+			$view = 'views/members.php';
+			$title = "Lista utenti";
 			break;
 		case 'contact':
-			$view = 'views/contact/contact.php';
-			$title = "Contatti ";
+			$view = 'views/contact/contatti.php';
+			$title = "Contatti";
 			break;
 		default:
 			$view = 'views/'. $controller . '.php';
@@ -89,8 +91,7 @@ if (isset($_GET["controller"])) {
 	}
 }
 
-// setta la categoria se esiste
-$category = isset($_GET["category"]) ? $_GET["category"] : null;
+
 
 // se passa il test non sono nella home
 if (!empty($_GET['controller']) && strpos($controller, 'index')=== false)
