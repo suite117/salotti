@@ -73,7 +73,6 @@ class Users {
 	try{
 		$query->execute();
  
-		mail($email, 'Please activate your account', "Hello " . $username. ",\r\nThank you for registering with us. Please visit the link below so we can activate your account:\r\n\r\nhttp://www.example.com/activate.php?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team");
 	}catch(PDOException $e){
 		die($e->getMessage());
 	}	

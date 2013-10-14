@@ -1,5 +1,6 @@
 <?php
 //error_reporting(E_ALL ^ E_WARNING);
+include 'utils.php';
 
 function curURL() {
 
@@ -26,64 +27,74 @@ $site_email = 'suite117@gmail.com';
 var_dump($_GET);
 var_dump($_POST);
 
+// POST CONTROLLER
 
-$controller = null;
-if (isset($_GET["controller"])) {
-	$controller= $_GET["controller"];
-	switch($controller) {
-		/* per Aruba - caso solo cartella principale */
-		case 'index':
-		case 'index.php':
-			$view  = 'views/home.php';
-			break;
-		case 'aggiungi':
-			$view  = 'views/store/product-add.php';
-			$title = 'Aggiungi '. $_GET['title'];
-			$description = 'Inserisci un prodotto';
-			break;
-		case 'prodotti':
-			$view  = 'views/store/prodotti.php';
-			$title = 'Galleria';
-			$description = 'Visualizza i prodotti';
-			break;
-		case 'prodotto':
-			$view = 'views/store/prodotto.php';
-			$title = "Prodotto " .$_GET["title"];
-			break;
-		case 'listaprodotti':
-			$view  = 'views/store/listaprodotti.php';
-			$title = 'Galleria';
-			$description = 'Lista prodotti';
-			break;
-		case 'login':
-			$view = 'views/login.php';
-			$title = "Login ";
-			break;
-		case 'register':
-			$view = 'views/register.php';
-			$title = "Registrazione ";
-			break;
-		case 'contact':
-			$view = 'views/contact/contact.php';
-			$title = "Contatti ";
-			break;
-		default:
-			$view = 'views/'. $controller . '.php';
-			$title = $controller;
+if (isset($_POST))
+foreach ($_POST as $key => $value)
+	${
+	$key} = trim($value);
 
 
+	$controller = null;
+	if (isset($_GET["controller"])) {
+		$controller= $_GET["controller"];
+		switch($controller) {
+			/* per Aruba - caso solo cartella principale */
+			case 'index':
+			case 'index.php':
+				$view  = 'views/home.php';
+				break;
+			case 'aggiungi':
+				$view  = 'views/store/product-add.php';
+				$title = 'Aggiungi '. $_GET['title'];
+				$description = 'Inserisci un prodotto';
+				break;
+			case 'prodotti':
+				$view  = 'views/store/prodotti.php';
+				$title = 'Galleria';
+				$description = 'Visualizza i prodotti';
+				break;
+			case 'prodotto':
+				$view = 'views/store/prodotto.php';
+				$title = "Prodotto " .$_GET["title"];
+				break;
+			case 'listaprodotti':
+				$view  = 'views/store/listaprodotti.php';
+				$title = 'Galleria';
+				$description = 'Lista prodotti';
+				break;
+			case 'login':
+				$view = 'views/login.php';
+				$title = "Login ";
+				break;
+			case 'register':
+				$view = 'views/register.php';
+				$title = "Registrazione ";
+				break;
+			case 'contact':
+				$view = 'views/contact/contact.php';
+				$title = "Contatti ";
+				break;
+			default:
+				$view = 'views/'. $controller . '.php';
+				$title = $controller;
+
+
+		}
 	}
-}
 
 
-if (isset($_GET["category"])) {
-	$category = $_GET["category"];
-}
+	if (isset($_GET["category"])) {
+		$category = $_GET["category"];
+	}
 
-include 'breadcrumb.php';
+	if (!empty($_GET['controller']) && strpos($controller, 'index')=== false)
+		include 'breadcrumb.php';
 
-//var_dump($view);
-require $view;
+	//var_dump($view);F
 
-include 'footer.php';
-?>
+
+	require $view;
+
+	include 'footer.php';
+	?>

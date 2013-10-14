@@ -43,17 +43,23 @@ if(empty($_POST)===false) {
 
 	<form role="form" method="post" action="">
 		<div class="form-group">
-			<label for="email">Indirizzo Email</label> <input type="email"
-				class="form-control" name="email" id="email"
-				placeholder="Iserisci la tua email" value="<?=@$email ?>">
+
+			<label for="email" class="col-md-12">Indirizzo Email</label>
+			<div class="col-md-12">
+				<input type="email" class="form-control" name="email" id="email"
+					placeholder="Iserisci la tua email" value="<?=@$email ?>">
+			</div>
 		</div>
 		<div class="form-group">
-			<label for="password">Password</label> <input type="password"
-				class="form-control" name="password" id="password"
-				placeholder="La tua password">
+
+			<label for="password" class="col-md-12">Password</label>
+			<div class="col-md-12">
+				<input type="password" class="form-control" name="password"
+					id="password" placeholder="La tua password">
+			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-md-1">
+			<div class="col-md-12">
 				<button type="submit" name="submit" class="btn btn-default">Accedi</button>
 			</div>
 		</div>

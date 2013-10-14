@@ -4,7 +4,7 @@
 if (isset($_POST['submit'])) {
 	if (empty($_POST['title'])) {
 		$errors[] = 'Devi inserire il titolo.';
-	} 
+	}
 	if (empty($errors) === true) {
 		print_r($_POST);
 		$nome = htmlentities($_POST['title']);
@@ -15,13 +15,12 @@ if (isset($_POST['submit'])) {
 		$idversione = $_POST['version'];
 		$immagine = null;
 		$products -> insert($nome, $immagine, $descrizione, $schedatecnica, $idcategoria, $idversione);
-		// Calling the register function, which we will create soon.
-		header('Location: views/store/product-add.php?success');
-		exit();
+
+		$success= 'Il prodotto è stato inserito correttamente.';
 	}
 }
 if (isset($_GET['success']) && empty($_GET['success'])) {
-	echo 'Il prodotto è stato inserito correttamente.';
+	
 }
 ?>
 
@@ -31,7 +30,8 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 		<div class="form-group">
 			<label for="title" class="col-md-2">Titolo</label>
 			<div class="col-md-10">
-				<input type="text" class="form-control" name="title" id="title" placeholder="Iserisci il nome del prodotto">
+				<input type="text" class="form-control" name="title" id="title"
+					placeholder="Iserisci il nome del prodotto">
 			</div>
 		</div>
 		<div class="form-group">
@@ -47,8 +47,8 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 				<select class="form-control" name="version" id="version">
 					<option value="2p">2 posti</option>
 					<option value="l2p">laterale 2 posti</option>
-					<option value="2pm">2 posti max </option>
-					<option value="l2pm">laterale 2 posti max </option>
+					<option value="2pm">2 posti max</option>
+					<option value="l2pm">laterale 2 posti max</option>
 					<option value="l3p">laterale 3 posti</option>
 					<option value="l3pm">laterale 3 posti max</option>
 					<option value="cl">chaise longe</option>
@@ -60,22 +60,23 @@ if (isset($_GET['success']) && empty($_GET['success'])) {
 		<div class="form-group">
 			<div class="col-md-12">
 				<label for="description">Descrizione</label>
-				<textarea name="description" class="form-control editor" rows="6" id="description" ></textarea>
+				<textarea name="description" class="form-control editor" rows="6"
+					id="description"></textarea>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-12">
 				<label for="scheda_tecnica">Scheda tecnica</label>
-				<textarea name="scheda_tecnica" class="form-control editor" rows="6" id="scheda_tecnica" ></textarea>
+				<textarea name="scheda_tecnica" class="form-control editor" rows="6"
+					id="scheda_tecnica"></textarea>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<div class="col-md-1">
-				<button type="submit" name="submit" class="btn btn-default">
-					Crea prodotto
-				</button>
+				<button type="submit" name="submit" class="btn btn-default">Crea
+					prodotto</button>
 			</div>
 		</div>
 	</form>

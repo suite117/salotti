@@ -17,7 +17,7 @@ if (isset($title))
 ?> Alessi salotti</title>
 
 <!-- Bootstrap core CSS -->
-<link href="<?=curURL() ?>css/bootstrap.css" rel="stylesheet">
+<link href="<?=curURL() ?>css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Add custom CSS here -->
 <link href="<?=curURL() ?>css/modern-business.css" rel="stylesheet">
@@ -81,14 +81,14 @@ if (isset($title))
 						</ul>
 					</li>
 
-					<li><a href="<?=curUrl() ?>logout.html">Logout</a>
+					<li><a href="<?=curUrl() ?>logout.html">Esci</a>
 					
 					<li><a href="<?=curUrl() ?>members.html">Lista utenti</a></li>
 
 					<?php else : ?>
 					<li><a href="<?=curUrl() ?>register.html">Registrati</a>
 					</li>
-					<li><a href="<?=curUrl() ?>login.html">Login</a>
+					<li><a href="<?=curUrl() ?>login.html">Accedi</a>
 					</li>
 
 					<?php endif; ?>
