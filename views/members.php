@@ -33,8 +33,9 @@ $member_count 	= count($members);
 					<td><?= $member['ragionesociale']?></td>
 					<td><?= $member['confirmed']?></td>
 					<td><?php echo translateDate(date('j F Y', $member['time'])) ?></td>
-					<?php endforeach; ?>
 					<td>Modifica - Elimina</td>
+
+					<?php endforeach; ?>
 				</tr>
 			</tbody>
 		</table>
