@@ -1,4 +1,5 @@
 <?php
+$general->logged_out_protect();
 # utilizzo del metodo query()
 // definizione della query
 $sql='SELECT prodotto.id, prodotto.nome, prodotto.idcategoria FROM prodotto LEFT JOIN categoria ON prodotto.idcategoria = categoria.id ORDER BY prodotto.nome';
@@ -31,27 +32,55 @@ foreach($db->query($sql) as $row) {
 			</div>
 		</div>
 		<div class="col-md-5 column-right">
+			<div class="row">
+				<div class="col-md-12">
+					<img class="img-responsive"
+						src="<?=curUrl()?>images/anteprima_modello.png">
+				</div>
 
+			</div>
 			<div class="row">
 				<div class="panel-group" id="accordion">
-					<div class="panel panel-default">
-
+					<div class="panel panel-default colored">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a class="accordion-toggle collapsed" data-toggle="collapse"
-									data-parent="#accordion" href="#collapseOne"> Scheda tecnica </a>
+								<a class="accordion-toggle" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseThree"> Scegli la
+									versione </a>
 							</h4>
 						</div>
-						<div id="collapseOne" class="panel-collapse collapse colored">
-							<div class="panel-body">Anim pariatur cliche reprehenderit, enim
-								eiusmod high life accusamus terry richardson ad squid. 3 wolf
-								moon officia aute, non cupidatat skateboard dolor brunch.</div>
+						<div id="collapseThree" class="panel-collapse collapse in">
+							<div class="panel-body">
+								<?php
+								$versions=array("2 posti","laterale 2 posti","chaise longe","2 posti max","laterale 2 posti max","chaise longe max","laterale 3 posti","laterale 3 posti max");
+								?>
+
+								<table class="table">
+									<tbody>
+										<tr>
+											<?php for ($i=0; $i< count($versions); $i++) : ?>
+											<?php
+											if($i%3==0)
+												echo '<tr>';
+											?>
+											<td><a href="#"> <?=$versions[$i] ?>
+											</a></td>
+											<?php
+											if(($i+1)%3==0)
+												echo '</tr>';
+											?>
+											<?php endfor; ?>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
 						</div>
 					</div>
 					<!-- end Panel -->
 
 
-					<div class="panel panel-default template colored">
+					<div class="panel panel-default colored">
 						<div class="panel-heading">
 							<h4 class="panel-title">
 								<a class="accordion-toggle" data-toggle="collapse"
@@ -87,41 +116,17 @@ echo '<tr>';
 					<!-- end Panel -->
 
 
-					<div class="panel panel-default colored">
+					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a class="accordion-toggle" data-toggle="collapse"
-									data-parent="#accordion" href="#collapseThree"> Scegli la versione
-								</a>
-							
+								<a class="accordion-toggle collapsed" data-toggle="collapse"
+									data-parent="#accordion" href="#collapseOne"> Scheda tecnica </a>
 							</h4>
 						</div>
-						<div id="collapseThree" class="panel-collapse collapse in">
-							<div class="panel-body">
-								<?php
-								$versions=array("2 posti","laterale 2 posti","chaise longe","2 posti max","laterale 2 posti max","chaise longe max","laterale 3 posti","laterale 3 posti max");
-								?>
-
-								<table class="table">
-									<tbody>
-										<tr>
-											<?php for ($i=0; $i< count($versions); $i++) : ?>
-											<?php
-											if($i%3==0)
-												echo '<tr>';
-											?>
-											<td><a href="#"> <?=$versions[$i] ?>
-											</a></td>
-											<?php
-											if(($i+1)%3==0)
-												echo '</tr>';
-											?>
-											<?php endfor; ?>
-										</tr>
-									</tbody>
-								</table>
-
-							</div>
+						<div id="collapseOne" class="panel-collapse collapse colored">
+							<div class="panel-body">Anim pariatur cliche reprehenderit, enim
+								eiusmod high life accusamus terry richardson ad squid. 3 wolf
+								moon officia aute, non cupidatat skateboard dolor brunch.</div>
 						</div>
 					</div>
 					<!-- end Panel -->

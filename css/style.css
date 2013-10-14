@@ -129,15 +129,27 @@ label {
 	content: "\e080"; /* adjust as needed, taken from bootstrap.css */
 }
 
-/* Carousel */
+/* Modal Dialog */
+.modal-dialog {
+	max-width: 90%;
+	width: 690px;
+}
+
+.modal-body {
+	padding: 0;
+}
+
+.modal-footer {
+	border-top: 1px solid #E5E5E5;
+	margin-top: 0;
+	padding: 10px 20px;
+	text-align: right;
+}
+
+/* Carousel Home */
 #myCarousel {
 	height: 400px;
 	margin: auto;
-}
-
-.carousel img,.modal-dialog {
-	max-width: 90%;
-	width: 800px;
 }
 
 .carousel-control .icon-prev,.carousel-control .icon-next {

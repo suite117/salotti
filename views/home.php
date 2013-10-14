@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row text-center">
 
 	<div id="myCarousel" class="carousel slide">
 		<!-- Indicators -->
@@ -48,7 +48,7 @@
 
 
 
-<div class="row">
+<div class="row text-center">
 	<div class="col-md-6">
 		<h3>
 			<i class="icon-ok-circle"></i> Bed

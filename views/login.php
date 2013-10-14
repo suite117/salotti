@@ -29,7 +29,18 @@ if(empty($_POST)===false) {
 }
 ?>
 
+<div class="section">
+	<div class="container">
+		<div class="col-md-12">
+			<h3>
+				Non sei registrato? <a href="<?=curUrl() ?>register.html">Registrati</a>
+			</h3>
+		</div>
+	</div>
+</div>
+
 <div class="container">
+
 	<?php
 	// check for a successful form post
 	if (isset($success))

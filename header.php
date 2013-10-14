@@ -35,9 +35,17 @@ if (isset($title))
 
 </head>
 
+<?php if ($general -> logged_in() === true) : ?>
 <body>
+	<?php else : ?>
+
+
+<body oncontextmenu="return false;">
+	<?php endif;?>
 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= CurUrl() ?>images/background_top.png')">
+		<a class="navbar-brand" href="index.html"><img id="logo"
+			src="<?=curURL() ?>images/logo.png" /> </a>
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -47,8 +55,6 @@ if (isset($title))
 						class="icon-bar"></span>
 				</button>
 				<!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-				<a class="navbar-brand" href="index.html"><img id="logo"
-					src="<?=curURL() ?>images/logo.png" /> </a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,23 +62,19 @@ if (isset($title))
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="<?=curUrl() ?>index.php">Home</a>
 					</li>
-					<?php
-					$curUrl = curURL();
-					if ($general -> logged_in() === true) : ?>
+					<?php if ($general -> logged_in() === true) : ?>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Prodotti <b class="caret"></b>
 					</a>
 						<ul class="dropdown-menu">
-
-
+							<li><a href="<?=curUrl() ?>prodotti.html">Tutti i Prodotti</a>
+							
 							<li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi
-									prodotto</a>
-							</li>
-
+									prodotto</a></li>
 
 							<li><a href="<?=curUrl() ?>listaprodotti.html">Lista Prodotti</a>
-							
-							<li><a href="<?=curUrl() ?>prodotti.html">Tutti i Prodotti</a>
+
+
 							</li>
 							<li><a href="<?=curUrl() ?>prodotto/sofa/divano1.html">Sofa</a>
 							</li>
@@ -81,19 +83,20 @@ if (isset($title))
 						</ul>
 					</li>
 
-					<li><a href="<?=curUrl() ?>logout.html">Esci</a>
-					
 					<li><a href="<?=curUrl() ?>members.html">Lista utenti</a></li>
-
-					<?php else : ?>
-					<li><a href="<?=curUrl() ?>register.html">Registrati</a>
-					</li>
+					<?php  else:?>
+					<li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
+					
+					<li><a href="<?=curUrl() ?>contact.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
+					
+					<li><a href="<?=curUrl() ?>logout.html">Esci</a> <?php else : ?>
+					
 					<li><a href="<?=curUrl() ?>login.html">Accedi</a>
 					</li>
 
 					<?php endif; ?>
 
-					<li><a href="<?=curUrl() ?>contact.html">Contatti</a>
+
 					</li>
 
 

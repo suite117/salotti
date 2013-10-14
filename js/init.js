@@ -1,54 +1,91 @@
-$(document).ready(function() {
+$(document).ready(
+	function() {
 
-    $('textarea').text($('textarea').text().trim());
+	    $('textarea').text($('textarea').text().trim());
 
-    // Activates editor
-    // $('#editor').summernote();
+	    // Activates editor
+	    // $('#editor').summernote();
 
-    // Activates the Carousel
-    /*
-     * $('.carousel').carousel({ interval : 5000 });
-     */
+	    // Activates the Carousel
 
-    // Activates Tooltips for Social Links
-    $('.tooltip-social').tooltip({
-	selector : "a[data-toggle=tooltip]"
-    });
+	    /*
+	     * $('.carousel').carousel({ interval : 3000 });
+	     */
 
-    // Carousel #carousel-generic
-    // Inizializzazione immagini slideshow
-    $('.col-md-3 a img').each(function(index, image) {
-	console.log(index, image);
-	var image_path = $(image).attr("src");
-	$('<div class="item"><img src=' + image_path + ' /></div>').appendTo(
+	    // Activates Tooltips for Social Links
+	    $('.tooltip-social').tooltip({
+		selector : "a[data-toggle=tooltip]"
+	    });
 
-	'.modal-body .carousel-inner');
+	    // Carousel #carousel-generic
+	    // Inizializzazione immagini slideshow
+	    // $('.modal-body .carousel-inner').html('');
+	    $('.col-md-3 a img').each(
+		    function(index, image) {
+			// console.log(index, image);
+			var image_path = $(image).attr("src");
+			$(
+				'<div class="item"><img class="img-responsive" data-path="'
+					+ $(this).data("path") + '" alt="'
+					+ $(this).attr("alt") + '" src="'
+					+ image_path + '" data-id="'
+					+ $(this).data("id") + '"/></div>')
+				.appendTo('.modal-body .carousel-inner');
 
-    });
+		    });
 
-    // Comportamento al click sulla lente d'ingandimento
-    $('.gallery-lightbox').click(function() {
+	    // Could be slid or slide (slide happens before animation,
+	    // slid happens after)
+	    $('#carousel-generic').bind(
+		    'slid',
+		    function() {
 
-	var zoom_in = $(this).parent().parent().parent().parent().children()[0];
-	var active_image = $($(zoom_in).children()[0]).children()[0];
-	var active_image_path = $(active_image).attr("src");
-	var active_title = $($(this).parent().parent().children()[0]).text();
-	
-	console.log(active_title, active_image_path);
-	$('.modal-title').html(active_title);
+			// console.log($('.active img', this));
+			var image = $('.active img', this);
+			$('.modal-title').html(
+				'<a href="' + image.data("path") + '">'
+					+ image.attr("alt") + '</a>');
+		    });
 
-	// $('.modal-body img').empty();
+	    // Comportamento al click sulla lente d'ingandimento
+	    $('.gallery-lightbox')
+		    .click(
+			    function() {
 
-	$('.carousel-indicators').each(function(index, value) {
-	    console.log(index, value);
+				var cell = $(this).parent().parent().parent();
+				var active_image = $($(cell).children()[0])
+					.children()[0];
+
+				// console.log(active_title, active_image);
+
+				$('.modal-title').html(
+					'<a href="'
+						+ $(active_image).data("path")
+						+ '">'
+						+ $(active_image).attr("alt")
+						+ '</a>');
+
+				$('.modal-body img').each(
+					function(index, image) {
+					    // console.log($(active_image).data("id"));
+					    // console.log($(image).data("id"));
+
+					    if ($(image).data("id") == $(
+						    active_image).data("id"))
+						$(image).parent().addClass(
+							'active');
+					    else
+						$(image).parent().removeClass(
+							'active');
+					});
+				// $('.modal-body img').empty();
+
+				// Visualizza la finestra di dialogo per
+				// lo slideshow
+				$('#myModal').modal({
+				    show : true
+				});
+
+			    });
+
 	});
-
-	// Visualizza la finestra di dialogo per
-	// lo slideshow
-	$('#myModal').modal({
-	    show : true
-	});
-
-    });
-
-});

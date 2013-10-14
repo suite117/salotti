@@ -62,7 +62,7 @@ if (isset($_GET["controller"])) {
 			break;
 		case 'prodotto':
 			$view = 'views/store/prodotto.php';
-			$title = "Prodotto " .$_GET["title"];
+			$title = $_GET["title"];
 			break;
 		case 'listaprodotti':
 			$view  = 'views/store/listaprodotti.php';
