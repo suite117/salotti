@@ -25,6 +25,9 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?=curURL() ?>js/summernote.min.js"></script>
 
+<!-- Bootbox -->
+<script type="text/javascript" src="https://github.com/makeusabrew/bootbox/releases/download/v4.1.0/bootbox.min.js"></script>
+
 <!-- Main -->
 <script src="<?= curUrl() ?>js/init.js"></script>
 

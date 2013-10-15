@@ -38,61 +38,83 @@ foreach ($_POST as $key => $value) {
 // GET CONTROLLER
 // setta la categoria se esiste
 $category = isset($_GET["category"]) ? $_GET["category"] : null;
-
 $controller = null;
 if (isset($_GET["controller"])) {
 	$controller= $_GET["controller"];
-	switch($controller) {
+
+	if ($controller === 'modifica') {
+		$type = $_GET['category'];
+		$id = $_GET['title'];
+
+		switch($type) {
+			case 'utente':
+				$view  = 'views/user/register.php'. $id;
+				$user = $users->get_user($id);
+				$suffix = $user['id'];
+				break;
+			case 'prodotto':
+				$view  = 'views/store/product-add.php';
+				$product = $products->get_single_product('id', $id);
+				var_dump($product);
+				$suffix = $product['nome'];
+				break;
+		}
+
+		$page_title = 'Modifica ' .$suffix;
+		$page_description = $type;
+	}
+	else
+		switch($controller) {
 		/* per Aruba - caso solo cartella principale */
-		case 'index':
-		case 'index.php':
-			$view  = 'views/home.php';
-			break;
-		case 'breadcrumb':
-			
-			break;
-		case 'aggiungi':
-			$view  = 'views/store/product-add.php';
-			$page_title = 'Aggiungi '. $_GET['title'];
-			$page_description = 'Inserisci un prodotto';
-			break;
-		case 'prodotti':
-			$view  = 'views/store/prodotti.php';
-			$page_title = 'Galleria';
-			$page_description = 'Visualizza i prodotti';
-			break;
-		case 'prodotto':
-			$page_title = $_GET["title"];
-			if ($page_title !== 'modifica')
-				$view = 'views/store/prodotto.php';
-			else {
-				$view = 'views/store/product-add.php';
-				$category = null;
-			}
-			break;
-		case 'login':
-			$view = 'views/user/login.php';
-			$page_title = "Accedi";
-			break;
+			case 'index':
+			case 'index.php':
+				$view  = 'views/home.php';
+				break;
+			case 'breadcrumb':
+
+				break;
+			case 'aggiungi':
+				$view  = 'views/store/product-add.php';
+				$page_title = 'Aggiungi '. $_GET['title'];
+				$page_description = 'Inserisci un prodotto';
+				break;
+			case 'prodotti':
+				$view  = 'views/store/prodotti.php';
+				$page_title = 'Galleria';
+				$page_description = 'Visualizza i prodotti';
+				break;
+			case 'prodotto':
+				$page_title = $_GET["title"];
+				if ($page_title !== 'modifica')
+					$view = 'views/store/product.php';
+				else {
+					$view = 'views/store/product-add.php';
+					$category = null;
+				}
+				break;
+			case 'login':
+				$view = 'views/user/login.php';
+				$page_title = "Accedi";
+				break;
 			case 'logout':
 				$view = 'views/user/logout.php';
 				$page_title = "Esci";
 				break;
-		case 'register':
-			$view = 'views/user/register.php';
-			$page_title = "Registrazione";
-			break;
-		case 'lista-utenti':
-			$view = 'views/user/members.php';
-			$page_title = "Lista utenti";
-			break;
-		case 'contatti':
-			$view = 'views/contact/contact.php';
-			$page_title = "Contatti";
-			break;
-		default:
-			$view = 'views/'. $controller . '.php';
-			$page_title = $controller;
+			case 'register':
+				$view = 'views/user/register.php';
+				$page_title = "Registrazione";
+				break;
+			case 'lista-utenti':
+				$view = 'views/user/members.php';
+				$page_title = "Lista utenti";
+				break;
+			case 'contatti':
+				$view = 'views/contact/contact.php';
+				$page_title = "Contatti";
+				break;
+			default:
+				$view = 'views/'. $controller . '.php';
+				$page_title = $controller;
 
 
 	}

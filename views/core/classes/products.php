@@ -94,7 +94,8 @@ class Products {
 	}
 
 
-	public function get_single_product($field, $value){ //in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
+	//in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
+	public function get_single_product($field, $value){ 
 
 		$allowed = array('id', 'nome');
 		if (!in_array($field, $allowed, true)) {
@@ -102,19 +103,15 @@ class Products {
 		}else{
 
 			$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE $field = ?");
-
 			$query->bindValue(1, $value);
 
 			try{
-
 				$query->execute();
-					
 			} catch(PDOException $e){
-
 				die($e->getMessage());
 			}
 
-			return $query->fetchAll();
+			return $query->fetchAll()[0];
 		}
 	}
 

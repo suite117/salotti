@@ -1,8 +1,8 @@
 <?php
 $general->logged_out_protect();
 
-//$prodotto = $products->get_single_product('id', 1);
-$prodotto = array('id' => 1);
+//$product = $products->get_single_product('id', 1);
+$product = array('id' => 1);
 ?>
 <div class="container">
 	<div class="row">
@@ -16,7 +16,7 @@ $prodotto = array('id' => 1);
 		</div>
 	</div>
 	<div style="float: right">
-		<a href="<?=curUrl()?>prodotto/<?= $prodotto['id'] ?>/modifica.html"><button
+		<a href="<?=curUrl()?>modifica/prodotto/<?= $product['id'] ?>.html"><button
 				type="button" class="btn btn-default">Modifica</button> </a>
 	</div>
 	<div class="row">

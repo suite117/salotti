@@ -1,55 +1,103 @@
-$(document).ready(
-	function() {
+function confirmbox(message, button_input, callback) {
 
-	    $('textarea').text($('textarea').text().trim());
+    buttons = '<button data-dismiss="modal" class="btn btn-default">Cancella</button><button data-dismiss="modal" class="btn-confirm btn btn-warning">Ok</button>';
 
-	    // Activates editor
-	    // $('#editor').summernote();
+    /*
+     * $('body') .append( '<div role="dialog" id="modalBox" class="modal fade
+     * in" tabindex="-1" style="display: block;" aria-hidden="true"><div
+     * class="modal-dialog"><div class="modal-content"><div
+     * class="modal-header"><button data-dismiss="modal" type="button"
+     * class="close">×</button><h3 class="modal-title"><a href="prodotto/Nome
+     * modello 1.html">Nome modello 1</a></h3></div><div
+     * class="modal-body">' + message + '</div><div class="modal-footer">' +
+     * buttons + '</div></div></div></div>');
+     */
+    modalDiv = '#modalBox';
 
-	    // Activates the Carousel
+    $(modalDiv + ' .modal-footer').html(buttons);
+    $(modalDiv + ' .btn-confirm').on('click', function() {
+	callback(button_input, this);
+    });
 
-	    /*
-	     * $('.carousel').carousel({ interval : 3000 });
-	     */
+    $(modalDiv + ' .modal-body').html(message);
 
-	    // Activates Tooltips for Social Links
-	    $('.tooltip-social').tooltip({
-		selector : "a[data-toggle=tooltip]"
-	    });
+    $(modalDiv).modal({
+	show : true
+    });
 
-	    // Carousel #carousel-generic
-	    // Inizializzazione immagini slideshow
-	    // $('.modal-body .carousel-inner').html('');
-	    $('.col-md-3 a img').each(
-		    function(index, image) {
-			// console.log(index, image);
-			var image_path = $(image).attr("src");
-			$(
-				'<div class="item"><img class="img-responsive" data-path="'
-					+ $(this).data("path") + '" alt="'
-					+ $(this).attr("alt") + '" src="'
-					+ image_path + '" data-id="'
-					+ $(this).data("id") + '"/></div>')
-				.appendTo('.modal-body .carousel-inner');
+}
 
+$(document)
+	.ready(
+		function() {
+
+		    $('textarea').text($('textarea').text().trim());
+
+		    /* BootBox */
+		    $('a.delete')
+			    .on(
+				    'click',
+				    function() {
+					message = 'Eliminare definitavemente il contenuto? Non sarà possile tornare indietro.';
+					confirmbox(message, this, function(
+						button_input) {
+					    console.log($(button_input)
+						    .parent().parent());
+					    $(button_input).parent().parent()
+						    .remove();
+					});
+
+				    });
+
+		    // Activates editor
+		    // $('#editor').summernote();
+
+		    // Activates the Carousel
+
+		    /*
+		     * $('.carousel').carousel({ interval : 3000 });
+		     */
+
+		    // Activates Tooltips for Social Links
+		    $('.tooltip-social').tooltip({
+			selector : "a[data-toggle=tooltip]"
 		    });
 
-	    // Could be slid or slide (slide happens before animation,
-	    // slid happens after)
-	    $('#carousel-generic').bind(
-		    'slid',
-		    function() {
+		    // Carousel #carousel-generic
+		    // Inizializzazione immagini slideshow
+		    // $('.modal-body .carousel-inner').html('');
+		    $('.col-md-3 a img').each(
+			    function(index, image) {
+				// console.log(index, image);
+				var image_path = $(image).attr("src");
+				$(
+					'<div class="item"><img class="img-responsive" data-path="'
+						+ $(this).data("path")
+						+ '" alt="'
+						+ $(this).attr("alt")
+						+ '" src="' + image_path
+						+ '" data-id="'
+						+ $(this).data("id")
+						+ '"/></div>').appendTo(
+					'.modal-body .carousel-inner');
 
-			// console.log($('.active img', this));
-			var image = $('.active img', this);
-			$('.modal-title').html(
-				'<a href="' + image.data("path") + '">'
-					+ image.attr("alt") + '</a>');
-		    });
+			    });
 
-	    // Comportamento al click sulla lente d'ingandimento
-	    $('.gallery-lightbox')
-		    .click(
+		    // Could be slid or slide (slide happens before animation,
+		    // slid happens after)
+		    $('#carousel-generic').bind(
+			    'slid',
+			    function() {
+
+				// console.log($('.active img', this));
+				var image = $('.active img', this);
+				$('.modal-title').html(
+					'<a href="' + image.data("path") + '">'
+						+ image.attr("alt") + '</a>');
+			    });
+
+		    // Comportamento al click sulla lente d'ingandimento
+		    $('.gallery-lightbox').click(
 			    function() {
 
 				var cell = $(this).parent().parent().parent();
@@ -88,4 +136,4 @@ $(document).ready(
 
 			    });
 
-	});
+		});

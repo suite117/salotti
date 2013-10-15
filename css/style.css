@@ -11,6 +11,7 @@ h1,.h1 {
 
 h1 small,.h1 small {
 	font-size: 16px;
+	padding-left: 10px;
 }
 
 .breadcrumb {

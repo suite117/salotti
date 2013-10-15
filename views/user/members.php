@@ -33,12 +33,33 @@ $member_count 	= count($members);
 					<td><?= $member['ragionesociale']?></td>
 					<td><?= $member['confirmed'] ? 'No': 'Si'?></td>
 					<td><?php echo translateDate(date('j F Y', $member['time'])) ?></td>
-					<td>Modifica - Elimina</td>
+					<td><a class="btn btn-primary" href="modifica/utente/<?= $member['id']?>.html"> Modifica</a>
 
-					<?php endforeach; ?>
+						<!-- Button trigger modal --> <a data-toggle="modal"
+						href="#modalBox" class="btn btn-danger delete">Elimina</a>
+					</td>
 				</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
 </div>
+</div>
+
+
+<!-- Modal box -->
+<div tabindex="-1" class="modal fade" id="modalBox" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" type="button" data-dismiss="modal">×</button>
+				<h3 class="modal-title">Heading</h3>
+			</div>
+			<div class="modal-body" style="padding: 15px;">
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal">Chiudi</button>
+			</div>
+		</div>
+	</div>
 </div>
