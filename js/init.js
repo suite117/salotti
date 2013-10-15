@@ -39,7 +39,7 @@ $(document).ready(function() {
 			console.log($(button_input).parent().parent());
 			id = $(button_input)
 			.parent().parent().children()[0].innerHTML;
-			$(button_input).parent().parent().remove();
+			
 
 			$.ajax({
 
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 				success : function(msg) {
 
-					//$('#' + id).remove();
+					$(button_input).parent().parent().remove();
 
 				}
 			});
