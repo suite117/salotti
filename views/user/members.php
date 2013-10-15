@@ -1,5 +1,6 @@
 <?php 
-$general->logged_out_protect();
+require 'delete.php';
+
 $members 		=$users->get_users(); //Array di utenti
 $member_count 	= count($members);
 //print_r($members);

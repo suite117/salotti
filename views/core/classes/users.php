@@ -170,31 +170,7 @@ class Users {
 		}
 	}
 
-	/* vecchia funzione di login con sha1
-	 public function login($email, $password) {
 
-	 $query = $this -> db -> prepare("SELECT `password`, `id` FROM `users` WHERE `email` = ?");
-	 $query -> bindValue(1, $email);
-
-	 try {
-
-	 $query -> execute();
-	 $data = $query -> fetch();
-	 $stored_password = $data['password'];
-	 $id = $data['id'];
-
-	 #hashing the supplied password and comparing it with the stored hashed password.
-	 if ($stored_password === sha1($password)) {
-	 return $id;
-	 } else {
-	 return false;
-	 }
-
-	 } catch(PDOException $e) {
-	 die($e -> getMessage());
-	 }
-	 }
-	 */
 	public function email_confirmed($username) {
 
 		$query = $this -> db -> prepare("SELECT COUNT(`id`) FROM `users` WHERE `username`= ? AND `confirmed` = ?");
@@ -234,7 +210,8 @@ class Users {
 	public function get_users() {
 
 		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("SELECT * FROM `users` ORDER BY `time` DESC");
+		//$query = $this -> db -> prepare("SELECT * FROM `users` ORDER BY `time` DESC");
+		$query = $this -> db -> prepare("SELECT * FROM `users` ORDER BY `id` ASC");
 
 		try {
 			$query -> execute();
@@ -296,6 +273,24 @@ class Users {
 			return $query -> fetchColumn();
 		}
 	}
+	
+	public function deleteUser($user_id)
+	{
+		$query = $this -> db -> prepare("DELETE FROM `users` WHERE `id` = ?");
+		$query -> bindValue(1, $user_id);
+		
+		try {
+
+				$query -> execute();
+
+			} catch(PDOException $e) {
+
+				die($e -> getMessage());
+			}
+
+			
+		}
+	
 
 }
 ?>
