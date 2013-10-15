@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 				type : "POST",
 
-				data : "user_id=" + id,
+				data : "id=" + id,
 
 				URL : "",
 

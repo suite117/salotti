@@ -1,5 +1,5 @@
 <?php 
-require 'delete.php';
+require 'delete-user.php';
 
 $members 		=$users->get_users(); //Array di utenti
 $member_count 	= count($members);
