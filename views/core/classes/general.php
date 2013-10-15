@@ -5,6 +5,16 @@ class General {
 	public function logged_in() {
 		return (isset($_SESSION['id'])) ? true : false;
 	}
+	
+	//controlla se l'utente ha ruolo amministratore
+	public function isAdmin(){
+		$is_admin = false;
+		if ($_SESSION['role'] == 99) {
+			$is_admin = true;
+		}
+		
+		return $is_admin;
+	}
 
 	#if logged in then redirect to home.php
 	public function logged_in_protect() {

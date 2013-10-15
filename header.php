@@ -79,7 +79,11 @@ if (isset($page_title))
 					</li>
 				</ul>
 				</li>
-
+				
+				<?php
+							
+							if($general -> isAdmin() === true) : ?>
+				
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Amministrazione<b class="caret"></b>
 				</a>
@@ -87,6 +91,8 @@ if (isset($page_title))
 						<li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
 					</ul>
 				</li>
+				
+				<?php endif; ?>
 
 				<?php  else:?>
 				<li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
