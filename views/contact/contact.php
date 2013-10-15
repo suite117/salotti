@@ -1,6 +1,5 @@
-<?php
-include 'contact-form-submission.php';
-?>
+<?php require 'contact-submit.php'; ?>
+
 <!-- Page Content -->
 
 <div class="container">

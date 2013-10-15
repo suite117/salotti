@@ -12,8 +12,8 @@ require 'views/core/init.php';
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 
 <title><?php
-if (isset($title))
-	echo 'Prodotto ' . $title;
+if (isset($page_title))
+	echo 'Prodotto ' . $page_title;
 ?> Alessi salotti</title>
 
 <!-- Bootstrap core CSS -->
@@ -71,33 +71,34 @@ if (isset($title))
 							
 							<li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi
 									prodotto</a></li>
-							</li>
-							<li><a href="<?=curUrl() ?>prodotto/sofa/divano1.html">Sofa</a>
-							</li>
-							<li><a href="<?=curUrl() ?>prodotto/bed/letto1.html">Bed</a>
-							</li>
-						</ul>
+					
 					</li>
+					<li><a href="<?=curUrl() ?>prodotto/sofa/divano1.html">Sofa</a>
+					</li>
+					<li><a href="<?=curUrl() ?>prodotto/bed/letto1.html">Bed</a>
+					</li>
+				</ul>
+				</li>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Amministrazione<b class="caret"></b>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
-						</ul>
-					</li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">Amministrazione<b class="caret"></b>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
+					</ul>
+				</li>
 
-					<?php  else:?>
-					<li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
-					
-					<li><a href="<?=curUrl() ?>contatti.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
-					
-					<li><a href="<?=curUrl() ?>logout.html">Esci</a> <?php else : ?>
-					
-					<li><a href="<?=curUrl() ?>login.html">Accedi</a>
-					</li>
-					</li>
-					<?php endif; ?>
+				<?php  else:?>
+				<li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
+				
+				<li><a href="<?=curUrl() ?>contatti.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
+				
+				<li><a href="<?=curUrl() ?>logout.html">Esci</a> <?php else : ?>
+				
+				<li><a href="<?=curUrl() ?>login.html">Accedi</a>
+				</li>
+				</li>
+				<?php endif; ?>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -105,4 +106,4 @@ if (isset($title))
 		<!-- /.container -->
 	</nav>
 
-	<div style="height: 50px;">&nbsp;</div>
+	<div style="height: 40px;">&nbsp;</div>

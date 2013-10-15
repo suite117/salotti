@@ -21,9 +21,14 @@ h1 small,.h1 small {
 	padding: 0;
 }
 
+a {
+	color: #868889;
+}
+
 /* elimina bordo tratteggiato attorno al link */
 a:active,a:hover,a:focus {
 	outline: none;
+	color: #868889;
 }
 
 nav.navbar {
@@ -77,24 +82,31 @@ a.accordion-toggle {
 	display: block;
 }
 
-.table thead>tr>th,.table tbody>tr>th,.table tfoot>tr>th,.table thead>tr>td,.table tbody>tr>td,.table tfoot>tr>td
-	{
-	border-top: 0;
-}
-
 label {
 	line-height: 3;
 	position: relative;
 	top: -6px;
 }
 
+.table {
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.table thead {
+	background-color: #cccccc;
+}
+
 /* pannelli */
 .panel-default>.panel-heading {
 	box-shadow: 0 0 1px rgba(255, 255, 255, 0.9) inset;
+	background-color: #F5F5F5;
 }
 
-.panel-heading .accordion-toggle,.panel-default>.panel-heading {
+.panel-heading .accordion-toggle,.panel-default>.panel-heading,.table thead>tr>th
+	{
 	color: #777777;
+	border-color: #DDDDDD;
 }
 
 .panel-title a,.panel-title a:hover {

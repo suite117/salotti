@@ -1,6 +1,3 @@
-<?php
-require 'core/init.php';
-?>
 <div id="container">
 	<ul>
 		<li>

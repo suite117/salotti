@@ -10,7 +10,8 @@ RewriteRule ^([^/]+)/([^/]+)/([^/]+).html$ index.php?controller=$1&category=$2&t
 # Regola con due argomenti
 RewriteRule ^([^/]+)/([^/]+).html$ index.php?controller=$1&title=$2 [L]
 
-#RewriteRule ^prodotti index.php?controller=prodotti
+# Regola per categorie
+RewriteRule ^([^/]+)/$ index.php?controller=breadcrumb&category=$1 [L]
 
 # Regola con un argomento
 # Regola finale per tutti gli indirizzi

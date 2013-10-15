@@ -1,25 +1,4 @@
-<?php
-$general->logged_out_protect();
-
-# if form is submitted
-if (isset($_POST['submit'])) {
-	if (empty($name))
-		$errors['name'] = 'Devi inserire il titolo.';
-	if(empty($category_id))
-		$errors['category_id'] = 'Devi inserire la categoria.';
-	if(empty($description))
-		$errors['description'] = 'Devi inserire la descrizione.';
-	if(empty($version_id))
-		$errors['version_id'] = 'Devi inserire la versione.';
-
-	if (empty($errors) === true) {
-		$products -> insert($name, null, $description, $scheda_tecnica, $category_id, $version_id);
-		$success= 'Il prodotto è stato inserito correttamente.';
-	}
-}
-
-var_dump($errors);
-?>
+<?php require 'product-add-submit.php';?>
 
 <div class="container">
 	<?php
@@ -35,9 +14,10 @@ var_dump($errors);
 
 	<form class="form-horizontal" role="form" method="post" action="">
 
-		<div class="form-group <?= isset($errors['name']) ? 'has-error' : 'has-success' ?>">
+		<div
+			class="form-group <?= isset($errors['name']) ? 'has-error' : 'has-success' ?>">
 			<label for="name" class="col-md-2">Titolo</label>
-			<div class="col-md-10">
+			<div class="controls">
 				<input type="text" class="form-control" name="name" id="name"
 					placeholder="Iserisci il nome del prodotto">
 			</div>

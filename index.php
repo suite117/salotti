@@ -16,16 +16,16 @@ require 'views/core/init.php';
 include 'header.php';
 
 $view = 'views/home.php';
-$title = '';
-$description ='';
+$page_title = '';
+$page_description ='';
 $category = null;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-var_dump($_GET);
-var_dump($_POST);
+//var_dump($_GET);
+//var_dump($_POST);
 
 // POST CONTROLLER
 $errors = array();
@@ -48,19 +48,22 @@ if (isset($_GET["controller"])) {
 		case 'index.php':
 			$view  = 'views/home.php';
 			break;
+		case 'breadcrumb':
+			
+			break;
 		case 'aggiungi':
 			$view  = 'views/store/product-add.php';
-			$title = 'Aggiungi '. $_GET['title'];
-			$description = 'Inserisci un prodotto';
+			$page_title = 'Aggiungi '. $_GET['title'];
+			$page_description = 'Inserisci un prodotto';
 			break;
 		case 'prodotti':
 			$view  = 'views/store/prodotti.php';
-			$title = 'Galleria';
-			$description = 'Visualizza i prodotti';
+			$page_title = 'Galleria';
+			$page_description = 'Visualizza i prodotti';
 			break;
 		case 'prodotto':
-			$title = $_GET["title"];
-			if ($title !== 'modifica')
+			$page_title = $_GET["title"];
+			if ($page_title !== 'modifica')
 				$view = 'views/store/prodotto.php';
 			else {
 				$view = 'views/store/product-add.php';
@@ -68,24 +71,28 @@ if (isset($_GET["controller"])) {
 			}
 			break;
 		case 'login':
-			$view = 'views/login.php';
-			$title = "Login";
+			$view = 'views/user/login.php';
+			$page_title = "Accedi";
 			break;
+			case 'logout':
+				$view = 'views/user/logout.php';
+				$page_title = "Esci";
+				break;
 		case 'register':
-			$view = 'views/register.php';
-			$title = "Registrazione";
+			$view = 'views/user/register.php';
+			$page_title = "Registrazione";
 			break;
 		case 'lista-utenti':
-			$view = 'views/members.php';
-			$title = "Lista utenti";
+			$view = 'views/user/members.php';
+			$page_title = "Lista utenti";
 			break;
-		case 'contact':
-			$view = 'views/contact/contatti.php';
-			$title = "Contatti";
+		case 'contatti':
+			$view = 'views/contact/contact.php';
+			$page_title = "Contatti";
 			break;
 		default:
 			$view = 'views/'. $controller . '.php';
-			$title = $controller;
+			$page_title = $controller;
 
 
 	}
