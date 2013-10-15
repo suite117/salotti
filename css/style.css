@@ -88,13 +88,34 @@ label {
 	top: -6px;
 }
 
-.table {
-	border-radius: 4px 4px 4px 4px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+/* tabella */
+
+table {
+    border-collapse: separate;
 }
 
-.table thead {
-	background-color: #cccccc;
+thead th {
+    background-color: #cccccc;
+    color: white;
+    
+}
+
+tbody td {
+    background-color: #EEEEEE;
+}
+
+tr td:first-child,
+tr th:first-child {
+    border-top-left-radius: 4px;
+}
+
+tr td:last-child,
+tr th:last-child {
+    border-top-right-radius: 4px;
+}
+
+table thead {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 /* pannelli */
