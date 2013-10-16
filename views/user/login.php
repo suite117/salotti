@@ -26,9 +26,9 @@
 	<form role="form" method="post" action="">
 		<div class="form-group">
 
-			<label for="email" class="col-md-12">Indirizzo Email o Username</label>
+			<label for="username" class="col-md-12">Indirizzo Email o Username</label>
 			<div class="col-md-12">
-				<input type="email" class="form-control" name="user_login" id="email"
+				<input type="username" class="form-control" name="user_login" id="email"
 					placeholder="Iserisci la tua email o il tuo username" value="<?=@$email ?>">
 			</div>
 		</div>

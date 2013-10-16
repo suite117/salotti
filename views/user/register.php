@@ -16,6 +16,16 @@
 	<form class="form-horizontal" role="form" method="post" action="">
 
 		<div class="form-group">
+			<label for="username" class="col-md-2">Username:</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" id="username"
+					name="username" placeholder="Inserisci il tuo username"
+					value="<?=@$username ?>">
+			</div>
+		</div>
+
+		
+		<div class="form-group">
 			<label for="firstname" class="col-md-2">Nome:</label>
 			<div class="col-md-10">
 				<input type="text" class="form-control" id="firstname"

@@ -51,7 +51,7 @@ class Users {
 
 	}
 
-	public function register($ragionesociale, $partitaiva, $password, $email, $nome, $cognome, $indirizzo, $n_civico, $citta, $cap, $telefono, $cellulare) {
+	public function register($ragionesociale, $partitaiva, $password, $email, $nome, $cognome, $indirizzo, $n_civico, $citta, $cap, $telefono, $cellulare, $username) {
 
 		global $bcrypt;
 		// making the $bcrypt variable global so we can use here
@@ -61,9 +61,9 @@ class Users {
 		$email_code = $email_code = uniqid('code_', true);
 		$password = $bcrypt -> genHash($password);
 		// generating a hash using the $bcrypt object
-		$query = $this -> db -> prepare("INSERT INTO `users` (`ragionesociale`, `partitaiva`, `password`, `email`, `ip`, `time`, `email_code`, `nome`, `cognome`, `indirizzo`, `n_civico`, `citta`, `cap`, `telefono`, `cellulare`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ");
+		$query = $this -> db -> prepare("INSERT INTO `users` (`ragionesociale`, `partitaiva`, `password`, `email`, `ip`, `time`, `email_code`, `nome`, `cognome`, `indirizzo`, `n_civico`, `citta`, `cap`, `telefono`, `cellulare`, `username`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ");
 
-		//$query -> bindValue(1, $username);
+		
 		$query -> bindValue(1, $ragionesociale);
 		$query -> bindValue(2, $partitaiva);
 		$query -> bindValue(3, $password);
@@ -79,6 +79,7 @@ class Users {
 		$query -> bindValue(13, $cap);
 		$query -> bindValue(14, $telefono);
 		$query -> bindValue(15, $cellulare);
+		$query -> bindValue(16, $username);
 
 		try {
 			$query -> execute();
