@@ -24,8 +24,8 @@ $category = null;
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-//var_dump($_GET);
-//var_dump($_POST);
+var_dump($_GET);
+var_dump($_POST);
 
 // POST CONTROLLER
 $errors = array();
@@ -82,9 +82,8 @@ if (isset($_GET["controller"])) {
 				$page_description = 'Inserisci un prodotto';
 				break;
 			case 'prodotti':
-				$nome = $_GET['title'];
-				if (isset($nome)) {
-					$product = $products->get_single_product('nome', $nome);
+				if (isset($_GET['title'])) {
+					$product = $products->get_single_product('nome', $_GET['title']);
 					$view  = 'views/store/product.php';
 					$page_title = $product['nome'];
 				}
