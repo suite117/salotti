@@ -5,7 +5,7 @@ $general->logged_out_protect();
 $product_path = 'images/' . $product['immagine'];
 
 if ($category == 'divani')
-	$model2d_path = 'images/anteprima_modello.png';
+	$model2d_path = 'images/letto2d.jpg';
 elseif ($category == 'letti')
 $model2d_path = 'images/letto2d.jpg';
 	

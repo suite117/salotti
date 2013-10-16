@@ -27,7 +27,7 @@ $product_count 	= count($prodotti); // n° di prodotti
 
     $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
     $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-    $prodotto['immagine'] = isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? curUrl() .'images/' . $prodotto['immagine'] : 'http://placehold.it/750x450';
+    $prodotto['immagine'] = isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? curUrl() .'image.php?path=images/' . $prodotto['immagine'] : 'http://placehold.it/750x450';
 
     $product_index++;
     ?>

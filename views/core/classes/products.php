@@ -127,7 +127,9 @@ class Products {
 				die($e->getMessage());
 			}
 
-			return $query->fetchAll()[0];
+			$row = $query->fetchAll();
+			
+			return $row[0];
 		}
 	}
 
