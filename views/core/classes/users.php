@@ -51,7 +51,7 @@ class Users {
 
 	}
 
-	public function register($ragionesociale, $partitaiva, $password, $email) {
+	public function register($ragionesociale, $partitaiva, $password, $email, $nome, $cognome, $indirizzo, $n_civico, $citta, $cap, $telefono, $cellulare) {
 
 		global $bcrypt;
 		// making the $bcrypt variable global so we can use here
@@ -61,7 +61,7 @@ class Users {
 		$email_code = $email_code = uniqid('code_', true);
 		$password = $bcrypt -> genHash($password);
 		// generating a hash using the $bcrypt object
-		$query = $this -> db -> prepare("INSERT INTO `users` (`ragionesociale`, `partitaiva`, `password`, `email`, `ip`, `time`, `email_code`) VALUES ( ?, ?, ?, ?, ?, ?, ?) ");
+		$query = $this -> db -> prepare("INSERT INTO `users` (`ragionesociale`, `partitaiva`, `password`, `email`, `ip`, `time`, `email_code`, `nome`, `cognome`, `indirizzo`, `n_civico`, `citta`, `cap`, `telefono`, `cellulare`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ) ");
 
 		//$query -> bindValue(1, $username);
 		$query -> bindValue(1, $ragionesociale);
@@ -71,14 +71,22 @@ class Users {
 		$query -> bindValue(5, $ip);
 		$query -> bindValue(6, $time);
 		$query -> bindValue(7, $email_code);
+		$query -> bindValue(8, $nome);
+		$query -> bindValue(9, $cognome);
+		$query -> bindValue(10, $indirizzo);
+		$query -> bindValue(11, $n_civico);
+		$query -> bindValue(12, $citta);
+		$query -> bindValue(13, $cap);
+		$query -> bindValue(14, $telefono);
+		$query -> bindValue(15, $cellulare);
 
 		try {
 			$query -> execute();
 			//sendEmail($sender, $to, $subject, $email_content);
 			$subject = "attivazione utente" . $email;
-			$email_content = "Ciao, Un utente ha chiesto di registrarsi sul sito " . $username. ",\r\n email" . $email ." ,\r\n partitaiva:" . $partitaiva .",\r\n Ragione sociale: " . $ragionesociale . " Clicca sul link sottostante per attivarlo :\r\n\r\nhttp://http://www.pulenergy.it/git/salotti/activate.html?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team";
-			sendEmail($site_email, $site_email, $subject, $email_content);
-			mail($email, 'Please activate your account', "Hello " . $username. ",\r\nThank you for registering with us. Please visit the link below so we can activate your account:\r\n\r\n"."http://www.example.com/activate.php?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team");
+			$email_content = "Ciao, Un utente ha chiesto di registrarsi sul sito ,\r\n email" . $email ." ,\r\n partitaiva:" . $partitaiva .",\r\n Ragione sociale: " . $ragionesociale . " Clicca sul link sottostante per attivarlo :\r\n\r\nhttp://http://www.pulenergy.it/git/salotti/activate.html?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team";
+			sendEmail($email, "suite117@gmail.com", $subject, $email_content);
+			
 			
 		} catch(PDOException $e) {
 			die($e -> getMessage());

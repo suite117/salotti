@@ -26,7 +26,15 @@ if (isset($_POST['submit'])) {
 		$partitaiva = $_POST['partitaiva'];
 		$password = $_POST['password'];
 		$email = htmlentities($_POST['email']);
-		$users -> register($ragionesociale, $partitaiva, $password, $email);
+		$nome = $_POST['firstname'];
+		$cognome = $_POST['lastname'];
+		$indirizzo = $_POST['indirizzo'];
+		$n_civico = $_POST['numero_civico'];
+		$citta = $_POST['citta'];
+		$cap = $_POST['cap'];
+		$telefono = $_POST['telefono'];
+		$cellulare = $_POST['cellulare'];
+		$users -> register($ragionesociale, $partitaiva, $password, $email, $nome, $cognome, $indirizzo, $n_civico, $citta, $cap, $telefono, $cellulare);
 
 		//$email_content = ",\r\nThank you for registering with us. Please visit the link below so we can activate your account:\r\n\r\nhttp://www.example.com/activate.php?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n";
 		//sendEmail($sender, $email, $subject, $email_content);
