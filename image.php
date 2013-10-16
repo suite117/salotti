@@ -24,7 +24,7 @@ unlink( $tmpname );
 die('');
 
 
-function die_default_image()
+function die_default_image($output_width, $output_height)
 {
 	//43byte 1x1 transparent pixel gif
 	header("content-type: image/gif");
