@@ -26,10 +26,10 @@
 	<form role="form" method="post" action="">
 		<div class="form-group">
 
-			<label for="email" class="col-md-12">Indirizzo Email</label>
+			<label for="email" class="col-md-12">Indirizzo Email o Username</label>
 			<div class="col-md-12">
-				<input type="email" class="form-control" name="email" id="email"
-					placeholder="Iserisci la tua email" value="<?=@$email ?>">
+				<input type="email" class="form-control" name="user_login" id="email"
+					placeholder="Iserisci la tua email o il tuo username" value="<?=@$email ?>">
 			</div>
 		</div>
 		<div class="form-group">
