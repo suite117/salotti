@@ -111,7 +111,7 @@ class Products {
 				die($e->getMessage());
 			}
 
-			return $query->fetchAll()[0];
+			return $query->fetchAll();
 		}
 	}
 
