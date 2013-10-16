@@ -1,22 +1,33 @@
 <?php 
 $prodotti = $products->get_products(); //Array di prodotti
 $product_count 	= count($prodotti); // n° di prodotti
-$product_index = 0;
 
-//print_r($prodotti) ;
+print_r($product_count) ;
 ?>
 <div class="container">
 
   <?php
-  for($i=0;$i<3;$i++) :
+
+  $product_index = 0;
+  while ( $product_index < $product_count):
+  //var_dump($prodott);
+
   ?>
   <div class="row">
     <div class="col-md-3"></div>
     <?php
     for($j=0;$j<3;$j++) :
-    $product_index++;
-    $prodotto = array( 'nome' => 'Nome modello '. $product_index , 'immagine' => curUrl(). 'image.php?path=images/modello.jpg');
+
+    if ( $product_index >= $product_count)
+    	break;
+
+    $prodotto = $prodotti[$product_index];
+
     $prodotto_path = 'prodotto/' . $prodotto['nome'] . '.html';
+    $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
+    $prodotto['immagine'] = isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] :'image.php?path=images/modello.jpg';
+
+    $product_index++;
     ?>
 
     <div class="col-md-3">
@@ -24,7 +35,7 @@ $product_index = 0;
       <?php if ($general -> logged_in() === true) : ?>
       <a href="<?=$prodotto_path?>"> <?php endif; ?> <img alt="<?= @$prodotto['nome'] ?>"
         data-path="<?=$prodotto_path ?>" data-id="<?= @$product_index ?>" class="img-responsive"
-        src="<?= @$prodotto['immagine'] ?>" /> <?php if ($general -> logged_in() === true) : ?>
+        src="<?=  $prodotto['immagine']  ?>" /> <?php if ($general -> logged_in() === true) : ?>
       </a>
       <?php endif;?>
       <div class="row">
@@ -42,7 +53,7 @@ $product_index = 0;
 
     <?php endfor; ?>
   </div>
-  <?php endfor; ?>
+  <?php endwhile; ?>
 
 </div>
 <!-- /.container -->

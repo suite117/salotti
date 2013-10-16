@@ -5,6 +5,10 @@
 	
 }
 
+.page-header {
+     margin: 40px 0 11px;
+}
+
 h1,.h1 {
 	font-size: 25px;
 }
@@ -16,7 +20,6 @@ h1 small,.h1 small {
 
 .breadcrumb {
 	font-size: 12px;
-	height: 30px;
 	background-color: transparent;
 	margin: 0;
 	padding: 0;
@@ -102,7 +105,7 @@ thead th {
 }
 
 tbody td {
-    background-color: #EEEEEE;
+    background-color: #EBECEC;
 }
 
 tr td:first-child,
@@ -120,6 +123,10 @@ table thead {
 }
 
 /* pannelli */
+.column-right .panel-group .panel {
+	margin: 10px 0;
+}
+
 .panel-default>.panel-heading {
 	box-shadow: 0 0 1px rgba(255, 255, 255, 0.9) inset;
 	background-color: #F5F5F5;

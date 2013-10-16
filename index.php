@@ -54,7 +54,7 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'prodotto':
 				$view  = 'views/store/product-add.php';
-				$product = $products->get_single_product('id', $id);
+				$product = $products->get_single_product('nome', $nome);
 				var_dump($product);
 				$suffix = $product['nome'];
 				break;
