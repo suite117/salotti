@@ -70,6 +70,7 @@ if (isset($_GET["controller"])) {
 		/* per Aruba - caso solo cartella principale */
 			case 'index':
 			case 'index.php':
+			case 'index.html':
 				$view  = 'views/home.php';
 				break;
 			case 'breadcrumb':

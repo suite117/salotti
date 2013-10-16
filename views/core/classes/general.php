@@ -19,12 +19,12 @@ class General {
 	#if logged in then redirect to home.php
 	public function logged_in_protect() {
 		if ($this -> logged_in() === true) {
-			header('Location: index.php');
+			header('Location: index.html');
 			exit();
 		}
 	}
 
-	#if not logged in then redirect to index.php
+	#if not logged in then redirect to index.html
 	public function logged_out_protect() {
 		if ($this -> logged_in() === false) {
 			header('Location: ' . curUrl() . 'login.html');
