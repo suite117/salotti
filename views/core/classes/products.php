@@ -53,7 +53,7 @@ class Products {
 	public function get_products() {
 
 		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("SELECT * FROM `prodotto` ORDER BY `nome` DESC");
+		$query = $this -> db -> prepare("SELECT * FROM `prodotto` ORDER BY `nome` ASC");
 
 		try {
 			$query -> execute();
@@ -64,6 +64,22 @@ class Products {
 		# We use fetchAll() instead of fetch() to get an array of all the selected records.
 		return $query -> fetchAll();
 	}
+	
+	public function get_products_by_category($category) {
+	
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("select p.id, p.nome, p.immagine, c.nome as category_name from prodotto as p, categoria as c where p.idcategoria = c.id and c.nome=?");
+		$query->bindValue(1, $category);
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+	
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll(PDO::FETCH_ASSOC);
+		}
+	
 
 	public function update_product($nome, $immagine, $descrizione, $schedatecnica, $idcategoria, $idversione, $id){
 
@@ -111,7 +127,7 @@ class Products {
 				die($e->getMessage());
 			}
 
-			return $query->fetchAll();
+			return $query->fetchAll()[0];
 		}
 	}
 

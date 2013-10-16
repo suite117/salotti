@@ -1,8 +1,10 @@
 <?php 
-$prodotti = $products->get_products(); //Array di prodotti
+
+
+$prodotti = isset($category) ? $products->get_products_by_category($category) : $products->get_products(); //Array di prodotti
 $product_count 	= count($prodotti); // n° di prodotti
 
-print_r($product_count) ;
+//var_dump($prodotti) ;
 ?>
 <div class="container">
 
@@ -10,7 +12,7 @@ print_r($product_count) ;
 
   $product_index = 0;
   while ( $product_index < $product_count):
-  //var_dump($prodott);
+  //var_dump(curUrl());
 
   ?>
   <div class="row">
@@ -23,9 +25,9 @@ print_r($product_count) ;
 
     $prodotto = $prodotti[$product_index];
 
-    $prodotto_path = 'prodotto/' . $prodotto['nome'] . '.html';
+    $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
     $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-    $prodotto['immagine'] = isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] :'image.php?path=images/modello.jpg';
+    $prodotto['immagine'] = isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? curUrl() .'images/' . $prodotto['immagine'] : 'http://placehold.it/750x450';
 
     $product_index++;
     ?>

@@ -1,8 +1,15 @@
 <?php
 $general->logged_out_protect();
 
-//$product = $products->get_single_product('id', 1);
-$product = array('id' => 1, 'nome' => 'Roxane');
+//$product = $products->get_single_product('nome', 1);
+$product_path = 'images/' . $product['immagine'];
+
+if ($category == 'divani')
+	$model2d_path = 'images/anteprima_modello.png';
+elseif ($category == 'letti')
+$model2d_path = 'images/letto2d.jpg';
+	
+
 ?>
 <div class="container">
   <div class="row">
@@ -22,7 +29,7 @@ $product = array('id' => 1, 'nome' => 'Roxane');
     <div class="col-md-7 column-left">
       <div class="row">
         <div>
-          <img class="img-responsive" src="<?= curURL().'image.php?path=images/modello.jpg' ?>">
+          <img class="img-responsive" src="<?= curURL() .'image.php?path=' . $product_path ?>">
         </div>
       </div>
       <div class="row">
@@ -41,7 +48,8 @@ $product = array('id' => 1, 'nome' => 'Roxane');
 
       <div class="row">
         <div class="col-md-12">
-          <img style="width: 450px; height: 260px" class="img-responsive" src="<?=curUrl()?>images/anteprima_modello.png">
+          <img style="width: 450px; height: 260px" class="img-responsive"
+            src="<?= curURL() .'image.php?path=' . $model2d_path ?>">
         </div>
       </div>
 

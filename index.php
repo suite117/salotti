@@ -38,6 +38,8 @@ foreach ($_POST as $key => $value) {
 // GET CONTROLLER
 // setta la categoria se esiste
 $category = isset($_GET["category"]) ? $_GET["category"] : null;
+$subcategory =  isset($_GET["subcategory"]) ? $_GET["subcategory"] : null;
+
 $controller = null;
 if (isset($_GET["controller"])) {
 	$controller= $_GET["controller"];
@@ -55,7 +57,7 @@ if (isset($_GET["controller"])) {
 			case 'prodotto':
 				$view  = 'views/store/product-add.php';
 				$product = $products->get_single_product('nome', $nome);
-				var_dump($product);
+				//var_dump($product);
 				$suffix = $product['nome'];
 				break;
 		}
@@ -71,7 +73,8 @@ if (isset($_GET["controller"])) {
 				$view  = 'views/home.php';
 				break;
 			case 'breadcrumb':
-
+				$view  = 'views/store/prodotti.php';
+				$page_title = 'Galleria';
 				break;
 			case 'aggiungi':
 				$view  = 'views/store/product-add.php';
@@ -79,9 +82,18 @@ if (isset($_GET["controller"])) {
 				$page_description = 'Inserisci un prodotto';
 				break;
 			case 'prodotti':
-				$view  = 'views/store/prodotti.php';
-				$page_title = 'Galleria';
-				$page_description = 'Visualizza i prodotti';
+				$nome = $_GET['title'];
+				if (isset($nome)) {
+					$product = $products->get_single_product('nome', $nome);
+					$view  = 'views/store/product.php';
+					$page_title = $product['nome'];
+				}
+				else {
+					$view  = 'views/store/prodotti.php';
+					$page_title = 'Galleria';
+					$page_description = 'Visualizza i prodotti';
+				}
+					
 				break;
 			case 'prodotto':
 				$page_title = $_GET["title"];
