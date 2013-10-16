@@ -1,3 +1,4 @@
+
 <div class="row text-center">
 
 	<div id="myCarousel" class="carousel slide">

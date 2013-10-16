@@ -23,7 +23,7 @@ $product = array('id' => 1);
 		<div class="col-md-7 column-left">
 			<div class="row">
 				<div>
-					<img class="img-responsive" src="<?=curUrl()?>images/modello.jpg">
+					<img class="img-responsive" src="<?=curUrl()?>images/path=images/modello.jpg">
 				</div>
 			</div>
 		</div>
