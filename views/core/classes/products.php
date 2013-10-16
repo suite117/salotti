@@ -111,7 +111,7 @@ class Products {
 
 
 	//in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
-	public function get_single_product($field, $value){ 
+	public function get_product($field, $value){ 
 
 		$allowed = array('id', 'nome');
 		if (!in_array($field, $allowed, true)) {

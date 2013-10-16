@@ -44,6 +44,7 @@ $controller = null;
 if (isset($_GET["controller"])) {
 	$controller= $_GET["controller"];
 
+	/* CASO MODIFICA */
 	if ($controller === 'modifica') {
 		$type = $_GET['category'];
 		$id = $_GET['title'];
@@ -56,7 +57,7 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'prodotto':
 				$view  = 'views/store/product-add.php';
-				$product = $products->get_single_product('nome', $nome);
+				$product = $products->get_product('id', $id);
 				//var_dump($product);
 				$suffix = $product['nome'];
 				break;
@@ -65,7 +66,7 @@ if (isset($_GET["controller"])) {
 		$page_title = 'Modifica ' .$suffix;
 		$page_description = $type;
 	}
-	else
+	else /* TUTTI GLI ALTRI CASI */
 		switch($controller) {
 		/* per Aruba - caso solo cartella principale */
 			case 'index':
