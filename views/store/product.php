@@ -2,7 +2,7 @@
 $general->logged_out_protect();
 
 //$product = $products->get_single_product('nome', 1);
-$product_path = 'images/' . $product['immagine'];
+$product_path = 'images/' . (isset($product['immagine']) ?  $product['immagine'] : 'default.png');
 
 if ($category == 'divani')
 	$model2d_path = 'images/letto2d.jpg';
@@ -49,7 +49,7 @@ $model2d_path = 'images/letto2d.jpg';
       <div class="row">
         <div class="col-md-12">
           <img style="width: 450px; height: 260px" class="img-responsive"
-            src="<?= curURL() .'image.php?path=' . $model2d_path ?>">
+            src="<?= curURL() .'image.php?path=' . @$model2d_path ?>">
         </div>
       </div>
 

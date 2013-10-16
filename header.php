@@ -57,7 +57,7 @@ if (isset($page_title))
 
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="<?=curUrl() ?>index.php">Home</a>
+          <li><a href="<?=curUrl() ?>index.html">Home</a>
           </li>
           <?php if ($general -> logged_in() === true) : ?>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prodotti <b class="caret"></b>
