@@ -1,6 +1,6 @@
 <?php
-$output_width =800;
-$output_height=600;
+$output_width = isset($_REQUEST['width']) ? $_REQUEST['width'] : 800;
+$output_height= isset($_REQUEST['height']) ? $_REQUEST['height'] : 600;
 
 $path = ( (isset($_REQUEST['path']))? $_REQUEST['path'] : "");
 $size_arr = getimagesize($path);
@@ -24,7 +24,7 @@ unlink( $tmpname );
 die('');
 
 
-function die_default_image($output_width, $output_height)
+function die_default_image()
 {
 	//43byte 1x1 transparent pixel gif
 	header("content-type: image/gif");

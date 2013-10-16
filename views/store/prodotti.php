@@ -27,7 +27,7 @@ $product_count 	= count($prodotti); // n° di prodotti
 
     $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
     $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-    $prodotto['immagine'] =  curUrl() .'image.php?path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
+    $prodotto['immagine'] =  curUrl() .'image.php?width=260&height=195&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
 
     $product_index++;
     ?>
@@ -37,7 +37,7 @@ $product_count 	= count($prodotti); // n° di prodotti
       <?php if ($general -> logged_in() === true) : ?>
       <a href="<?=$prodotto_path?>"> <?php endif; ?> <img alt="<?= @$prodotto['nome'] ?>"
         data-path="<?=$prodotto_path ?>" data-id="<?= @$product_index ?>" class="img-responsive"
-        src="<?=  $prodotto['immagine']  ?>" /> <?php if ($general -> logged_in() === true) : ?>
+        style="margin-left: auto; margin-right: auto;" src="<?=  $prodotto['immagine']  ?>" /> <?php if ($general -> logged_in() === true) : ?>
       </a>
       <?php endif;?>
       <div class="row">
