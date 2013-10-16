@@ -74,7 +74,12 @@ class Users {
 
 		try {
 			$query -> execute();
-
+			//sendEmail($sender, $to, $subject, $email_content);
+			$subject = "attivazione utente" . $email;
+			$email_content = "Ciao, Un utente ha chiesto di registrarsi sul sito " . $username. ",\r\n email" . $email ." ,\r\n partitaiva:" . $partitaiva .",\r\n Ragione sociale: " . $ragionesociale . " Clicca sul link sottostante per attivarlo :\r\n\r\nhttp://http://www.pulenergy.it/git/salotti/activate.html?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team";
+			sendEmail($site_email, $site_email, $subject, $email_content);
+			mail($email, 'Please activate your account', "Hello " . $username. ",\r\nThank you for registering with us. Please visit the link below so we can activate your account:\r\n\r\n"."http://www.example.com/activate.php?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team");
+			
 		} catch(PDOException $e) {
 			die($e -> getMessage());
 		}

@@ -112,6 +112,9 @@ if (isset($_GET["controller"])) {
 				$view = 'views/contact/contact.php';
 				$page_title = "Contatti";
 				break;
+			case 'activate':
+				$view = 'views/users/activate.php';
+				$page_title = 'attiva';
 			default:
 				$view = 'views/'. $controller . '.php';
 				$page_title = $controller;
