@@ -85,7 +85,7 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'prodotti':
 				if (isset($_GET['title'])) {
-					$product = $products->get_single_product('nome', $_GET['title']);
+					$product = $products->get_product('nome', $_GET['title']);
 					$view  = 'views/store/product.php';
 					$page_title = $product['nome'];
 				}
