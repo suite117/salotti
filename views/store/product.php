@@ -10,6 +10,8 @@ elseif ($category == 'letti')
 $model2d_path = 'images/letto2d.jpg';
 	
 
+//var_dump($product);
+
 ?>
 <div class="container">
   <div class="row">

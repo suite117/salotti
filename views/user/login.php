@@ -29,7 +29,7 @@
 			<label for="username" class="col-md-12">Indirizzo Email o Username</label>
 			<div class="col-md-12">
 				<input type="username" class="form-control" name="user_login" id="email"
-					placeholder="Iserisci la tua email o il tuo username" value="<?=@$email ?>">
+					placeholder="Iserisci la tua email o il tuo username" value="<?=@$field ?>">
 			</div>
 		</div>
 		<div class="form-group">

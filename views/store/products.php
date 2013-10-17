@@ -1,10 +1,10 @@
 <?php 
 
 
-$prodotti = isset($category) ? $products->get_products_by_category($category) : $products->get_products(); //Array di prodotti
-$product_count 	= count($prodotti); // n° di prodotti
+$products = isset($category) ? $products_dao->get_products_by_category($category) : $products_dao->get_products(); //Array di prodotti
+$product_count 	= count($products); // n° di prodotti
 
-//var_dump($prodotti) ;
+//var_dump($products) ;
 ?>
 <div class="container">
 
@@ -23,7 +23,7 @@ $product_count 	= count($prodotti); // n° di prodotti
     if ( $product_index >= $product_count)
     	break;
 
-    $prodotto = $prodotti[$product_index];
+    $prodotto = $products[$product_index];
 
     $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
     $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;

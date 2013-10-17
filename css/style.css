@@ -97,9 +97,9 @@ table {
 	border-collapse: separate;
 }
 
-thead th {
-	background-color: #cccccc;
-	color: white;
+.table thead th {
+	background-color: #555555;
+	color: white !important;
 }
 
 tbody td {

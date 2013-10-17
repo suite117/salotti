@@ -51,13 +51,14 @@ if (isset($_GET["controller"])) {
 
 		switch($type) {
 			case 'utente':
-				$view  = 'views/user/register.php'. $id;
+				$view  = 'views/user/register.php?id='. $id;
 				$user = $users->get_user($id);
+				var_dump($user);
 				$suffix = $user['id'];
 				break;
 			case 'prodotto':
 				$view  = 'views/store/product-add.php';
-				$product = $products->get_product('id', $id);
+				$product = $products_dao->get_product($id);
 				//var_dump($product);
 				$suffix = $product['nome'];
 				break;
@@ -75,7 +76,7 @@ if (isset($_GET["controller"])) {
 				$view  = 'views/home.php';
 				break;
 			case 'breadcrumb':
-				$view  = 'views/store/prodotti.php';
+				$view  = 'views/store/products.php';
 				$page_title = 'Galleria';
 				break;
 			case 'aggiungi':
@@ -85,12 +86,12 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'prodotti':
 				if (isset($_GET['title'])) {
-					$product = $products->get_product('nome', $_GET['title']);
+					$product = $products_dao->get_product_by_field('nome', $_GET['title']);
 					$view  = 'views/store/product.php';
 					$page_title = $product['nome'];
 				}
 				else {
-					$view  = 'views/store/prodotti.php';
+					$view  = 'views/store/products.php';
 					$page_title = 'Galleria';
 					$page_description = 'Visualizza i prodotti';
 				}
@@ -142,9 +143,7 @@ if (isset($_GET["controller"])) {
 if (!empty($_GET['controller']) && strpos($controller, 'index')=== false)
 	include 'breadcrumb.php';
 
-//var_dump($view);F
-
-
+var_dump($view);
 require $view;
 
 include 'footer.php';

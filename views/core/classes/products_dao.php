@@ -1,5 +1,5 @@
 <?php
-class Products {
+class ProductsDAO {
 
 	private $db;
 
@@ -32,8 +32,40 @@ class Products {
 	}
 
 
+	public function get_products() {
 
-	public function productdata($id) {
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("SELECT * FROM `prodotto` ORDER BY `nome` ASC");
+
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll();
+	}
+
+	public function get_products_by_category($category) {
+
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("select p.id, p.nome, p.immagine, c.nome as category_name from prodotto as p, categoria as c where p.idcategoria = c.id and c.nome=?");
+		$query->bindValue(1, $category);
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll(PDO::FETCH_ASSOC);
+	}
+
+
+	//in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
+
+	public function get_product($id) {
 
 		$query = $this -> db -> prepare("SELECT * FROM `prodotto` WHERE `id`= ?");
 		$query -> bindValue(1, $id);
@@ -50,36 +82,38 @@ class Products {
 		}
 	}
 
-	public function get_products() {
 
-		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("SELECT * FROM `prodotto` ORDER BY `nome` ASC");
+	public function get_product_by_field($field, $value){
 
-		try {
-			$query -> execute();
-		} catch(PDOException $e) {
-			die($e -> getMessage());
+		$allowed = array('id', 'nome');
+		if (!in_array($field, $allowed, true)) {
+			throw new InvalidArgumentException;
+		}else{
+				
+			if (isset($value)) {
+				$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE $field = ?");
+				$query->bindValue(1, $value);
+			}
+			else {
+				$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE `id`= ?");
+				$query->bindValue(1, $value);
+			}
+
+				
+				
+
+			try{
+				$query->execute();
+			} catch(PDOException $e){
+				die($e->getMessage());
+			}
+
+			$row = $query->fetchAll();
+				
+			return $row[0];
 		}
-
-		# We use fetchAll() instead of fetch() to get an array of all the selected records.
-		return $query -> fetchAll();
 	}
-	
-	public function get_products_by_category($category) {
-	
-		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("select p.id, p.nome, p.immagine, c.nome as category_name from prodotto as p, categoria as c where p.idcategoria = c.id and c.nome=?");
-		$query->bindValue(1, $category);
-		try {
-			$query -> execute();
-		} catch(PDOException $e) {
-			die($e -> getMessage());
-		}
-	
-		# We use fetchAll() instead of fetch() to get an array of all the selected records.
-		return $query -> fetchAll(PDO::FETCH_ASSOC);
-		}
-	
+
 
 	public function update_product($nome, $immagine, $descrizione, $schedatecnica, $idcategoria, $idversione, $id){
 
@@ -106,30 +140,6 @@ class Products {
 			$query->execute();
 		}catch(PDOException $e){
 			die($e->getMessage());
-		}
-	}
-
-
-	//in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
-	public function get_product($field, $value){ 
-
-		$allowed = array('id', 'nome');
-		if (!in_array($field, $allowed, true)) {
-			throw new InvalidArgumentException;
-		}else{
-
-			$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE $field = ?");
-			$query->bindValue(1, $value);
-
-			try{
-				$query->execute();
-			} catch(PDOException $e){
-				die($e->getMessage());
-			}
-
-			$row = $query->fetchAll();
-			
-			return $row[0];
 		}
 	}
 
