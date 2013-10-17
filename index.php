@@ -32,7 +32,7 @@ $errors = array();
 if (isset($_POST))
 foreach ($_POST as $key => $value) {
 	${
-		$key} = trim($value);
+		$key} = htmlentities(trim($value));
 }
 
 // GET CONTROLLER
