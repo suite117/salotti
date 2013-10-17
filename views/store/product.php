@@ -1,18 +1,22 @@
 <?php
 $general->logged_out_protect();
 
+
+/* Eventuali manipolazioni del bean prima del render vanno fatte qui */
 //$product = $products->get_single_product('nome', 1);
-$product_path = 'images/' . (isset($product['immagine']) ?  $product['immagine'] : 'default.png');
+$product['immagine'] = curURL() .'image.php?path=images/' . (isset($product['immagine']) ?  $product['immagine'] : 'default.png');
 
 if ($category == 'divani')
-	$model2d_path = 'images/letto2d.jpg';
+	$product['model2d'] = 'images/letto2d.jpg';
 elseif ($category == 'letti')
-$model2d_path = 'images/letto2d.jpg';
-	
+$product['model2d'] = 'images/letto2d.jpg';
+
 
 //var_dump($product);
 
 ?>
+<!--  Da qui in poi ci vanno solo i bean -->
+
 <div class="container">
   <div class="row">
     <div class="panel-group" id="accordion">
@@ -31,7 +35,7 @@ $model2d_path = 'images/letto2d.jpg';
     <div class="col-md-7 column-left">
       <div class="row">
         <div>
-          <img class="img-responsive" src="<?= curURL() .'image.php?path=' . $product_path ?>">
+          <img class="img-responsive" src="<?=$product['immagine'] ?>">
         </div>
       </div>
       <div class="row">
@@ -51,7 +55,7 @@ $model2d_path = 'images/letto2d.jpg';
       <div class="row">
         <div class="col-md-12">
           <img style="width: 450px; height: 260px" class="img-responsive"
-            src="<?= curURL() .'image.php?path=' . @$model2d_path ?>">
+            src="<?= curURL() .'image.php?path=' . @$product['model2d'] ?>">
         </div>
       </div>
 
@@ -107,20 +111,19 @@ $model2d_path = 'images/letto2d.jpg';
 
                 <table class="table text-center">
                   <tbody>
-                    <?php for($i = 0; $i < 21; $i++):
-                    if ($i % 7 == 0) {
-echo '<tr>';
-}
-?>
-                    <td style="padding: 7px;"><img style="width: 50px; height: 50px;" src="http://placehold.it/750x350" />
-                    </td>
-                    <?php
-                    if(($i+1)%7==0) {
-										echo '</tr>';
-										}
-										?>
-                    <?php endfor; ?>
+                    <?php for($i = 0; $i < 21; $i++) : ?>
+                    <?php if ($i % 7 == 0) : ?>
+                    <tr>
+                      <?php endif; ?>
+                      <td style="padding: 7px;"><img style="width: 50px; height: 50px;"
+                        src="http://placehold.it/750x350" />
+                      </td>
+                      <?php if (($i+1) % 7 == 0) :  ?>
+                    </tr>
+                    <?php endif; ?>
+                    <?php endfor;?>
                   </tbody>
+
                 </table>
 
               </div>

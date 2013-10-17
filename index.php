@@ -143,7 +143,7 @@ if (isset($_GET["controller"])) {
 if (!empty($_GET['controller']) && strpos($controller, 'index')=== false)
 	include 'breadcrumb.php';
 
-var_dump($view);
+//var_dump($view);
 require $view;
 
 include 'footer.php';
