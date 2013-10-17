@@ -2,7 +2,7 @@
 
 	<hr>
 
-	<footer>
+	<footer style="background-image: url('<?= CurUrl() ?>images/background_top.png')">
 		<div class="row">
 			<div class="col-lg-12">
 				<p>
