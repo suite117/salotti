@@ -94,7 +94,34 @@ class Users {
 		}
 	}
 
-	
+	/* vecchia funzione di registrazione con sha1 non sicuro
+	 public function register($ragionesociale, $partitaiva, $password, $email) {
+
+	 $time = time();
+	 $ip = $_SERVER['REMOTE_ADDR'];
+	 $email_code = sha1($email + microtime());
+	 $password = sha1($password);
+
+	 $query = $this -> db -> prepare("INSERT INTO `users` (`ragionesociale`, `partitaiva`, `password`, `email`, `ip`, `time`, `email_code`) VALUES ( ?, ?, ?, ?, ?, ?, ?) ");
+
+	 //$query -> bindValue(1, $username);
+	 $query -> bindValue(1, $ragionesociale);
+	 $query -> bindValue(2, $partitaiva);
+	 $query -> bindValue(3, $password);
+	 $query -> bindValue(4, $email);
+	 $query -> bindValue(5, $ip);
+	 $query -> bindValue(6, $time);
+	 $query -> bindValue(7, $email_code);
+
+	 try {
+	 $query -> execute();
+
+	 // mail($email, 'Please activate your account', "Hello " . $username. ",\r\nThank you for registering with us. Please visit the link below so we can activate your account:\r\n\r\nhttp://www.example.com/activate.php?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team");
+	 } catch(PDOException $e) {
+	 die($e -> getMessage());
+	 }
+	 }
+	 */
 	public function activate($email, $email_code) {
 
 		$query = $this -> db -> prepare("SELECT COUNT(`id`) FROM `users` WHERE `email` = ? AND `email_code` = ? AND `confirmed` = ?");
@@ -127,13 +154,13 @@ class Users {
 		}
 	}
 
-	public function login($field, $value, $password) { //field può essere username o password
+	public function login($email, $password) {
 
 		global $bcrypt;
 		// Again make the bcrypt variable global, which is defined in init.php, which is included in login.php where this function is called
 
-		$query = $this -> db -> prepare("SELECT `password`, `ruolo`, `id` FROM `users` WHERE `$field` = ?");
-		$query -> bindValue(1, $value);
+		$query = $this -> db -> prepare("SELECT `password`, `ruolo`, `id` FROM `users` WHERE `email` = ?");
+		$query -> bindValue(1, $email);
 
 		try {
 
