@@ -13,7 +13,7 @@
 		<div class="carousel-inner">
 			<div class="item active">
 				<div class="fill"
-					style="background-image: url('http://placehold.it/1900x1080&amp;text=Slide One');"></div>
+					style="background-image: url('images/slider1.png');"></div>
 				<div class="carousel-caption">
 					<h1>Modern Business - A Bootstrap 3 Template</h1>
 				</div>

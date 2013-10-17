@@ -4,11 +4,11 @@ if (isset($_POST['submit'])) {
 
 	if (empty($password) || empty($email) || empty($partitaiva) || empty($ragionesociale))
 		$errors[] = 'Devi compilare tutti i campi.';
-	
+
 	#validating user's input with functions that we will create next
 	if (strlen($password) < 6 | strlen($password) > 18)
 		$errors[] = 'La password deve essere tra 6  e 18 caratteri';
-	
+
 	if($password !== $password_check)
 		$errors[] = 'Le password devono coincidere.';
 
@@ -25,6 +25,12 @@ if (isset($_POST['submit'])) {
 		//sendEmail($sender, $email, $subject, $email_content);
 
 		$success = 'Grazie per esserti registrato. Per favore controlla la tua email.';
+	}
+}
+elseif(isset($user)) {
+	foreach ($user as $key => $value) {
+		${
+			$key} = $value;
 	}
 }
 
