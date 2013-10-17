@@ -154,13 +154,15 @@ class Users {
 		}
 	}
 
-	public function login($email, $password) {
+	public function login($user_login, $password) {
 
 		global $bcrypt;
 		// Again make the bcrypt variable global, which is defined in init.php, which is included in login.php where this function is called
 
-		$query = $this -> db -> prepare("SELECT `password`, `ruolo`, `id` FROM `users` WHERE `email` = ?");
-		$query -> bindValue(1, $email);
+		$query = $this -> db -> prepare("SELECT `password`, `ruolo`, `id` FROM `users` WHERE `email` = ? OR `username` = ?");
+		$query -> bindValue(1, $user_login);
+		$query -> bindValue(2, $user_login);
+		
 
 		try {
 

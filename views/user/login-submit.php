@@ -3,17 +3,17 @@
 $general->logged_in_protect();
 
 if(empty($_POST)===false) {
-	$email=trim($_POST['email']);
+	$email=trim($_POST['user_login']);
 	$password=$_POST['password'];
 	if(empty($email) || empty($password)) {
 		$errors[]='Devi inserire le tua email e la tua password.';
-	} else if($users->email_exists($email)===false) {
+	} else if($users->email_exists($user_login)===false && $users->user_exists($user_login)) {
 		$errors[]='Spiacenti l\'utente non esiste.';
 	}/* else if($users->email_confirmed($username)===false) {
 	$errors[]='Sorry, but you need to activate your account.  //per ora tutti gli utenti sono attivi di default
 	Please check your email.';
 	}*/ else {
-	$login=$users->login($email,$password);
+	$login=$users->login($user_login,$password);
 
 	if($login===false) {
 		$errors[]='Spiacenti, username e/o password non validi';
