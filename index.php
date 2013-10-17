@@ -59,7 +59,7 @@ if (isset($_GET["controller"])) {
 			case 'prodotto':
 				$view  = 'views/store/product-add.php';
 				$product = $products_dao->get_product($id);
-				//var_dump($product);
+				var_dump($product);
 				$suffix = $product['nome'];
 				break;
 		}

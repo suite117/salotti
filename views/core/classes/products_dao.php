@@ -50,7 +50,7 @@ class ProductsDAO {
 	public function get_products_by_category($category) {
 
 		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("select p.id, p.nome, p.immagine, c.nome as category_name from prodotto as p, categoria as c where p.idcategoria = c.id and c.nome=?");
+		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id and c.category_name=? ORDER BY p.nome");
 		$query->bindValue(1, $category);
 		try {
 			$query -> execute();
@@ -67,7 +67,7 @@ class ProductsDAO {
 
 	public function get_product($id) {
 
-		$query = $this -> db -> prepare("SELECT * FROM `prodotto` WHERE `id`= ?");
+		$query = $this -> db -> prepare("SELECT * FROM `prodotto` as p, categoria as c WHERE p.id = c.category_id AND p.id= ? ORDER BY p.nome");
 		$query -> bindValue(1, $id);
 
 		try {

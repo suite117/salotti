@@ -1,8 +1,12 @@
 <?php
 $general->logged_out_protect();
 
-$categories = $category_dao->get_categories();
-//var_dump($categories);
+if ($product['category_parent_id'] != null)
+	$categories = $category_dao->get_categories();
+else {
+	$categories = $category_dao->get_subcategories($product['category_id']);
+}
+var_dump($categories);
 
 
 # if form is submitted
@@ -21,5 +25,6 @@ if (isset($_POST['submit'])) {
 		$success= 'Il prodotto è stato inserito correttamente.';
 	}
 }
+
 
 ?>

@@ -50,7 +50,7 @@
       <div class="col-md-4">
         <select class="form-control" name="category_id" id="category_id">
           <?php foreach ($categories as $cat ) :?>
-          <option value="<?=$cat['id'] ?>"><?=$cat['nome'] ?></option>
+          <option value="<?=$cat['category_id'] ?>"><?=$cat['category_name'] ?></option>
           <?php endforeach; ?>
         </select>
       </div>
