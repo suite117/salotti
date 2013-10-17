@@ -40,9 +40,10 @@ $product['model2d'] = 'images/letto2d.jpg';
       </div>
       <div class="row">
         <div>
-          <h2>
-            <?=$product['nome']?>
-          </h2>
+          <h1 class="page-header">
+            <?=$page_title ?>
+            <?='<small> '.$page_description.'</small>' ?>
+          </h1>
           <p>Il divano è il salotto. Nel piacere della forma, nella libertà dei cuscini, negli abbinamenti dei tessuti è
             racchiuso il fascino del divano Roxane.</p>
         </div>

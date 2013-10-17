@@ -4,14 +4,10 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
 //var_dump($type);
 ?>
 
-<div class="container">
+<div class="container" style="margin-top: 20px;">
 
   <div class="row">
     <div>
-      <h1 class="page-header">
-        <?=$page_title ?>
-        <?='<small> '.$page_description.'</small>' ?>
-      </h1>
       <ol class="breadcrumb">
         <li><a href="<?=curURL()?>">Home</a>
         </li>

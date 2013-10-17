@@ -15,7 +15,7 @@
 				<div class="fill"
 					style="background-image: url('images/slider1.png');"></div>
 				<div class="carousel-caption">
-					<h1>Modern Business - A Bootstrap 3 Template</h1>
+					
 				</div>
 			</div>
 			<div class="item">

@@ -30,6 +30,11 @@ if (isset($page_title))
 <!-- include summernote css/js-->
 <link rel="stylesheet" href="<?=curURL() ?>css/summernote.css" />
 
+<!--  ShareThis -->
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "d4fd2eca-29cc-4374-bbb3-f62b3fa033bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+
 </head>
 
 <?php if ($general -> logged_in() === true) : ?>
@@ -58,6 +63,7 @@ if (isset($page_title))
 
         <ul class="nav navbar-nav navbar-right">
           <li><a href="<?=curUrl() ?>index.html">Home</a>
+          <li><a href="<?=curUrl() ?>azienda.html">Azienda</a>
           </li>
           <?php if ($general -> logged_in() === true) : ?>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prodotti <b class="caret"></b>
@@ -67,9 +73,9 @@ if (isset($page_title))
               
               <li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi prodotto</a></li>
               <li class="divider"></li>
-              <li class="dropdown-submenu"><a tabindex="-1" href="#" >Divani</a>
+              <li class="dropdown-submenu"><a tabindex="-1" href="#">Divani</a>
                 <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/" alt="sofa">Lista Divani</a></li>
+                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/" alt="sofa">Tutti i divani</a></li>
                   <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-moderni/">Divani moderni</a></li>
                   <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-classici/">Divani classici</a></li>
                   <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-letto/">Divani letto</a></li>
@@ -81,9 +87,9 @@ if (isset($page_title))
                   </li>
                 </ul>
               </li>
-               <li class="dropdown-submenu"><a tabindex="-1" href="#" >Letti</a>
+              <li class="dropdown-submenu"><a tabindex="-1" href="#">Letti</a>
                 <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/letti/" alt="sofa">Lista Letti</a></li>
+                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/letti/" alt="sofa">Tutti i letti</a></li>
                   <li class="dropdown-submenu"><a href="#">Altro...</a>
                     <ul class="dropdown-menu">
                       <li><a href="#">3° livello</a></li>
