@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
 		$errors['version_id'] = 'Devi inserire la versione.';
 
 	if (empty($errors) === true) {
-		$products -> insert($name, null, $description, $scheda_tecnica, $category_id, $version_id);
+		$products_dao -> insert($name, null, $description, $scheda_tecnica, $category_id, $version_id);
 		$success= 'Il prodotto è stato inserito correttamente.';
 	}
 }
