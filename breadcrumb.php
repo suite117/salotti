@@ -20,9 +20,6 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
         </a>
         </li>
         <?php endif; ?>
-
-        <li class="active"><?=$page_title ?>
-        </li>
       </ol>
     </div>
 

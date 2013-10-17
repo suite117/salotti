@@ -1,7 +1,6 @@
 <?php
 $general->logged_out_protect();
 
-
 /* Eventuali manipolazioni del bean prima del render vanno fatte qui */
 //$product = $products->get_single_product('nome', 1);
 $product['immagine'] = curURL() .'image.php?path=images/' . (isset($product['immagine']) ?  $product['immagine'] : 'default.png');
@@ -41,7 +40,7 @@ $product['model2d'] = 'images/letto2d.jpg';
       <div class="row">
         <div>
           <h1 class="page-header">
-            <?=$page_title ?>
+            <?=ucfirst($page_title) ?>
             <?='<small> '.$page_description.'</small>' ?>
           </h1>
           <p>Il divano è il salotto. Nel piacere della forma, nella libertà dei cuscini, negli abbinamenti dei tessuti è

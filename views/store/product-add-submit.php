@@ -1,6 +1,10 @@
 <?php
 $general->logged_out_protect();
 
+$categories = $category_dao->get_categories();
+//var_dump($categories);
+
+
 # if form is submitted
 if (isset($_POST['submit'])) {
 	if (empty($name))
