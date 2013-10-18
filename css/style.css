@@ -276,6 +276,18 @@ table thead {
 	border-radius: 6px 0 6px 6px;
 }
 
+/* sidebar */
+.bs-sidenav {
+  background-color: #F7F5FA;
+  border-radius: 5px 5px 5px 5px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-top: 25px;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+
 /* footer */
 footer {
 	margin: 50px 0 10px 0;

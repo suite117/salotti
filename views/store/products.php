@@ -32,13 +32,13 @@ $product_count 	= count($products); // n° di prodotti
 
   <div class="row">
     <div class="col-md-3">
-    
+
       <?php if($product_index == 0): ?>
-
-      <ul class="nav nav-list">
-        <?php require 'menu.php';?>
-      </ul>
-
+      <div style="position: fixed; width: 260px; top: 137px;">
+        <ul class="nav bs-sidenav nav-list">
+          <?php require 'menu.php';?>
+        </ul>
+      </div>
       <?php endif;?>
     </div>
 
