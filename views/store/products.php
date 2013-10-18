@@ -34,7 +34,7 @@ $product_count 	= count($products); // n° di prodotti
     <div class="col-md-3">
 
       <?php if($product_index == 0): ?>
-      <div style="position: fixed; width: 260px; top: 137px;">
+      <div id="sidebar-left" style="position: fixed; width: 260px; top: 137px;">
         <ul class="nav bs-sidenav nav-list">
           <?php require 'menu.php';?>
         </ul>

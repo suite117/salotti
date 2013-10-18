@@ -278,14 +278,14 @@ table thead {
 
 /* sidebar */
 .bs-sidenav {
-  background-color: #F7F5FA;
-  border-radius: 5px 5px 5px 5px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  padding-bottom: 10px;
-  padding-left: 16px;
-  padding-top: 25px;
-  text-shadow: 0 1px 0 #FFFFFF;
+	background-color: #F7F5FA;
+	border-radius: 5px 5px 5px 5px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	padding-bottom: 10px;
+	padding-left: 16px;
+	padding-top: 25px;
+	text-shadow: 0 1px 0 #FFFFFF;
 }
 
 /* footer */
@@ -296,4 +296,18 @@ footer {
 footer li,footer li a,footer {
 	color: #FFFFFF;
 	list-style: none outside none;
+}
+
+/* menu smartphone fix */
+.navbar-collapse ul {
+	background-color: black;
+}
+
+.navbar-collapse.in {
+	overflow-y: visible;
+}
+
+.navbar-collapse ul.navbar-right {
+	position: relative;
+	top: 0;
 }

@@ -34,7 +34,6 @@ if (isset($page_title))
 <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 <script type="text/javascript">stLight.options({publisher: "d4fd2eca-29cc-4374-bbb3-f62b3fa033bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 
-
 </head>
 
 <?php if ($general -> logged_in() === true) : ?>
