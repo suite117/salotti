@@ -7,6 +7,20 @@ class OptionsDAO {
 	public function __construct($database) {
 		$this -> db = $database;
 	}
+	
+	public function get_types() {
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("SELECT product_type FROM `options` GROUP BY product_type");
+		
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+		
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll();
+	}
 
 	public function get_options() {
 

@@ -3,40 +3,46 @@
 
 $products = isset($category) ? $products_dao->get_products_by_category($category) : $products_dao->get_products(); //Array di prodotti
 $product_count 	= count($products); // n° di prodotti
+$types = $options_dao->get_types();
+
 
 //var_dump($products) ;
 ?>
 <div class="container">
 
+
+  <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
+    <ul class="nav bs-sidenav nav-list">
+      <?php require 'menu.php';?>
+    </ul>
+  </div>
+
   <?php
 
-  $product_index = 0;
-  $actual_type = '';
-  while ( $product_index < $product_count):
-  //var_dump(curUrl());
-  ?>
 
-  <?php if($products[$product_index]['type'] != $actual_type) :
-    	$actual_type = $products[$product_index]['type'];  ?>
+  $old_type = '';
+  $actual_type = '';
+
+  foreach ($types as $type) :
+
+  // var_dump($type['product_type']);
+  $product_index = 0;
+  while ( $product_index < $product_count): ?>
+
+  <!--  prima colonna con il menu  -->
 
   <div class="row">
-    <div class="col-md-3">
-      <?php if($product_index == 0): ?>
-      <div id="sidebar-left" style="position: absolute; width: 260px; top: -5px; float: left;">
-        <ul class="nav bs-sidenav nav-list">
-          <?php require 'menu.php';?>
-        </ul>
-      </div>
-      <?php endif;?>
-    </div>
+    <div class="col-md-3"></div>
 
     <div class="col-md-9">
+      <?php if ($product_index == 0) :?>
       <h2>
-        <?=ucfirst($actual_type) ?>
+        <?=ucfirst($type['product_type']) ?>
+        <!-- COLONNA TITOLO -->
       </h2>
+      <?php endif;?>
     </div>
   </div>
-  <?php endif; ?>
 
   <div class="row">
     <div class="col-md-3"></div>
@@ -47,14 +53,19 @@ $product_count 	= count($products); // n° di prodotti
     if ( $product_index >= $product_count)
     	break;
 
-    $prodotto = $products[$product_index];
+    if ($products[$product_index]['type'] != $type['product_type']){
+    	$product_index++;
+    	continue;
+      }
 
-    $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
-    $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-    $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
+      $prodotto = $products[$product_index];
 
-    $product_index++;
-    ?>
+      $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
+      $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
+      $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
+
+      $product_index++;
+      ?>
 
     <div class="col-md-3">
 
@@ -80,6 +91,8 @@ $product_count 	= count($products); // n° di prodotti
     <?php endfor; ?>
   </div>
   <?php endwhile; ?>
+  <?php endforeach;?>
+
 
 </div>
 <!-- /.container -->
