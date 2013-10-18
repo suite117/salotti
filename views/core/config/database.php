@@ -5,7 +5,7 @@
 $host = 'localhost';
 $isLocalhost = true;
 $host = $_SERVER['HTTP_HOST'];
-if ($host == 'localhost')
+if ($host == 'localhost' || strpos($host, '192') !== false)
 	$isLocalhost = true;
 else
 	$isLocalhost = false;
@@ -13,7 +13,7 @@ else
 # We are storing the information in this config array that will be required to connect to the database.
 if ($isLocalhost) {
 	$config = array(
-			'host'		=> $host,
+			'host'		=> 'localhost',
 			'username'	=> 'root',
 			'password'	=> '',
 			'dbname' 	=> 'yii'

@@ -30,8 +30,12 @@ function confirmbox(message, button_input, callback) {
 
 $(document).ready(function() {
 
+    	// spazi fix
 	$('textarea').text($('textarea').text().trim());
 
+	// sub menu principale fix
+	$('body').on('touchstart.dropdown', '.dropdown-menu', '.dropdown-submenu', function (e) { e.stopPropagation(); });
+	
 	/* BootBox */
 	$('a.delete').on('click', function() {
 		message = 'Eliminare definitavemente il contenuto? Non sarà possile tornare indietro.';
