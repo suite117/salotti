@@ -11,12 +11,37 @@ $product_count 	= count($products); // n° di prodotti
   <?php
 
   $product_index = 0;
+  $actual_type = '';
   while ( $product_index < $product_count):
   //var_dump(curUrl());
-
   ?>
+
+  <?php if($products[$product_index]['type'] != $actual_type) :
+    	$actual_type = $products[$product_index]['type'];  ?>
+
   <div class="row">
     <div class="col-md-3"></div>
+
+    <div class="col-md-9">
+      <h2>
+        <?=ucfirst($actual_type) ?>
+      </h2>
+    </div>
+  </div>
+  <?php endif; ?>
+
+  <div class="row">
+    <div class="col-md-3">
+    
+      <?php if($product_index == 0): ?>
+
+      <ul class="nav nav-list">
+        <?php require 'menu.php';?>
+      </ul>
+
+      <?php endif;?>
+    </div>
+
     <?php
     for($j=0;$j<3;$j++) :
 

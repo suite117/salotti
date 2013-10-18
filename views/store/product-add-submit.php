@@ -3,9 +3,9 @@ $general->logged_out_protect();
 
 if ($product['category_parent_id'] != null)
 	$categories = $category_dao->get_categories();
-else {
+else
 	$categories = $category_dao->get_subcategories($product['category_id']);
-}
+
 var_dump($categories);
 
 
