@@ -45,91 +45,75 @@ if (isset($page_title))
   <?php endif;?>
 
   <div class=row>
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= CurUrl() ?>images/background_top.png')">
-    <a class="navbar-brand" href="index.html"><img id="logo" src="<?=curURL() ?>images/logo.png" /> </a>
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-            class="icon-bar"></span>
-        </button>
-        <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= CurUrl() ?>images/background_top.png')">
+      <a class="navbar-brand" href="index.html"><img id="logo" src="<?=curURL() ?>images/logo.png" /> </a>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
 
 
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="<?=curUrl() ?>index.html">Home</a>
-          <li><a href="<?=curUrl() ?>azienda.html">Azienda</a>
-          </li>
-          <?php if ($general -> logged_in() === true) : ?>
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prodotti <b class="caret"></b>
-          </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-              <li><a href="<?=curUrl() ?>prodotti.html">Lista Prodotti</a>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="<?=curUrl() ?>index.html">Home</a>
+            
+            <li><a href="<?=curUrl() ?>azienda.html">Azienda</a>
+            </li>
+            <?php if ($general -> logged_in() === true) : ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Prodotti <b class="caret"></b>
+            </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                <li><a href="<?=curUrl() ?>prodotti.html">Lista Prodotti</a>
+                
+                <li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi prodotto</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-submenu"><a tabindex="-1" href="#">Divani</a>
+                  <ul class="dropdown-menu">
+                    <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/" alt="sofa">Tutti i divani</a></li>
+                    <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-moderni/">Divani moderni</a></li>
+                    <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-classici/">Divani classici</a></li>
+                    <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-letto/">Divani letto</a></li>
+                  </ul>
+                </li>
+                <li><a href="<?=curUrl() ?>prodotti/letti/" alt="sofa"">Letti</a>
               
-              <li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi prodotto</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-submenu"><a tabindex="-1" href="#">Divani</a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/" alt="sofa">Tutti i divani</a></li>
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-moderni/">Divani moderni</a></li>
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-classici/">Divani classici</a></li>
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/divani/divani-letto/">Divani letto</a></li>
-                  <li class="dropdown-submenu"><a href="#">Altro...</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">3° livello</a></li>
-                      <li><a href="#">3° livello</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="dropdown-submenu"><a tabindex="-1" href="#">Letti</a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="<?=curUrl() ?>prodotti/letti/" alt="sofa">Tutti i letti</a></li>
-                  <li class="dropdown-submenu"><a href="#">Altro...</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">3° livello</a></li>
-                      <li><a href="#">3° livello</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul></li>
+              </ul></li>
 
-          <?php
+            <?php if($general -> isAdmin() === true) : ?>
 
-							if($general -> isAdmin() === true) : ?>
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Amministrazione<b
+                class="caret"></b>
+            </a>
+              <ul class="dropdown-menu">
+                <li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
+              </ul>
+            </li>
 
-          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Amministrazione<b
-              class="caret"></b>
-          </a>
-            <ul class="dropdown-menu">
-              <li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
-            </ul>
-          </li>
+            <?php endif; ?>
 
-          <?php endif; ?>
-
-          <?php  else:?>
-          <li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
-          
-          <li><a href="<?=curUrl() ?>contatti.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
-          
-          <li><a href="<?=curUrl() ?>logout.html">Esci</a> <?php else : ?>
-          
-          <li><a href="<?=curUrl() ?>login.html">Accedi</a>
-          </li>
-          </li>
-          <?php endif; ?>
-        </ul>
+            <?php  else:?>
+            <li><a href="<?=curUrl() ?>prodotti.html">Prodotti</a> <?php endif;?>
+            
+            <li><a href="<?=curUrl() ?>contatti.html">Contatti</a> <?php if ($general -> logged_in() === true) : ?>
+            
+            <li><a href="<?=curUrl() ?>logout.html">Esci</a> <?php else : ?>
+            
+            <li><a href="<?=curUrl() ?>login.html">Accedi</a>
+            </li>
+            </li>
+            <?php endif; ?>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
+      <!-- /.container -->
+    </nav>
 
-  <div style="height: 40px;">&nbsp;</div>
+    <div style="height: 40px;">&nbsp;</div>

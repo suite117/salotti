@@ -195,7 +195,12 @@ table thead {
 /* Carousel Home */
 #myCarousel {
 	height: 400px;
-	margin: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#myCarousel img {
+	width: 100%;
 }
 
 .carousel-control .icon-prev,.carousel-control .icon-next {
@@ -313,4 +318,10 @@ footer li,footer li a,footer {
 		position: relative;
 		top: 0;
 	}
+	#myCarousel {
+		height: auto;
+		width: auto;
+		margin: auto;
+	}
+	
 }

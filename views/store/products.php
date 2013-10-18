@@ -51,7 +51,7 @@ $product_count 	= count($products); // n° di prodotti
 
     $prodotto_path = curUrl() . 'prodotti/' . (isset($category) ? $category . '/' : '') . $prodotto['nome'] . '.html';
     $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-    $prodotto['immagine'] =  curUrl() .'image.php?width=260&height=195&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
+    $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
 
     $product_index++;
     ?>
