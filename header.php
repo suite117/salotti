@@ -44,6 +44,7 @@ if (isset($page_title))
 <body oncontextmenu="return false;">
   <?php endif;?>
 
+  <div class=row>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= CurUrl() ?>images/background_top.png')">
     <a class="navbar-brand" href="index.html"><img id="logo" src="<?=curURL() ?>images/logo.png" /> </a>
     <div class="container">

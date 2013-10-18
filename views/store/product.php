@@ -11,7 +11,8 @@ elseif ($category == 'letti')
 $product['model2d'] = 'images/letto2d.jpg';
 
 
-//var_dump($product);
+$options = $options_dao->get_options_by_type($product['type']);
+var_dump($options);
 
 ?>
 <!--  Da qui in poi ci vanno solo i bean -->
@@ -71,24 +72,27 @@ $product['model2d'] = 'images/letto2d.jpg';
             <div id="collapseThree" class="panel-collapse collapse in">
               <div class="panel-body">
                 <?php
-                $versions=array("2 posti","laterale 2 posti","chaise longe","2 posti max","laterale 2 posti max","chaise longe max","laterale 3 posti","laterale 3 posti max");
+                //$options=array("2 posti","laterale 2 posti","chaise longe","2 posti max","laterale 2 posti max","chaise longe max","laterale 3 posti","laterale 3 posti max");
                 ?>
 
                 <table class="table">
                   <tbody>
                     <tr>
-                      <?php for ($i=0; $i< count($versions); $i++) : ?>
+                      <?php for ($i=0; $i< count($options); $i++) : ?>
                       <?php
                       if($i%3==0)
                       	echo '<tr>';
                       ?>
-                      <td><a href="#"> <?=$versions[$i] ?>
+                      <td><a href="#"> <?=ucfirst($options[$i]['option']) ?>
                       </a></td>
                       <?php
                       if(($i+1)%3==0)
                       	echo '</tr>';
                       ?>
                       <?php endfor; ?>
+                      <?php for ($i = 0; $i < 3 -count($options)%3; $i++)
+                      	echo '<td></td>';
+                      ?>
                     </tr>
                   </tbody>
                 </table>

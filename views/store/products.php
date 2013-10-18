@@ -20,7 +20,15 @@ $product_count 	= count($products); // n° di prodotti
     	$actual_type = $products[$product_index]['type'];  ?>
 
   <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <?php if($product_index == 0): ?>
+      <div id="sidebar-left" style="position: absolute; width: 260px; top: -5px; float: left;">
+        <ul class="nav bs-sidenav nav-list">
+          <?php require 'menu.php';?>
+        </ul>
+      </div>
+      <?php endif;?>
+    </div>
 
     <div class="col-md-9">
       <h2>
@@ -31,16 +39,7 @@ $product_count 	= count($products); // n° di prodotti
   <?php endif; ?>
 
   <div class="row">
-    <div class="col-md-3">
-
-      <?php if($product_index == 0): ?>
-      <div id="sidebar-left" style="position: fixed; width: 260px; top: 137px;">
-        <ul class="nav bs-sidenav nav-list">
-          <?php require 'menu.php';?>
-        </ul>
-      </div>
-      <?php endif;?>
-    </div>
+    <div class="col-md-3"></div>
 
     <?php
     for($j=0;$j<3;$j++) :

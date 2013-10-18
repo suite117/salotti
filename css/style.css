@@ -42,9 +42,12 @@ nav.navbar {
 	background-repeat: x;
 }
 
-ul.navbar-right {
-	position: relative;
-	top: 28px;
+@media screen and (min-width: 480px) {
+	ul.navbar-right {
+		position: absolute;
+		top: 28px;
+		right: 80px;
+	}
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -299,15 +302,15 @@ footer li,footer li a,footer {
 }
 
 /* menu smartphone fix */
-.navbar-collapse ul {
-	background-color: black;
-}
-
-.navbar-collapse.in {
-	overflow-y: visible;
-}
-
-.navbar-collapse ul.navbar-right {
-	position: relative;
-	top: 0;
+@media screen and (max-width: 480px) {
+	.navbar-collapse ul {
+		background-color: black;
+	}
+	.navbar-collapse.in {
+		overflow-y: visible;
+	}
+	.navbar-collapse ul.navbar-right {
+		position: relative;
+		top: 0;
+	}
 }
