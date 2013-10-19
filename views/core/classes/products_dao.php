@@ -31,11 +31,38 @@ class ProductsDAO {
 		}
 	}
 
+	public function get_types() {
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("SELECT type FROM `prodotto` GROUP BY type");
+	
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+	
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll();
+	}
+	
+	public function get_types_by_category($category) {
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("SELECT type FROM `prodotto` WHERE type=$category GROUP BY type");
+	
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+	
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll();
+	}
 
 	public function get_products() {
 
 		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("SELECT * FROM prodotto ORDER BY type, nome");
+		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id ORDER BY p.type, p.nome");
 
 		try {
 			$query -> execute();
@@ -47,11 +74,11 @@ class ProductsDAO {
 		return $query -> fetchAll();
 	}
 
-	public function get_products_by_category($category) {
-
+	public function get_products_by_category($category_id, $category_name) {
 		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id and c.category_name=? ORDER BY p.type, p.nome");
-		$query->bindValue(1, $category);
+		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id AND (c.category_name=? OR c.category_parent_id=?) ORDER BY p.type, p.nome");
+		$query->bindValue(1, $category_name);
+		$query->bindValue(2, $category_id);
 		try {
 			$query -> execute();
 		} catch(PDOException $e) {
