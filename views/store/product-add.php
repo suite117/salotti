@@ -15,7 +15,6 @@
   <form class="form-horizontal" role="form" method="post" action="">
 
     <div class="form-group <?= isset($errors['name']) ? 'has-error' : 'has-success' ?>">
-
       <label for="name" class="col-md-2">Titolo</label>
       <div class="col-md-5">
         <input type="text" class="form-control" name="name" id="name" value="<?= @$product['nome']?>"
@@ -85,9 +84,11 @@
 
     <div class="form-group">
       <div class="col-md-1">
-        <button type="submit" name="submit" class="btn btn-default">
-          <?= isset($product) ? 'Salva modifiche': 'Crea prodotto' ?>
-        </button>
+        <?php if (isset($product)): ?>
+        <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
+        <?php else : ?>
+        <button type="button" name="create" class="btn btn-default">Crea prodotto</button>
+        <?php endif;?>
       </div>
     </div>
   </form>

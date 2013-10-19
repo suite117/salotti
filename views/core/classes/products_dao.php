@@ -8,15 +8,15 @@ class ProductsDAO {
 	}
 
 
-	public function insert($nome, $immagine, $descrizione, $schedatecnica, $idcategoria, $idversione){
+	public function insert($nome, $immagine, $description, $schedatecnica, $idcategoria, $idversione){
 
 
-		$query = $this -> db -> prepare("INSERT INTO `prodotto` (`nome`, `immagine`, `descrizione`, `schedatecnica`, `idcategoria`, `idversione`) VALUES ( ?, ?, ?, ?, ?, ?) ");
+		$query = $this -> db -> prepare("INSERT INTO `prodotto` (`nome`, `immagine`, `description`, `schedatecnica`, `idcategoria`, `idversione`) VALUES ( ?, ?, ?, ?, ?, ?) ");
 
 
 		$query -> bindValue(1, $nome);
 		$query -> bindValue(2, $immagine);
-		$query -> bindValue(3, $descrizione);
+		$query -> bindValue(3, $description);
 		$query -> bindValue(4, $schedatecnica);
 		$query -> bindValue(5, $idcategoria);
 		$query -> bindValue(6, $idversione);
@@ -44,6 +44,21 @@ class ProductsDAO {
 		# We use fetchAll() instead of fetch() to get an array of all the selected records.
 		return $query -> fetchAll();
 	}
+	
+	public function get_types_by_category_id($category_id) {
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("SELECT p.type FROM prodotto as p, categoria as c where p.idcategoria = c.category_id AND (c.category_id=? OR c.category_parent_id=?) GROUP BY p.type");
+		$query->bindValue(1, $category_id);
+		$query->bindValue(2, $category_id);
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+	
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll(PDO::FETCH_ASSOC);
+		}
 	
 	public function get_types_by_category($category) {
 		#preparing a statement that will select all the registered users, with the most recent ones first.
@@ -74,10 +89,10 @@ class ProductsDAO {
 		return $query -> fetchAll();
 	}
 
-	public function get_products_by_category($category_id, $category_name) {
+	public function get_products_by_category_id($category_id) {
 		#preparing a statement that will select all the registered users, with the most recent ones first.
-		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id AND (c.category_name=? OR c.category_parent_id=?) ORDER BY p.type, p.nome");
-		$query->bindValue(1, $category_name);
+		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id AND (c.category_id=? OR c.category_parent_id=?) ORDER BY p.type, p.nome");
+		$query->bindValue(1, $category_id);
 		$query->bindValue(2, $category_id);
 		try {
 			$query -> execute();
@@ -139,12 +154,12 @@ class ProductsDAO {
 	}
 
 
-	public function update_product($nome, $immagine, $descrizione, $schedatecnica, $idcategoria, $idversione, $id){
+	public function update_product($nome, $immagine, $description, $schedatecnica, $idcategoria, $idversione, $id){
 
 		$query = $this->db->prepare("UPDATE `prodotto` SET
 				`nome`				= ?,
 				`immagine`		    = ?,
-				`descrizione`		= ?,
+				`description`		= ?,
 				`schedatecnica`		= ?,
 				`idcategoria`		= ?,
 				`idversione`		= ?
@@ -154,11 +169,11 @@ class ProductsDAO {
 
 		$query->bindValue(1, $nome);
 		$query->bindValue(2, $immagine);
-		$query->bindValue(3, $descrizione);
+		$query->bindValue(3, $description);
 		$query->bindValue(4, $schedatecnica);
 		$query->bindValue(5, $idcategoria);
 		$query->bindValue(6, $idversione);
-		$query->bindValue(6, $id);
+		$query->bindValue(7, $id);
 
 		try{
 			$query->execute();

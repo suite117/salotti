@@ -33,7 +33,7 @@ class General {
 	}
 	
 	public function not_admin_out_protect() {
-		if ($this -> is_Admin() === false) {
+		if ($this -> isAdmin() === false) {
 			header('Location: ' . curUrl() . 'home.html');
 			exit();
 		}

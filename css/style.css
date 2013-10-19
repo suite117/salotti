@@ -179,7 +179,9 @@ table thead {
 .modal-dialog {
 	max-width: 90%;
 	width: 690px;
+	padding-top: 5px;
 }
+
 
 .modal-body {
 	padding: 0;
@@ -323,5 +325,9 @@ footer li,footer li a,footer {
 		width: auto;
 		margin: auto;
 	}
+}
+
+/* debug */
+.xdebug-var-dump {
 	
 }

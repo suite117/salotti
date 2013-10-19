@@ -18,14 +18,14 @@ include 'header.php';
 $view = 'views/home.php';
 $page_title = '';
 $page_description ='';
-$category = null;
+$category_name = null;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-//var_dump($_GET);
-//var_dump($_POST);
+var_dump("get", $_GET);
+var_dump("post", $_POST);
 
 // POST CONTROLLER
 $errors = array();
@@ -37,7 +37,7 @@ foreach ($_POST as $key => $value) {
 
 // GET CONTROLLER
 // setta la categoria se esiste
-$category = isset($_GET["category"]) ? $_GET["category"] : null;
+$category_name = isset($_GET["category"]) ? $_GET["category"] : null;
 $subcategory =  isset($_GET["subcategory"]) ? $_GET["subcategory"] : null;
 
 $controller = null;
@@ -58,9 +58,7 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'prodotto':
 				$view  = 'views/store/product-add.php';
-				$product = $products_dao->get_product($id);
-				var_dump($product);
-				$suffix = $product['nome'];
+				$suffix = 'prodotto';
 				break;
 		}
 
@@ -103,7 +101,7 @@ if (isset($_GET["controller"])) {
 					$view = 'views/store/product.php';
 				else {
 					$view = 'views/store/product-add.php';
-					$category = null;
+					$category_name = null;
 				}
 				break;
 			case 'login':

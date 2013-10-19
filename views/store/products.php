@@ -1,14 +1,14 @@
 <?php 
 
-if(isset($category))
-$category_name = str_replace("-", " ", isset($subcategory) ? $subcategory : $category);
+if(isset($category_name))
+$category_name = str_replace("-", " ", isset($subcategory) ? $subcategory : $category_name);
 
 
 if (isset($category_name)) {
 	$category = $category_dao->get_category_by_name($category_name);
 	if(!empty($category))
-	$products = $products_dao->get_products_by_category($category['category_id'], $category_name);
-	//var_dump($category) ;
+	$products = $products_dao->get_products_by_category_id($category['category_id']);
+	//var_dump("category", $category) ;
 }
 else
 	$products =  $products_dao->get_products(); //Array di prodotti
@@ -16,24 +16,26 @@ else
 if (!isset($products))
 	$products = array();
 
-//var_dump($products);
+//var_dump("products", $products);
 
 $product_count 	= count($products); // n° di prodotti
 //var_dump($product_count);
-$types = isset($category_name) ? array(0=>array ('type' => $category_name)) : $products_dao->get_types();
-//var_dump($types);
+// recupero il tipo di prodotto viene preso dalla categoria se presente (divani o letti)
+
+$types = isset($category_name) ? $products_dao->get_types_by_category_id($category['category_id']) : $products_dao->get_types();
+//var_dump("types", $types);
 
 
 ?>
 <div class="container">
 
 
-  <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
+  <!-- <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
     <ul class="nav bs-sidenav nav-list">
-      <?php require 'menu.php';?>
+      <?php //require 'menu.php';?>
     </ul>
   </div>
- 
+  -->
   <?php
 
   foreach ($types as $type) :
@@ -50,7 +52,7 @@ $types = isset($category_name) ? array(0=>array ('type' => $category_name)) : $p
     <div class="col-md-9">
       <?php if ($product_index == 0) :?>
       <h2>
-        <?=ucfirst($type['type']) ?>
+        <?=ucfirst($category['category_name']) ?>
         <!-- COLONNA TITOLO -->
       </h2>
       <?php endif;?>
@@ -69,7 +71,7 @@ $types = isset($category_name) ? array(0=>array ('type' => $category_name)) : $p
     	break;
 
     //var_dump($products[$product_index]['category_name'], $type['type']);
-    if ($products[$product_index]['category_name'] != $type['type']){
+    if ($products[$product_index]['type'] != $type['type']){
     	$product_index++;
     	continue;
       }
@@ -88,14 +90,14 @@ $types = isset($category_name) ? array(0=>array ('type' => $category_name)) : $p
     <div class="col-md-3">
 
       <?php if ($general -> logged_in() === true) : ?>
-      <a href="<?=$prodotto_path?>"> <?php endif; ?> <img alt="<?= @$prodotto['nome'] ?>"
+      <a href="<?=$prodotto_path?>"> <?php endif; ?> <img alt="<?= ucfirst(@$prodotto['nome']) ?>"
         data-path="<?=$prodotto_path ?>" data-id="<?= @$product_index ?>" class="img-responsive"
         style="margin-left: auto; margin-right: auto;" src="<?=  $prodotto['immagine']  ?>" /> <?php if ($general -> logged_in() === true) : ?>
       </a>
       <?php endif;?>
       <div class="row">
         <div class="col-md-9 col-lg-9">
-          <a style="line-height: 2" href="<?=$prodotto_path?>"><?= @$prodotto['nome'] ?> </a>
+          <a style="line-height: 2" href="<?=$prodotto_path?>"><?= ucfirst(@$prodotto['nome']) ?> </a>
         </div>
         <?php if ($general -> logged_in() === true) : ?>
         <div class="col-md-3 col-lg-3">

@@ -5,14 +5,14 @@ $general->logged_out_protect();
 //$product = $products->get_single_product('nome', 1);
 $product['immagine'] = curURL() .'image.php?path=images/' . (isset($product['immagine']) ?  $product['immagine'] : 'default.png');
 
-if ($category == 'divani')
+if ($category_name == 'divani')
 	$product['model2d'] = 'images/letto2d.jpg';
-elseif ($category == 'letti')
+elseif ($category_name == 'letti')
 $product['model2d'] = 'images/letto2d.jpg';
 
 
 $options = $options_dao->get_options_by_type($product['type']);
-//var_dump($options);
+var_dump($product);
 
 ?>
 <!--  Da qui in poi ci vanno solo i bean -->
@@ -44,8 +44,9 @@ $options = $options_dao->get_options_by_type($product['type']);
             <?=ucfirst($page_title) ?>
             <?='<small> '.$page_description.'</small>' ?>
           </h1>
-          <p>Il divano è il salotto. Nel piacere della forma, nella libertà dei cuscini, negli abbinamenti dei tessuti è
-            racchiuso il fascino del divano Roxane.</p>
+          <p>
+            <?= @$product['descrizione'] ?>
+          </p>
         </div>
       </div>
     </div>

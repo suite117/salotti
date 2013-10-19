@@ -49,7 +49,7 @@ $(document)
 		    }
 
 		    // spazi fix
-		    $('textarea').text($('textarea').text().trim());
+		    //$('textarea').text($('textarea').text().trim());
 
 		    // sub menu principale fix
 		    $('body').on('touchstart.dropdown', '.dropdown-menu',

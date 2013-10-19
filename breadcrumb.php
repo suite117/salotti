@@ -11,12 +11,12 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
       <ol class="breadcrumb">
         <li><a href="<?=curURL()?>">Home</a>
         </li>
-        <?php if (isset($category)): ?>
-        <li><a href="<?=curURL(). $type . $category ?>/"><?=ucfirst ($category) ?> </a>
+        <?php if (isset($category_name)): ?>
+        <li><a href="<?=curURL(). $type . $category_name ?>/"><?=ucfirst ($category_name) ?> </a>
         </li>
         <?php endif; ?>
         <?php if (isset($subcategory)): ?>
-        <li><a href="<?=curURL(). $type. $category. '/' . $subcategory ?>/"><?=ucfirst( str_replace('-', ' ', $subcategory)) ?>
+        <li><a href="<?=curURL(). $type. $category_name. '/' . $subcategory ?>/"><?=ucfirst( str_replace('-', ' ', $subcategory)) ?>
         </a>
         </li>
         <?php endif; ?>
