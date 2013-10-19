@@ -31,6 +31,14 @@ class General {
 			exit();
 		}
 	}
+	
+	public function not_admin_out_protect() {
+		if ($this -> is_Admin() === false) {
+			header('Location: ' . curUrl() . 'home.html');
+			exit();
+		}
+	}
+	
 
 	public function file_newpath($path, $filename){
 		if ($pos = strrpos($filename, '.')) {

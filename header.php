@@ -86,13 +86,18 @@ if (isset($page_title))
               
               </ul></li>
 
-            <?php if($general -> isAdmin() === true) : ?>
+            <?php if($general -> logged_in()) : ?>
 
             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Amministrazione<b
                 class="caret"></b>
             </a>
               <ul class="dropdown-menu">
+                <?php  if($general -> isAdmin() === true): ?>
                 <li><a href="<?=curUrl() ?>lista-utenti.html">Lista utenti</a></li>
+                <?php endif; ?>
+                <?php if ($general -> logged_in() === true) : ?>
+                <li><a href="<?=curUrl() ?>lista-utenti.html">Il mio profilo</a></li>
+                <?php endif;?>
               </ul>
             </li>
 

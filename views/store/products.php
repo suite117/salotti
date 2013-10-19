@@ -27,13 +27,13 @@ $types = isset($category_name) ? array(0=>array ('type' => $category_name)) : $p
 ?>
 <div class="container">
 
-<!-- 
+
   <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
     <ul class="nav bs-sidenav nav-list">
-      <?php //require 'menu.php';?>
+      <?php require 'menu.php';?>
     </ul>
   </div>
- -->
+ 
   <?php
 
   foreach ($types as $type) :
