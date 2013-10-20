@@ -1,29 +1,30 @@
 <?php 
-
-if(isset($category_name))
-$category_name = str_replace("-", " ", isset($subcategory) ? $subcategory : $category_name);
-
-
 if (isset($category_name)) {
+	$category_name = str_replace("-", " ", $category_name);
 	$category = $category_dao->get_category_by_name($category_name);
-	if(!empty($category))
-	$products = $products_dao->get_products_by_category_id($category['category_id']);
-	//var_dump("category", $category) ;
+
+	if (isset($subcategory_name)) {
+		$subcategory_name = str_replace("-", " ", $subcategory_name);
+		$subcategory = $category_dao->get_category_by_name($subcategory_name);
+		var_dump("subcategory", $subcategory) ;
+	}
+
+	var_dump("category", $category) ;
+
 }
-else
-	$products =  $products_dao->get_products(); //Array di prodotti
+
 
 if (!isset($products))
 	$products = array();
 
 //var_dump("products", $products);
 
-$product_count 	= count($products); // n° di prodotti
+
 //var_dump($product_count);
 // recupero il tipo di prodotto viene preso dalla categoria se presente (divani o letti)
 
 $types = isset($category_name) ? $products_dao->get_types_by_category_id($category['category_id']) : $products_dao->get_types();
-//var_dump("types", $types);
+var_dump("types", $types);
 
 
 ?>
@@ -39,9 +40,26 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
   <?php
 
   foreach ($types as $type) :
+  //var_dump($types);
 
-  //var_dump($type['type']);
-  $product_index = 0;
+  if(!isset($category_name)) {
+  $products =  $products_dao->get_products_by_field('type', $type['type']); //Array di prodotti
+  }
+  elseif(!empty($category)) {
+
+		if(isset($subcategory))
+			$products = $products_dao->get_products_by_subcategory_id($subcategory['category_id']);
+		else
+			$products = $products_dao->get_products_by_category_id($category['category_id']);
+	}
+
+
+
+	$product_count 	= count($products); // n° di prodotti
+	var_dump($products);
+
+	//var_dump($type['type']);
+	$product_index = 0;
   while ( $product_index < $product_count): ?>
 
   <!--  prima colonna con il menu  -->
@@ -52,7 +70,11 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
     <div class="col-md-9">
       <?php if ($product_index == 0) :?>
       <h2>
-        <?=ucfirst($category['category_name']) ?>
+        <?php 
+        if(isset($subcategory))
+        	echo ucfirst($products[$product_index]['category_name']);
+        else
+        	echo ucfirst($products[$product_index]['type']) ?>
         <!-- COLONNA TITOLO -->
       </h2>
       <?php endif;?>
@@ -63,29 +85,22 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
     <div class="col-md-3"></div>
 
     <?php
-    $j=0;
-    
-    while($j<3) :
+
+
+    for($j=0; $j<3; $j++) :
 
     if ( $product_index >= $product_count)
     	break;
+     
 
-    //var_dump($products[$product_index]['category_name'], $type['type']);
-    if ($products[$product_index]['type'] != $type['type']){
-    	$product_index++;
-    	continue;
-      }
-      else
-      	$j++;
+    $prodotto = $products[$product_index];
 
-      $prodotto = $products[$product_index];
+    $prodotto_path = curUrl() . 'prodotti/' . (isset($category_name) ? $category_name . '/' : '') . $prodotto['nome'] . '.html';
+    $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
+    $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
 
-      $prodotto_path = curUrl() . 'prodotti/' . (isset($category_name) ? $category_name . '/' : '') . $prodotto['nome'] . '.html';
-      $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-      $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
-
-      $product_index++;
-      ?>
+    $product_index++;
+    ?>
 
     <div class="col-md-3">
 
@@ -108,7 +123,7 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
       </div>
     </div>
 
-    <?php endwhile; ?>
+    <?php endfor; ?>
   </div>
   <?php endwhile; ?>
   <?php endforeach;?>

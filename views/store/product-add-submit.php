@@ -4,10 +4,9 @@ $product = $products_dao->get_product($id);
 //var_dump("product", $product);
 /* popola le categorie per il select del form */
 if (isset($product)) {
-	if ($product['category_parent_id'] != null)
-		$categories = $category_dao->get_categories();
-	else
-		$categories = $category_dao->get_subcategories($product['category_id']);
+
+	$categories = $category_dao->get_categories_by_type($product['type']);
+	var_dump("product['type']", $product['type']);
 }
 
 /* controlli validazione */
@@ -43,6 +42,6 @@ elseif (isset($_POST['create'])) {
 }
 
 
-
+var_dump($categories);
 
 ?>

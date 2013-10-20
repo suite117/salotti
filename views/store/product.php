@@ -45,7 +45,7 @@ var_dump($product);
             <?='<small> '.$page_description.'</small>' ?>
           </h1>
           <p>
-            <?= @$product['descrizione'] ?>
+            <?= @$product['description'] ?>
           </p>
         </div>
       </div>

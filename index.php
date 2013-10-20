@@ -38,7 +38,7 @@ foreach ($_POST as $key => $value) {
 // GET CONTROLLER
 // setta la categoria se esiste
 $category_name = isset($_GET["category"]) ? $_GET["category"] : null;
-$subcategory =  isset($_GET["subcategory"]) ? $_GET["subcategory"] : null;
+$subcategory_name =  isset($_GET["subcategory"]) ? $_GET["subcategory"] : null;
 
 $controller = null;
 if (isset($_GET["controller"])) {

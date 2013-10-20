@@ -89,6 +89,20 @@ class ProductsDAO {
 		return $query -> fetchAll();
 	}
 
+	public function get_products_by_subcategory_id($category_id) {
+		#preparing a statement that will select all the registered users, with the most recent ones first.
+		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id AND c.category_id=? ORDER BY p.type, p.nome");
+		$query->bindValue(1, $category_id);
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+
+		# We use fetchAll() instead of fetch() to get an array of all the selected records.
+		return $query -> fetchAll(PDO::FETCH_ASSOC);
+	}
+	
 	public function get_products_by_category_id($category_id) {
 		#preparing a statement that will select all the registered users, with the most recent ones first.
 		$query = $this -> db -> prepare("SELECT * FROM prodotto as p, categoria as c where p.idcategoria = c.category_id AND (c.category_id=? OR c.category_parent_id=?) ORDER BY p.type, p.nome");
@@ -99,10 +113,11 @@ class ProductsDAO {
 		} catch(PDOException $e) {
 			die($e -> getMessage());
 		}
-
+	
 		# We use fetchAll() instead of fetch() to get an array of all the selected records.
 		return $query -> fetchAll(PDO::FETCH_ASSOC);
-	}
+		}
+	
 
 
 	//in field devi specificare id o nome in base se vuoi fare una ricerca per id o per nome
@@ -124,10 +139,37 @@ class ProductsDAO {
 		}
 	}
 
-
 	public function get_product_by_field($field, $value){
+	
+		$allowed = array('id', 'nome', 'type');
+		if (!in_array($field, $allowed, true)) {
+			throw new InvalidArgumentException;
+		}else{
+	
+			if (isset($value)) {
+				$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE $field = ?");
+				$query->bindValue(1, $value);
+			}
+			else {
+				$query = $this->db->prepare("SELECT * FROM `prodotto` WHERE `id`= ?");
+				$query->bindValue(1, $value);
+			}
+	
+			try {
+				$query->execute();
+			} catch(PDOException $e){
+				die($e->getMessage());
+			}
+	
+			$row = $query->fetchAll();
+			return $row[0];
+		}
+	}
+	
+	
+	public function get_products_by_field($field, $value){
 
-		$allowed = array('id', 'nome');
+		$allowed = array('id', 'nome', 'type');
 		if (!in_array($field, $allowed, true)) {
 			throw new InvalidArgumentException;
 		}else{
@@ -147,9 +189,7 @@ class ProductsDAO {
 				die($e->getMessage());
 			}
 
-			$row = $query->fetchAll();
-
-			return $row[0];
+			return $query->fetchAll();
 		}
 	}
 
