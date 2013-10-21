@@ -4,6 +4,10 @@ require 'views/core/init.php';
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<!-- Force latest IE rendering engine or ChromeFrame if installed -->
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -16,7 +20,7 @@ if (isset($page_title))
 	echo 'Prodotto ' . $page_title;
 ?> Alessi salotti</title>
 
-<!-- Bootstrap core CSS -->
+<!-- Bootstrap styles -->
 <link href="<?=curURL() ?>css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Add custom CSS here -->

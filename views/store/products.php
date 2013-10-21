@@ -6,10 +6,10 @@ if (isset($category_name)) {
 	if (isset($subcategory_name)) {
 		$subcategory_name = str_replace("-", " ", $subcategory_name);
 		$subcategory = $category_dao->get_category_by_name($subcategory_name);
-		var_dump("subcategory", $subcategory) ;
+		//var_dump("subcategory", $subcategory) ;
 	}
 
-	var_dump("category", $category) ;
+	//var_dump("category", $category) ;
 
 }
 
@@ -24,7 +24,7 @@ if (!isset($products))
 // recupero il tipo di prodotto viene preso dalla categoria se presente (divani o letti)
 
 $types = isset($category_name) ? $products_dao->get_types_by_category_id($category['category_id']) : $products_dao->get_types();
-var_dump("types", $types);
+//var_dump("types", $types);
 
 
 ?>
@@ -56,7 +56,7 @@ var_dump("types", $types);
 
 
 	$product_count 	= count($products); // n° di prodotti
-	var_dump($products);
+	//var_dump($products);
 
 	//var_dump($type['type']);
 	$product_index = 0;

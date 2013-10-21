@@ -6,7 +6,7 @@ $product = $products_dao->get_product($id);
 if (isset($product)) {
 
 	$categories = $category_dao->get_categories_by_type($product['type']);
-	var_dump("product['type']", $product['type']);
+	//var_dump("product['type']", $product['type']);
 }
 
 /* controlli validazione */
@@ -42,6 +42,6 @@ elseif (isset($_POST['create'])) {
 }
 
 
-var_dump($categories);
+//var_dump($categories);
 
 ?>

@@ -12,7 +12,7 @@ $product['model2d'] = 'images/letto2d.jpg';
 
 
 $options = $options_dao->get_options_by_type($product['type']);
-var_dump($product);
+var_dump($options);
 
 ?>
 <!--  Da qui in poi ci vanno solo i bean -->
@@ -84,7 +84,7 @@ var_dump($product);
                       if($i%3==0)
                       	echo '<tr>';
                       ?>
-                      <td><a href="#"> <?=ucfirst($options[$i]['option']) ?>
+                      <td><a href="#"> <?=ucfirst($options[$i]['option_name']) ?>
                       </a></td>
                       <?php
                       if(($i+1)%3==0)
