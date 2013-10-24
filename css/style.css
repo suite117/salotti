@@ -5,6 +5,12 @@
 	
 }
 
+
+/* form */
+.form-horizontal .form-group  {
+	margin: 30px 0;
+}
+
 .page-header {
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -91,11 +97,6 @@ a.accordion-toggle {
 	display: block;
 }
 
-form label {
-	line-height: 3;
-	position: relative;
-	top: -6px;
-}
 
 /* tabella */
 table {

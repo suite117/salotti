@@ -1,9 +1,11 @@
 <?php
 $general->not_admin_out_protect();
 
-if (isset($id))
+if (isset($id)){
 	$product = $products_dao->get_product($id);
-//var_dump("product", $product);
+	//var_dump("product", $product);
+}
+
 /* popola le categorie per il select del form */
 if (isset($product)) {
 
@@ -16,24 +18,25 @@ $types = isset($product) ? array(0 => $product) : $products_dao->get_types();
 /* controlli validazione */
 if (isset($_POST['create']) || isset($_POST['save']))  {
 	if (empty($name))
-		$errors['name'] = 'Devi inserire il titolo.';
+		$errors['name'] = 'Devi inserire il nome del modello.';
 	if(empty($category_id))
 		$errors['category_id'] = 'Devi inserire la categoria.';
-	if(empty($description))
-		$errors['description'] = 'Devi inserire la descrizione.';
-	if(empty($version_id))
-		$errors['version_id'] = 'Devi inserire la versione.';
+	//if(empty($description))
+	//	$errors['description'] = 'Devi inserire la descrizione.';
+	//if(empty($version_id))
+	//	$errors['version_id'] = 'Devi inserire la versione.';
 }
 
 # if form is submitted
 if (isset($_POST['save'])) {
 
 	if (empty($errors) === true) {
-		$products_dao->update_product($name, @$immagine, $description, $scheda_tecnica, $category_id, $version_id, $product['id']);
+		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, $version_id, $product['id']);
 		$success= 'Il prodotto è stato aggiornato correttamente. <a href="'.curUrl() .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
 
 		// recupero il bean aggiornato
 		$product = $products_dao->get_product($id);
+		var_dump($product);
 	}
 }
 elseif (isset($_POST['create'])) {

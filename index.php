@@ -1,31 +1,22 @@
 <?php
 //error_reporting(E_ALL ^ E_WARNING);
-include 'utils.php';
-
-function curURL() {
-
-	$uri = $_SERVER['REQUEST_URI'];
-	$paths = explode("/", $uri);
-
-	return '/'. $paths[1].'/' . $paths[2] . '/';
-
-	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
-}
-
+require_once 'utils.php';
 require_once 'init.php';
-include 'header.php';
 
 $view = 'views/home.php';
 $page_title = '';
 $page_description ='';
 $category_name = null;
+$config['isOnline'] = true;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-//var_dump("get", $_GET);
-//var_dump("post", $_POST);
+var_dump("get", $_GET);
+var_dump("post", $_POST);
+
+require_once 'header.php';
 
 // POST CONTROLLER
 $errors = array();
@@ -53,11 +44,10 @@ if (isset($_GET["controller"])) {
 			case 'utente':
 				$view  = 'views/user/register.php';
 				$user = $users->get_user($id);
-				//var_dump($user);
 				$suffix = $user['username'];
 				break;
 			case 'prodotto':
-				$view  = 'views/store/product-add.php';
+				$view  = 'views/store/product-edit.php';
 				$suffix = 'prodotto';
 				break;
 		}
@@ -78,14 +68,14 @@ if (isset($_GET["controller"])) {
 				$page_title = 'Galleria';
 				break;
 			case 'aggiungi':
-				$view  = 'views/store/product-add.php';
+				$view  = 'views/store/product-edit.php';
 				$page_title = 'Aggiungi '. $_GET['title'];
 				$page_description = 'Inserisci un prodotto';
 				break;
 			case 'prodotti':
 				if (isset($_GET['title'])) {
 					$product = $products_dao->get_product_by_field('nome', $_GET['title']);
-					$view  = 'views/store/product.php';
+					$view  = 'views/store/product-view.php';
 					$page_title = $product['nome'];
 				}
 				else {
@@ -98,9 +88,9 @@ if (isset($_GET["controller"])) {
 			case 'prodotto':
 				$page_title = $_GET["title"];
 				if ($page_title !== 'modifica')
-					$view = 'views/store/product.php';
+					$view = 'views/store/product-view.php';
 				else {
-					$view = 'views/store/product-add.php';
+					$view = 'views/store/product-edit.php';
 					$category_name = null;
 				}
 				break;
@@ -141,7 +131,6 @@ if (isset($_GET["controller"])) {
 if (!empty($_GET['controller']) && strpos($controller, 'index')=== false)
 	include 'breadcrumb.php';
 
-require 'init.php';
 //var_dump($view);
 require $view;
 

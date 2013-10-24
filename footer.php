@@ -49,9 +49,13 @@
   src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <!-- Bootstrap core JavaScript -->
-<script
+<?php if ($config['isOnline']) : ?>
+<script type="text/javascript"
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
+<?php else: ?>
+<script type="text/javascript" src="<?=curUrl(). 'js/bootstrap.min.js' ?>"></script>
+<?php endif; ?>
+ 
 <!-- PekeUpload -->
 <script type="text/javascript"
   src="<?=curUrl() ?>js/pekeUpload.js"></script>

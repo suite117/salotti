@@ -15,6 +15,8 @@ $options = $options_dao->get_options_by_type($product['type']);
 //var_dump($options);
 
 ?>
+
+
 <!--  Da qui in poi ci vanno solo i bean -->
 
 <div class="container">
@@ -161,3 +163,6 @@ $options = $options_dao->get_options_by_type($product['type']);
 
 </div>
 <!-- /.container -->
+
+
+

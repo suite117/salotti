@@ -1,5 +1,16 @@
 <?php
 
+function curURL() {
+
+	$uri = $_SERVER['REQUEST_URI'];
+	$paths = explode("/", $uri);
+
+	return '/'. $paths[1].'/' . $paths[2] . '/';
+
+	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
+}
+
+
 function translateDate($dt) {
 	$nmeng = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 	$nmtur = array('Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre');

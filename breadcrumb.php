@@ -1,10 +1,11 @@
+
 <?php 
 
 $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
 //var_dump($type);
 ?>
 
-<div class="container" style="margin-top: 20px;">
+<div class="container" style="margin-top: 57px;">
 
   <div class="row">
     <div>
@@ -28,4 +29,4 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
 </div>
 
 
-<div style="min-height: 300px; max-width: 100%;">
+<div id="container" style="min-height: 300px; max-width: 100%;">
