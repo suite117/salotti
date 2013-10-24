@@ -37,12 +37,8 @@
           <option value="1" selected="selected">Si</option>
         </select>
       </div>
-
-
-
     </div>
     <!-- end formgroup -->
-
 
     <div class="form-group">
       <label for="category_id" class="col-md-2">Categoria</label>
@@ -67,6 +63,23 @@
         </select>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="name" class="col-md-2">Immagine</label>
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" name="immagine" value="<?= @$product['immagine']?>" readonly class="form-control filename"> <span
+            class="input-group-btn"><input type="file" id="file_image" /> </span>
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="col-md-2">
+        <div class="upload-image">
+          <img class="img-responsive" src="<?=curUrl() . 'images/' . @$product['immagine'] ?>">
+        </div>
+      </div>
+    </div>
+    <!-- /.form-group -->
 
     <div class="form-group">
       <div class="col-md-12">
@@ -94,3 +107,18 @@
   </form>
 
 </div>
+
+
+
+<script type="text/javascript">
+function fileError(file,error){
+    alert("Errore sul file: "+file.name+" Errore: "+error+"");
+   }
+
+    $(document).ready(function(){ 
+	$("#file_image").pekeUpload({theme:'bootstrap', multi: false, allowedExtensions:"jpeg|jpg|png|gif", base_url: "<?=curUrl() ?>", relative_url : 'images/'});
+      
+    });
+  </script>
+
+

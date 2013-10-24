@@ -42,12 +42,8 @@
     </div>
   </div>
 </div>
-
-<!-- JQuery core JavaScript -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-<script type="text/javascript"
-  src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 <!-- JQuery UI core JavaScript -->
 <script type="text/javascript"
   src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -55,6 +51,11 @@
 <!-- Bootstrap core JavaScript -->
 <script
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- PekeUpload -->
+<script type="text/javascript"
+  src="<?=curUrl() ?>js/pekeUpload.js"></script>
+
 
 <!-- Main -->
 <script src="<?= curUrl() ?>js/init.js"></script>

@@ -19,6 +19,11 @@ if (isset($page_title))
 	echo 'Prodotto ' . $page_title;
 ?> Alessi salotti</title>
 
+<!-- JQuery core JavaScript -->
+<script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
 <!-- Bootstrap styles -->
 <link href="<?=curURL() ?>css/bootstrap.min.css" rel="stylesheet">
 
@@ -61,7 +66,6 @@ if (isset($page_title))
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-
 
 
           <ul class="nav navbar-nav navbar-right">
