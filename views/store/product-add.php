@@ -41,16 +41,26 @@
     <!-- end formgroup -->
 
     <div class="form-group">
+      <label for="category_id" class="col-md-2">Tipo</label>
+      <div class="col-md-2">
+        <select class="form-control" name="type" id="type">
+
+          <?php foreach ($types as $type ) :?>
+          <option value="<?=$type['type'] ?>"><?=ucfirst($type['type']) ?></option>
+          <?php endforeach; ?>
+
+        </select>
+      </div>
       <label for="category_id" class="col-md-2">Categoria</label>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <select class="form-control" name="category_id" id="category_id">
           <?php foreach ($categories as $cat ) :?>
-          <option value="<?=$cat['category_id'] ?>"><?=$cat['category_name'] ?></option>
+          <option value="<?=$cat['category_id'] ?>"><?=ucfirst($cat['category_name']) ?></option>
           <?php endforeach; ?>
         </select>
       </div>
       <label for="version_id" class="col-md-2">Versione</label>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <select class="form-control" name="version_id" id="version_id">
           <option value="2p">2 posti</option>
           <option value="l2p">laterale 2 posti</option>
@@ -68,8 +78,8 @@
       <label for="name" class="col-md-2">Immagine</label>
       <div class="col-md-6">
         <div class="input-group">
-          <input type="text" name="immagine" value="<?= @$product['immagine']?>" readonly class="form-control filename"> <span
-            class="input-group-btn"><input type="file" id="file_image" /> </span>
+          <input type="text" name="immagine" value="<?= @$product['immagine']?>" readonly class="form-control filename">
+          <span class="input-group-btn"><input type="file" id="file_image" /> </span>
         </div>
         <!-- /input-group -->
       </div>
@@ -100,7 +110,7 @@
         <?php if (isset($product)): ?>
         <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
         <?php else : ?>
-        <button type="button" name="create" class="btn btn-default">Crea prodotto</button>
+        <button type="submit" name="create" class="btn btn-default">Crea prodotto</button>
         <?php endif;?>
       </div>
     </div>

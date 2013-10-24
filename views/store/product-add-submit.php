@@ -1,6 +1,8 @@
 <?php
 $general->not_admin_out_protect();
-$product = $products_dao->get_product($id);
+
+if (isset($id))
+	$product = $products_dao->get_product($id);
 //var_dump("product", $product);
 /* popola le categorie per il select del form */
 if (isset($product)) {
@@ -8,6 +10,8 @@ if (isset($product)) {
 	$categories = $category_dao->get_categories_by_type($product['type']);
 	//var_dump("product['type']", $product['type']);
 }
+
+$types = isset($product) ? array(0 => $product) : $products_dao->get_types();
 
 /* controlli validazione */
 if (isset($_POST['create']) || isset($_POST['save']))  {

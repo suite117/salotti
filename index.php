@@ -12,7 +12,7 @@ function curURL() {
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
 }
 
-require 'views/core/init.php';
+require_once 'init.php';
 include 'header.php';
 
 $view = 'views/home.php';
@@ -24,8 +24,8 @@ $category_name = null;
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-var_dump("get", $_GET);
-var_dump("post", $_POST);
+//var_dump("get", $_GET);
+//var_dump("post", $_POST);
 
 // POST CONTROLLER
 $errors = array();
@@ -53,7 +53,7 @@ if (isset($_GET["controller"])) {
 			case 'utente':
 				$view  = 'views/user/register.php';
 				$user = $users->get_user($id);
-				var_dump($user);
+				//var_dump($user);
 				$suffix = $user['username'];
 				break;
 			case 'prodotto':
@@ -141,6 +141,7 @@ if (isset($_GET["controller"])) {
 if (!empty($_GET['controller']) && strpos($controller, 'index')=== false)
 	include 'breadcrumb.php';
 
+require 'init.php';
 //var_dump($view);
 require $view;
 

@@ -3,13 +3,13 @@ ob_start(); // Added to avoid a common error of 'header already sent' (not discu
     if(!isset($_SESSION))   
         session_start(); 
      
-require_once 'classes/users.php';
-require_once 'classes/category_dao.php';
-require_once 'classes/options_dao.php';
+require_once 'dao/users.php';
+require_once 'dao/category_dao.php';
+require_once 'dao/options_dao.php';
 require_once 'config/database.php';
-require_once 'classes/products_dao.php';
-require_once 'classes/general.php';
-require_once 'classes/bcrypt.php';
+require_once 'dao/products_dao.php';
+require_once 'dao/general.php';
+require_once 'dao/bcrypt.php';
 
 $users 		= new Users($db);
 $products_dao	= new ProductsDAO($db);

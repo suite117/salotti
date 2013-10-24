@@ -1,6 +1,3 @@
-<?php
-require 'views/core/init.php';
-?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
