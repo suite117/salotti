@@ -10,6 +10,8 @@ if (isset($id)){
 if (isset($product)) {
 
 	$categories = $category_dao->get_categories_by_type($product['type']);
+	$options = $options_dao->get_options_by_type($product['type']);
+	$selected_options = $options_dao->get_selected_options_by_product($product);
 	//var_dump("product['type']", $product['type']);
 }
 
@@ -31,7 +33,7 @@ if (isset($_POST['create']) || isset($_POST['save']))  {
 if (isset($_POST['save'])) {
 
 	if (empty($errors) === true) {
-		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, $version_id, $product['id']);
+		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, $product['id']);
 		$success= 'Il prodotto è stato aggiornato correttamente. <a href="'.curUrl() .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
 
 		// recupero il bean aggiornato

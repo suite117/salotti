@@ -48,7 +48,7 @@ $(document).ready(function() {
 
       <div class="col-md-3">
         <label for="is_published" class="control-label">Stato</label> <select class="form-control" name="is_published">
-           <?php $option_is_published = array('N' => 'Non pubblicato', 'Y' => 'Pubblicato'); ?>
+          <?php $option_is_published = array('N' => 'Non pubblicato', 'Y' => 'Pubblicato'); ?>
           <?php foreach($option_is_published as $key => $label ): ?>
           <option value="<?=$key ?>" <?= ($key == $product['is_published'] ? 'selected' : '') ?>><?= $label ?></option>
           <?php endforeach; ?>
@@ -86,20 +86,22 @@ $(document).ready(function() {
           <?php endforeach; ?>
         </select>
       </div>
-      <div class="col-md-2">
-        <label for="version_id" class="control-label">Versione</label> <select class="form-control" name="version_id"
-          id="version_id">
-          <option value="2p">2 posti</option>
-          <option value="l2p">laterale 2 posti</option>
-          <option value="2pm">2 posti max</option>
-          <option value="l2pm">laterale 2 posti max</option>
-          <option value="l3p">laterale 3 posti</option>
-          <option value="l3pm">laterale 3 posti max</option>
-          <option value="cl">chaise longe</option>
-          <option value="clm">chaise longe max</option>
-        </select>
-      </div>
     </div>
+
+
+
+    <div class="col-md-12">
+      <label for="options" class="control-label">Versioni</label> <select name="options[]" id="options"
+        class="multiselect" multiple="multiple">
+        <?php foreach ($options as $option) :?>
+
+        <option value="<?= $option['option_code'];?>">
+          <?= $option['option_name'];?></option></label>
+
+      <?php endforeach;?>
+      </select>
+    </div>
+
     <div class="form-group">
       <div class="col-md-12">
         <label for="description" class="control-label">Descrizione</label>
@@ -123,6 +125,7 @@ $(document).ready(function() {
         <?php endif;?>
       </div>
     </div>
+
   </form>
 
 </div>

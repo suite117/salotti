@@ -39,6 +39,20 @@ class OptionsDAO {
 		# We use fetchAll() instead of fetch() to get an array of all the selected records.
 		return $query -> fetchAll();
 	}
+	
+	
+	public function get_selected_options_by_product($product) {
+		$query = $this -> db -> prepare("SELECT * FROM prodotto as p , product_options as po, options as o WHERE p.id= ? AND p.id=po.product_id AND po.option_code = o.option_code");
+		$query -> bindValue(1, $product['id']);
+		
+		try {
+			$query -> execute();
+		} catch(PDOException $e) {
+			die($e -> getMessage());
+		}
+		
+		return $query -> fetchAll();
+	}
 
 }
 

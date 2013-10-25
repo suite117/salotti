@@ -30,9 +30,11 @@ $(document).ready(
 	function() {
 
 	  if (isSmartphone()) {
-
 		$('#sidebar-left').remove();
 	  }
+
+	  // Initialize the plugin multiselect:
+	  $('.multiselect').multiselect();
 
 	  // spazi fix
 	  // $('textarea').text($('textarea').text().trim());
@@ -88,20 +90,23 @@ $(document).ready(
 			// console.log(index, image);
 			var image_path = $(image).attr("src");
 			$(
-				'<div class="item"><img class="img-responsive" data-path="' + $(this).data("path") + '" alt="'
-					+ $(this).attr("alt") + '" src="' + image_path + '" data-id="' + $(this).data("id") + '"/></div>')
-				.appendTo('.modal-body .carousel-inner');
+				'<div class="item"><img class="img-responsive" data-path="' + $(this).data("path")
+					+ '" alt="' + $(this).attr("alt") + '" src="' + image_path + '" data-id="'
+					+ $(this).data("id") + '"/></div>').appendTo('.modal-body .carousel-inner');
 
 		  });
 
 	  // Could be slid or slide (slide happens before animation,
 	  // slid happens after)
-	  $('#carousel-generic').bind('slid', function() {
+	  $('#carousel-generic').bind(
+		  'slid',
+		  function() {
 
-		// console.log($('.active img', this));
-		var image = $('.active img', this);
-		$('.modal-title').html('<a href="' + image.data("path") + '">' + image.attr("alt") + '</a>');
-	  });
+			// console.log($('.active img', this));
+			var image = $('.active img', this);
+			$('.modal-title').html(
+				'<a href="' + image.data("path") + '">' + image.attr("alt") + '</a>');
+		  });
 
 	  // Comportamento al click sulla lente d'ingandimento
 	  $('.gallery-lightbox').click(
@@ -113,7 +118,8 @@ $(document).ready(
 			// console.log(active_title, active_image);
 
 			$('.modal-title').html(
-				'<a href="' + $(active_image).data("path") + '">' + $(active_image).attr("alt") + '</a>');
+				'<a href="' + $(active_image).data("path") + '">' + $(active_image).attr("alt")
+					+ '</a>');
 
 			$('.modal-body img').each(function(index, image) {
 			  // console.log($(active_image).data("id"));

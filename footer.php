@@ -53,12 +53,19 @@
 <script type="text/javascript"
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <?php else: ?>
-<script type="text/javascript" src="<?=curUrl(). 'js/bootstrap.min.js' ?>"></script>
-<?php endif; ?>
- 
-<!-- PekeUpload -->
 <script type="text/javascript"
-  src="<?=curUrl() ?>js/pekeUpload.js"></script>
+  src="<?=curUrl(). 'js/bootstrap.min.js' ?>"></script>
+<?php endif; ?>
+
+
+<!-- Plugin multiselect per la selezione multipla -->
+<script type="text/javascript"
+  src="<?=curUrl() ?>js/bootstrap-multiselect.js"></script>
+<link rel="stylesheet"
+  href="<?=curUrl() ?>css/bootstrap-multiselect.css" type="text/css" />
+
+<!-- Plugin PekeUpload per l'upload di immagini-->
+<script type="text/javascript" src="<?=curUrl() ?>js/pekeUpload.js"></script>
 
 
 <!-- Main -->

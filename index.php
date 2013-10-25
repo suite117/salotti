@@ -22,7 +22,12 @@ require_once 'header.php';
 $errors = array();
 if (isset($_POST))
 foreach ($_POST as $key => $value) {
-	${
+	if (is_array($value)) {
+		${
+			$key} = $value;
+	}
+	else
+		${
 		$key} = strtolower(trim($value));
 }
 
