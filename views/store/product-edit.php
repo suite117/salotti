@@ -1,25 +1,55 @@
 <?php require 'product-edit-submit.php';?>
 <script type="text/javascript">
+
+function get_category_by_type() {
+  $.getJSON( "<?= curUrl() ?>rest/category_rest.php?type=" + $("#type").val(), function( categories ) {
+		//console.log($("#type").val());
+	   	//console.log(categories);
+	   	$( "#category_id" ).html("");
+		$.each( categories, function( index, category ) {
+		 		  
+			$( "#category_id" ).append($('<option>', {
+			    value: category['category_id'],
+			    text: category['category_name'],
+			}));
+			
+		});
+		
+	}); 
+}
+
+
+function get_options_by_type() {
+  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?type=" + $("#type").val(), function( options ) {
+		console.log($("#type").val());
+	   	console.log(options);
+	   	$( "#options" ).html("");
+		$.each( options, function( index, option ) {
+		 		  
+			$( "#options" ).append($('<option>', {
+			    value: option['option_code'],
+			    text: option['option_name'],
+			}));
+			
+		});
+
+		$("#options").multiselect('rebuild');
+		
+	}); 
+}
+
+
 $(document).ready(function() {
 
     console.log($("#type").val());
 
-	$.getJSON( "<?= curUrl() ?>rest/category_rest.php", function( list ) {
-	   console.log(list);
-		var items = [];
-		$.each( list, function( index, element ) {
-
-
-			
-			$.each(element, function(property, value ){
-			    items.push( value );
-				});
-			
-		});
-		console.log(items);
-		$( "#content" ).append(items);
-		
-	}); 
+    $("#type").change( function() {
+      get_category_by_type();
+      get_options_by_type();
+    });
+    
+    get_category_by_type();
+    get_options_by_type();
 });
 
 </script>
@@ -88,43 +118,44 @@ $(document).ready(function() {
       </div>
     </div>
 
-   
-     
-        <div class="col-md-12">
-          <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
-            class="multiselect" multiple="multiple">
-            <?php for ($i=0; $i < sizeof($options); $i++) :?>
-            <option value="<?= $options[$i]['option_code'];?>" <?= @$selected_options[$i]['option_code'] == $options[$i]['option_code'] ? 'selected' : '' ?>> 
-              <?= $options[$i]['option_name'];?></option></label>
 
-          <?php endfor;?>
-          </select>
-        </div>
 
-        <div class="form-group">
-          <div class="col-md-12">
-            <label for="description" class="control-label">Descrizione</label>
-            <textarea name="description" class="form-control editor" rows="6" id="description"><?= @$product['description']?></textarea>
-          </div>
-        </div>
+    <div class="col-md-12">
+      <label for="options" class="control-label">Versioni</label> 
+      <select name="update_options[]" id="options" class="multiselect" multiple="multiple">
+        <?php for ($i=0; $i < sizeof($options); $i++) :?>
+        <option value="<?= $options[$i]['option_code'];?>"
+        <?= @$selected_options[$i]['option_code'] == $options[$i]['option_code'] ? 'selected' : '' ?>>
+          <?= $options[$i]['option_name'];?></option></label>
 
-        <div class="form-group">
-          <div class="col-md-12">
-            <label for="scheda_tecnica">Scheda tecnica</label>
-            <textarea name="scheda_tecnica" class="form-control editor" rows="6" id="scheda_tecnica"><?= @$product['schedatecnica']?></textarea>
-          </div>
-        </div>
+      <?php endfor;?>
+      </select>
+    </div>
 
-        <div class="form-group">
-          <div class="col-md-1">
-            <?php if (isset($product)): ?>
-            <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
-            <?php else : ?>
-            <button type="submit" name="create" class="btn btn-default">Crea prodotto</button>
-            <?php endif;?>
-          </div>
-        </div>
-  
+    <div class="form-group">
+      <div class="col-md-12">
+        <label for="description" class="control-label">Descrizione</label>
+        <textarea name="description" class="form-control editor" rows="6" id="description"><?= @$product['description']?></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-12">
+        <label for="scheda_tecnica">Scheda tecnica</label>
+        <textarea name="scheda_tecnica" class="form-control editor" rows="6" id="scheda_tecnica"><?= @$product['schedatecnica']?></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-1">
+        <?php if (isset($product)): ?>
+        <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
+        <?php else : ?>
+        <button type="submit" name="create" class="btn btn-default">Crea prodotto</button>
+        <?php endif;?>
+      </div>
+    </div>
+
   </form>
 
 </div>
