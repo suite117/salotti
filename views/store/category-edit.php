@@ -43,16 +43,16 @@ $(document).ready(function() {
     <div class="form-group <?= isset($errors['name']) ? 'has-error' : '' ?>">
 
       <div class="col-md-6">
-        <label for="name" class="control-label">Nome Categoria</label> <input type="text" class="form-control" name="name"
-          id="name" value="<?= @$category['nome']?>" placeholder="Iserisci il nome della categoria">
+        <label for="category_name" class="control-label">Nome Categoria</label> <input type="text" class="form-control" name="cat_name"
+          id="cat_name" value="<?= @$category['category_name']?>" placeholder="Iserisci il nome della categoria">
       </div>
 
       <div class="col-md-2">
         <label for="category_id" class="control-label">Categoria Padre</label> <select class="form-control" name="category_id"
           id="category_id">
           <?php foreach ($categories as $cat ) :?>
-          <option <?= $cat['category_id'] == $product['category_id'] ? 'selected' : '' ?>
-            value="<?=$cat['category_id'] ?>"><?=ucfirst($cat['category_name']) ?></option>
+          <option <?= $cat['category_parent_id'] == $category['category_id'] ? 'hidden' : '' ?>
+            value="<?=$cat['category_parent_id'] ?>"><?=ucfirst($cat['category_parent_name']) ?></option>
           <?php endforeach; ?>
         </select>
       </div>

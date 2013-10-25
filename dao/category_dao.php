@@ -94,6 +94,48 @@ class CategoryDAO {
 		# We use fetchAll() instead of fetch() to get an array of all the selected records.
 		return $query -> fetchAll();
 	}
+	
+	public function insert($nome, $description, $category_parent_id){
+
+		$query = $this -> db -> prepare("INSERT INTO `categoria` (`category_name`, `description`, `category_parent_id`) VALUES ( ?, ?, ?) ");
+
+
+		$query -> bindValue(1, $nome);
+		$query -> bindValue(2, $description);
+		$query -> bindValue(3, $category_parent_id);
+		
+
+
+		try{
+			$query->execute();
+
+
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}
+	}
+	
+	public function update_product($nome, $description, $id, $category_parent_id){
+
+		$query = $this->db->prepare("UPDATE `categoria` SET
+				`category_name`				= ?,
+				`description`		= ?,
+				`category_parent_id` = ?
+					
+				WHERE `id` 			= ?
+				");
+
+		$query->bindValue(1, $nome);
+		$query->bindValue(2, $description);
+		$query->bindValue(3, $category_parent_id);
+		$query->bindValue(4, $id);
+
+		try{
+			$query->execute();
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}
+	}
 
 }
 
