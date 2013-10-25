@@ -11,9 +11,7 @@ if (isset($product)) {
 
 	$categories = $category_dao->get_categories_by_type($product['type']);
 	$options = $options_dao->get_options_by_type($product['type']);
-	var_dump("options", $options);
-	$selected_options = $options_dao->get_selected_options($product);
-	var_dump("selected_options", $selected_options);
+	//var_dump("options", $options);
 }
 
 $types = isset($product) ? array(0 => $product) : $products_dao->get_types();
@@ -37,12 +35,14 @@ if (isset($_POST['save'])) {
 		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, $product['id']);
 		
 		$options_dao->delete_selected_options($product);
-		$options_dao->create_selected_options($update_options, $product);
-		$success= 'Il prodotto è stato aggiornato correttamente. <a href="'.curUrl() .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
+		$options_dao->create_selected_options(@$update_options, $product);
 
 		// recupero il bean aggiornato
 		$product = $products_dao->get_product($id);
-		var_dump($product);
+		var_dump("options", $options);
+		//var_dump($product);
+		
+		$success= 'Il prodotto è stato aggiornato correttamente. <a href="'.curUrl() .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
 	}
 }
 elseif (isset($_POST['create'])) {

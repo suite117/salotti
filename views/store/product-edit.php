@@ -11,6 +11,7 @@ function get_category_by_type() {
 			$( "#category_id" ).append($('<option>', {
 			    value: category['category_id'],
 			    text: category['category_name'],
+			    selected : true
 			}));
 			
 		});
@@ -21,8 +22,7 @@ function get_category_by_type() {
 
 function get_options_by_type() {
   $.getJSON( "<?= curUrl() ?>rest/options_rest.php?type=" + $("#type").val(), function( options ) {
-		console.log($("#type").val());
-	   	console.log(options);
+
 	   	$( "#options" ).html("");
 		$.each( options, function( index, option ) {
 		 		  
@@ -33,7 +33,24 @@ function get_options_by_type() {
 			
 		});
 
-		$("#options").multiselect('rebuild');
+		$("#options").multiselect('rebuild'); // cancella se selezionato
+		
+	}); 
+}
+
+function get_selected_options_by_id() {
+  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?id=" + $("#product_id").val(), function( options ) {
+
+		$.each( options, function( index, option ) {
+		 		  
+			$( "#options option" ).each(function() {
+				if (option['option_code'] == $(this).val())
+			    	$(this).attr("selected", true);
+			});
+			
+		});
+
+		$("#options").multiselect('rebuild'); // cancella se selezionato
 		
 	}); 
 }
@@ -47,9 +64,13 @@ $(document).ready(function() {
       get_category_by_type();
       get_options_by_type();
     });
-    
+
     get_category_by_type();
-    get_options_by_type();
+	get_options_by_type();
+    
+    <?php if (isset($product)) : ?>
+    get_selected_options_by_id($("#product_id").text());
+    <?php endif; ?>
 });
 
 </script>
@@ -70,6 +91,7 @@ $(document).ready(function() {
   <form class="form-horizontal" role="form" method="post" action="">
 
     <div class="form-group <?= isset($errors['name']) ? 'has-error' : '' ?>">
+      <input type="hidden" name="id" id="product_id" value="<?= $product['id']?>">
 
       <div class="col-md-6">
         <label for="name" class="control-label">Nome modello</label> <input type="text" class="form-control" name="name"
@@ -80,7 +102,7 @@ $(document).ready(function() {
         <label for="is_published" class="control-label">Stato</label> <select class="form-control" name="is_published">
           <?php $option_is_published = array('N' => 'Non pubblicato', 'Y' => 'Pubblicato'); ?>
           <?php foreach($option_is_published as $key => $label ): ?>
-          <option value="<?=$key ?>" <?= ($key == @$product['is_published'] ? 'selected' : '') ?>><?= $label ?></option>
+          <option value="<?=$key ?>" selected <?= ($key == @$product['is_published'] ? 'selected' : '') ?>><?= $label ?></option>
           <?php endforeach; ?>
         </select>
       </div>
@@ -121,12 +143,12 @@ $(document).ready(function() {
 
 
     <div class="col-md-12">
-      <label for="options" class="control-label">Versioni</label> 
-      <select name="update_options[]" id="options" class="multiselect" multiple="multiple">
+      <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
+        class="multiselect" multiple="multiple">
         <?php for ($i=0; $i < sizeof($options); $i++) :?>
-        <option value="<?= $options[$i]['option_code'];?>"
-        <?= @$selected_options[$i]['option_code'] == $options[$i]['option_code'] ? 'selected' : '' ?>>
-          <?= $options[$i]['option_name'];?></option></label>
+        <option value="<?= $options[$i]['option_code'];?>">
+          <?= $options[$i]['option_name']; ?>
+        </option></label>
 
       <?php endfor;?>
       </select>
