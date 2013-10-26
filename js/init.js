@@ -34,7 +34,9 @@ $(document).ready(
 	  }
 
 	  // Initialize the plugin multiselect:
-	  $('.multiselect').multiselect();
+	  $('.multiselect').multiselect({
+		includeSelectAllOption : true
+	  });
 
 	  // spazi fix
 	  // $('textarea').text($('textarea').text().trim());
