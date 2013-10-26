@@ -26,6 +26,59 @@ function confirmbox(message, button_input, callback) {
 
 }
 
+function get_category_by_type(type, destination_id) {
+  $.getJSON(base_url + "rest/category_rest.php?type=" + type, function(categories) {
+
+	$("#" + destination_id).html("");
+	$.each(categories, function(index, category) {
+
+	  $("#" + destination_id).append($('<option>', {
+		value : category['category_id'],
+		text : category['category_name'],
+		selected : true
+	  }));
+
+	});
+
+  });
+}
+
+function get_options_by_type(type, destination_id) {
+  $.getJSON(base_url + "rest/options_rest.php?type=" + type, function(options) {
+
+	$("#" + destination_id).html("");
+	$.each(options, function(index, option) {
+
+	  $("#" + destination_id).append($('<option>', {
+		value : option['option_code'],
+		text : option['option_name'],
+	  }));
+
+	});
+
+	$("#" + destination_id).multiselect('rebuild'); // cancella se selezionato
+
+  });
+}
+
+function get_selected_options_by_id(id, destination_id) {
+  $.getJSON(base_url + "rest/options_rest.php?id=" + id, function(options) {
+
+	$.each(options, function(index, option) {
+
+	  $("#" + destination_id + " option").each(function() {
+		if (option['option_code'] == $(this).val())
+		  $(this).attr("selected", true);
+	  });
+
+	});
+
+	$("#" + destination_id).multiselect('rebuild'); // cancella se selezionato
+
+  });
+}
+
+
 $(document).ready(
 	function() {
 

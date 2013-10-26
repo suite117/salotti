@@ -1,76 +1,31 @@
 <?php require 'product-edit-submit.php';?>
 <script type="text/javascript">
 
-function get_category_by_type(type) {
-  $.getJSON( "<?= curUrl() ?>rest/category_rest.php?type=" + type, function( categories ) {
-		//console.log($("#type").val());
-	   	//console.log(categories);
-	   	$( "#category_id" ).html("");
-		$.each( categories, function( index, category ) {
-		 		  
-			$( "#category_id" ).append($('<option>', {
-			    value: category['category_id'],
-			    text: category['category_name'],
-			    selected : true
-			}));
-			
-		});
-		
-	}); 
-}
-
-
-function get_options_by_type(type) {
-  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?type=" + type, function( options ) {
-
-	   	$( "#options" ).html("");
-		$.each( options, function( index, option ) {
-		 		  
-			$( "#options" ).append($('<option>', {
-			    value: option['option_code'],
-			    text: option['option_name'],
-			}));
-			
-		});
-
-		$("#options").multiselect('rebuild'); // cancella se selezionato
-		
-	}); 
-}
-
-function get_selected_options_by_id(id) {
-  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?id=" + id, function( options ) {
-
-		$.each( options, function( index, option ) {
-		 		  
-			$( "#options option" ).each(function() {
-				if (option['option_code'] == $(this).val())
-			    	$(this).attr("selected", true);
-			});
-			
-		});
-
-		$("#options").multiselect('rebuild'); // cancella se selezionato
-		
-	}); 
-}
+// prepara l'url base per javascript
+$("body").data("base_url", "<?= curUrl() ?>");
+// l'url base per javascript
+var base_url = $("body").data("base_url");
 
 
 $(document).ready(function() {
 
+  	// recupero campo type
   	type = $("#type").val();
     console.log(type);
 
-    $("#type").change( function() {
-      get_category_by_type(type);
-      get_options_by_type(type);
-    });
-
-    get_category_by_type(type);
-	get_options_by_type(type);
+    // aggiorna le categorie al cambio del tipo
+    function categoryUpdate() {
+      get_category_by_type(type, "category_id");
+      get_options_by_type(type, "options");
+    }
     
+    $("#type").change(categoryUpdate);
+
+    categoryUpdate();
+
+    // recupera le opzioni selezionate
     <?php if (isset($product)) : ?>
-    get_selected_options_by_id($("#product_id").val());
+    get_selected_options_by_id($("#product_id").val(), "options");
     <?php endif; ?>
 });
 
@@ -130,7 +85,7 @@ $(document).ready(function() {
 
         </select>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4">
         <label for="category_id" class="control-label">Categoria</label> <select class="form-control" name="category_id"
           id="category_id">
           <?php foreach ($categories as $cat ) :?>
@@ -139,20 +94,18 @@ $(document).ready(function() {
           <?php endforeach; ?>
         </select>
       </div>
-    </div>
+      <div class="col-md-6">
+        <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
+          class="multiselect" multiple="multiple">
+          <?php for ($i=0; $i < sizeof($options); $i++) :?>
+          <option value="<?= $options[$i]['option_code'];?>">
+            <?= $options[$i]['option_name']; ?>
+          </option>
+          </label>
 
-
-
-    <div class="col-md-12">
-      <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
-        class="multiselect" multiple="multiple">
-        <?php for ($i=0; $i < sizeof($options); $i++) :?>
-        <option value="<?= $options[$i]['option_code'];?>">
-          <?= $options[$i]['option_name']; ?>
-        </option></label>
-
-      <?php endfor;?>
-      </select>
+          <?php endfor;?>
+        </select>
+      </div>
     </div>
 
     <div class="form-group">

@@ -5,11 +5,21 @@
 	
 }
 
+.modal-body .carousel {
+    height: 76%;
+}
 
 /* form */
 .form-horizontal .form-group  {
 	margin: 30px 0;
 }
+
+.form-horizontal .control-label {
+    display: block;
+    text-align: left;
+}
+
+/* template */
 
 .page-header {
 	margin-bottom: 10px;
