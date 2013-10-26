@@ -41,7 +41,7 @@ class OptionsDAO {
 	}
 
 
-	public function get_selected_options_by_id($id) {
+	public function get_options_by_id($id) {
 		$query = $this -> db -> prepare("SELECT o.option_code, o.option_name FROM prodotto as p , product_options as po, options as o WHERE p.id= ? AND p.id=po.product_id AND po.option_code = o.option_code");
 		$query -> bindValue(1, $id);
 

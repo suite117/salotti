@@ -11,7 +11,7 @@ elseif ($category_name == 'letti')
 $product['model2d'] = 'images/letto2d.jpg';
 
 
-$options = $options_dao->get_options_by_type($product['type']);
+$options = $options_dao->get_options_by_id($product['id']);
 //var_dump($options);
 
 ?>
@@ -59,7 +59,7 @@ $options = $options_dao->get_options_by_type($product['type']);
       <div class="row">
         <div class="col-md-12">
           <img style="width: 450px; height: 260px" class="img-responsive"
-            src="<?= curURL() .'image.php?path=' . @$product['model2d'] ?>">
+            src="<?= curURL() .'image.php?path=images/vista.png' ?>">
         </div>
       </div>
 
@@ -86,8 +86,7 @@ $options = $options_dao->get_options_by_type($product['type']);
                       if($i%3==0)
                       	echo '<tr>';
                       ?>
-                      <td><a href="#"> <?=ucfirst($options[$i]['option_name']) ?>
-                      </a></td>
+                      <td style="text-align: center"><?=ucfirst($options[$i]['option_name']) ?></td>
                       <?php
                       if(($i+1)%3==0)
                       	echo '</tr>';
@@ -106,39 +105,6 @@ $options = $options_dao->get_options_by_type($product['type']);
           <!-- end Panel -->
 
 
-          <div class="panel panel-default colored">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"> Scegli
-                  il tessuto </a>
-              </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse in">
-              <div class="panel-body">
-
-                <table class="table text-center">
-                  <tbody>
-                    <?php for($i = 0; $i < 21; $i++) : ?>
-                    <?php if ($i % 7 == 0) : ?>
-                    <tr>
-                      <?php endif; ?>
-                      <td style="padding: 7px;"><img style="width: 50px; height: 50px;"
-                        src="http://placehold.it/750x350" />
-                      </td>
-                      <?php if (($i+1) % 7 == 0) :  ?>
-                    </tr>
-                    <?php endif; ?>
-                    <?php endfor;?>
-                  </tbody>
-
-                </table>
-
-              </div>
-            </div>
-          </div>
-          <!-- end Panel -->
-
-
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -147,8 +113,7 @@ $options = $options_dao->get_options_by_type($product['type']);
               </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse colored">
-              <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.</div>
+              <div class="panel-body"><?= @$product['schedatecnica']; ?></div>
             </div>
           </div>
           <!-- end Panel -->

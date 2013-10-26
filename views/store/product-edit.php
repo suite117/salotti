@@ -1,8 +1,8 @@
 <?php require 'product-edit-submit.php';?>
 <script type="text/javascript">
 
-function get_category_by_type() {
-  $.getJSON( "<?= curUrl() ?>rest/category_rest.php?type=" + $("#type").val(), function( categories ) {
+function get_category_by_type(type) {
+  $.getJSON( "<?= curUrl() ?>rest/category_rest.php?type=" + type, function( categories ) {
 		//console.log($("#type").val());
 	   	//console.log(categories);
 	   	$( "#category_id" ).html("");
@@ -20,8 +20,8 @@ function get_category_by_type() {
 }
 
 
-function get_options_by_type() {
-  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?type=" + $("#type").val(), function( options ) {
+function get_options_by_type(type) {
+  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?type=" + type, function( options ) {
 
 	   	$( "#options" ).html("");
 		$.each( options, function( index, option ) {
@@ -38,8 +38,8 @@ function get_options_by_type() {
 	}); 
 }
 
-function get_selected_options_by_id() {
-  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?id=" + $("#product_id").val(), function( options ) {
+function get_selected_options_by_id(id) {
+  $.getJSON( "<?= curUrl() ?>rest/options_rest.php?id=" + id, function( options ) {
 
 		$.each( options, function( index, option ) {
 		 		  
@@ -58,18 +58,19 @@ function get_selected_options_by_id() {
 
 $(document).ready(function() {
 
-    console.log($("#type").val());
+  	type = $("#type").val();
+    console.log(type);
 
     $("#type").change( function() {
-      get_category_by_type();
-      get_options_by_type();
+      get_category_by_type(type);
+      get_options_by_type(type);
     });
 
-    get_category_by_type();
-	get_options_by_type();
+    get_category_by_type(type);
+	get_options_by_type(type);
     
     <?php if (isset($product)) : ?>
-    get_selected_options_by_id($("#product_id").text());
+    get_selected_options_by_id($("#product_id").val());
     <?php endif; ?>
 });
 
