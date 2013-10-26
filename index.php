@@ -123,6 +123,10 @@ if (isset($_GET["controller"])) {
 				$view = 'views/user/members.php';
 				$page_title = "Lista utenti";
 				break;
+			case 'lista-categorie' :
+				$view = 'views/store/categories.php';
+				$page_title = "Lista categorie";
+				break;
 			case 'contatti' :
 				$view = 'views/contact/contact.php';
 				$page_title = "Contatti";

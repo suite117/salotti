@@ -81,6 +81,11 @@
             <li><a href="<?=curUrl() ?>aggiungi/prodotto.html">Aggiungi prodotto</a>
             
             </li>
+            <li><a href="<?=curUrl() ?>aggiungi/categoria.html">Aggiungi categoria</a>
+            </li>
+            <li><a href="<?=curUrl() ?>lista-categorie.html">Lista categorie</a>
+            
+            </li>
                 <li class="divider"></li>
                 <li class="dropdown-submenu"><a tabindex="-1" href="#">Divani</a>
                   <ul class="dropdown-menu">
