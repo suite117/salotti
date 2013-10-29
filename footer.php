@@ -57,7 +57,7 @@
 <?php endif; ?>
 
 <!-- Bootstrap Form Helpers -->
-<script src="<?=curUrl() ?>js/bootstrap-formhelpers.min.js"></script>
+<script src="<?=curUrl() ?>js/bootstrap-formhelpers.js"></script>
 
 <!-- Plugin multiselect per la selezione multipla -->
 <script type="text/javascript"

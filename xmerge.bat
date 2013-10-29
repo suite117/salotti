@@ -2,8 +2,9 @@
 set base_dir=c:\wamp\www\git\salotti\locale\it_IT\LC_MESSAGES\
 
 echo move...
-move %base_dir%messages.po %base_dir%messages2.po
+del %base_dir%messages.po.old
+move %base_dir%messages.po %base_dir%messages.po.old
 echo merge...
-msgmerge messages.po %base_dir%messages2.po > %base_dir%messages.po
-del %base_dir%messages2.po
+msgmerge %base_dir%messages.po.old mess.po > %base_dir%messages.po
+
 

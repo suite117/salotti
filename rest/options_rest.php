@@ -2,7 +2,7 @@
 
 require '../init.php';
 
-header('Content-type: application/json');
+
 
 if( isset($_GET['id']))
 	$options = $options_dao->get_options_by_id($_GET['id']);
@@ -13,6 +13,7 @@ elseif( isset($_GET['type'])){
 }
 
 
-echo json_encode($options);
+header('Content-type: application/json');
+echo json_encode($lang);
 ?>
 

@@ -50,13 +50,13 @@ $(document).ready(function() {
       <input type="hidden" name="id" id="product_id" value="<?= @$product['id']?>">
 
       <div class="col-md-6">
-        <label for="name" class="control-label">Nome modello</label> <input type="text" class="form-control" name="name"
-          id="name" value="<?= @$product['nome']?>" placeholder="Iserisci il nome del prodotto">
+        <label for="name" class="control-label"><?= _("Model name") ?></label> <input type="text" class="form-control" name="name"
+          id="name" value="<?= @$product['nome']?>" placeholder="<?= _("Insert the product name") ?>">
       </div>
 
       <div class="col-md-3">
         <label for="is_published" class="control-label">Stato</label> <select class="form-control" name="is_published">
-          <?php $option_is_published = array('N' => 'Non pubblicato', 'Y' => 'Pubblicato'); ?>
+          <?php $option_is_published = array('N' => _('Not published'), 'Y' => _('Published')); ?>
           <?php foreach($option_is_published as $key => $label ): ?>
           <option value="<?=$key ?>" selected <?= ($key == @$product['is_published'] ? 'selected' : '') ?>><?= $label ?></option>
           <?php endforeach; ?>
@@ -64,9 +64,9 @@ $(document).ready(function() {
       </div>
 
       <div class="col-md-3">
-        <label for="is_avaiable" class="control-label">Disponibile</label> <select class="form-control"
+        <label for="is_avaiable" class="control-label"><?=_("Avaiable")?> </label> <select class="form-control"
           name="is_avaiable" id="is_avaiable">
-          <?php $option_is_avaiable = array('N' => 'No', 'Y' => 'Si'); ?>
+          <?php $option_is_avaiable = array('N' => _('No'), 'Y' => _('Yes')); ?>
           <?php foreach($option_is_avaiable as $key => $label ): ?>
           <option value="<?=$key ?>" <?= ($key == @$product['is_avaiable'] ? 'selected' : '') ?>><?= $label ?></option>
           <?php endforeach; ?>
@@ -77,7 +77,8 @@ $(document).ready(function() {
 
     <div class="form-group">
       <div class="col-md-2">
-        <label for="category_id" class="control-label">Tipo</label> <select class="form-control" name="type" id="type">
+        <label for="category_id" class="control-label"><?= ('Type') ?> </label> <select class="form-control" name="type"
+          id="type">
 
           <?php foreach ($types as $type ) :?>
           <option value="<?=$type['type'] ?>"><?=ucfirst($type['type']) ?></option>
@@ -110,14 +111,14 @@ $(document).ready(function() {
 
     <div class="form-group">
       <div class="col-md-12">
-        <label for="description" class="control-label">Descrizione</label>
+        <label for="description" class="control-label"><?= _("Description") ?> </label>
         <textarea name="description" class="form-control editor" rows="6" id="description"><?= @$product['description']?></textarea>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-md-12">
-        <label for="scheda_tecnica">Scheda tecnica</label>
+        <label for="scheda_tecnica"><?= _('Specifications') ?> </label>
         <textarea name="scheda_tecnica" class="form-control editor" rows="6" id="scheda_tecnica"><?= @$product['schedatecnica']?></textarea>
       </div>
     </div>
@@ -125,9 +126,13 @@ $(document).ready(function() {
     <div class="form-group">
       <div class="col-md-1">
         <?php if (isset($product)): ?>
-        <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
+        <button type="submit" name="save" class="btn btn-default">
+          <?= _("Save") ?>
+        </button>
         <?php else : ?>
-        <button type="submit" name="create" class="btn btn-default">Crea prodotto</button>
+        <button type="submit" name="create" class="btn btn-default">
+          <?= _("Create") . ' ' ._("product") ?>
+        </button>
         <?php endif;?>
       </div>
     </div>

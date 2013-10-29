@@ -25,20 +25,20 @@ if ($general->logged_in() === true)  { // check if the user is logged in
 
 // Locale configuration
 if ($isLocalhost)
-require_once('./locale/gettext.inc');
+	require_once('./locale/gettext.inc');
 
 // define constants
 define('PROJECT_DIR', realpath('./'));
 define('LOCALE_DIR', './locale/');
 define('DEFAULT_LOCALE', "it_IT");
 //define('DEFAULT_LOCALE', "it-IT");
-//$supported_locales = array('en-US', 'it-IT');
-
-$encoding = "UTF-8";  
+$encoding = "UTF-8";
 
 // Set the text domain as 'messages'
 $domain = 'messages';
 $lang = (isset($_SESSION['lang']))? $_SESSION['lang'] : DEFAULT_LOCALE;
+
+$supported_lang = array('it_IT', 'en_US');
 
 // for windows compatibility (e.g. xampp) : theses 3 lines are useless for linux systems
 putenv("LC_ALL=$lang"); // Windows locale
@@ -56,5 +56,5 @@ textdomain($domain);
 
 header("Content-type: text/html; charset=$encoding");
 
- 
+
 ?>

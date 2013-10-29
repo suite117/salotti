@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="bfh-selectbox bfh-languages" data-language="en_US" data-available="en_US,it_IT" data-flags="true">
+  <div class="bfh-selectbox bfh-languages" data-language="it_IT" data-available="it_IT,en_GB" data-flags="true">
     <input type="hidden" value=""> <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#"> <span
       class="bfh-selectbox-option bfh-selectbox-medium" data-option=""></span> <b class="caret"></b>
     </a>

@@ -117,27 +117,27 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'logout' :
 				$view = 'views/user/logout.php';
-				$page_title = "Esci";
+				$page_title = _("Logout");
 				break;
 			case 'register' :
 				$view = 'views/user/register.php';
-				$page_title = "Registrazione";
+				$page_title = _("Registration");
 				break;
 			case 'lista-utenti' :
 				$view = 'views/user/members.php';
-				$page_title = "Lista utenti";
+				$page_title = _("Members");
 				break;
 			case 'lista-categorie' :
 				$view = 'views/store/categories.php';
-				$page_title = "Lista categorie";
+				$page_title = _("Category list");
 				break;
 			case 'contatti' :
 				$view = 'views/contact/contact.php';
-				$page_title = "Contatti";
+				$page_title = _("Contacts");
 				break;
 			case 'activate' :
 				$view = 'views/users/activate.php';
-				$page_title = 'attiva';
+				$page_title = _('Activate');
 			default :
 				$view = 'views/' . $controller . '.php';
 				$page_title = $controller;
