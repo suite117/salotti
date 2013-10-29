@@ -189,7 +189,7 @@ $(document).ready(
 
 			// Visualizza la finestra di dialogo per
 			// lo slideshow
-			$('#myModal').modal({
+			$('#modal-carousel').modal({
 			  show : true
 			});
 

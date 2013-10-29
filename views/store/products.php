@@ -106,7 +106,7 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
 
       <?php if ($general -> logged_in() === true) : ?>
       <a href="<?=$prodotto_path?>"> <?php endif; ?> <img alt="<?= ucfirst(@$prodotto['nome']) ?>"
-        data-path="<?=$prodotto_path ?>" data-id="<?= @$product_index ?>" class="img-responsive"
+        data-path="<?=$prodotto_path ?>" data-id="<?= $prodotto['id'] ?>" class="img-responsive"
         style="margin-left: auto; margin-right: auto;" src="<?=  $prodotto['immagine']  ?>" /> <?php if ($general -> logged_in() === true) : ?>
       </a>
       <?php endif;?>
@@ -135,7 +135,7 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
 
 <?php if ($general -> logged_in() === true) : ?>
 <!-- Modal box -->
-<div tabindex="-1" class="modal fade" id="myModal" role="dialog">
+<div tabindex="-1" class="modal fade" id="modal-carousel" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

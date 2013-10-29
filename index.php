@@ -1,5 +1,9 @@
 <?php
 //error_reporting(E_ALL ^ E_WARNING);
+// riporta tutti gli errori
+error_reporting(E_ALL | E_STRICT);
+
+require_once 'config/database.php';
 require_once 'utils.php';
 require_once 'init.php';
 
@@ -7,16 +11,16 @@ $view = 'views/home.php';
 $page_title = '';
 $page_description = '';
 $category_name = null;
-$config['isOnline'] = false;
+$config['isOnline'] = true;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
-var_dump("get", $_GET);
-var_dump("post", $_POST);
-
 require_once 'header.php';
+
+//var_dump("get", $_GET);
+//var_dump("post", $_POST);
 
 // POST CONTROLLER
 $errors = array();
@@ -142,10 +146,10 @@ if (isset($_GET["controller"])) {
 
 // se passa il test non sono nella home
 if (!empty($_GET['controller']) && strpos($controller, 'index') === false)
-	include 'breadcrumb.php';
+	require 'breadcrumb.php';
 
 //var_dump($view);
 require $view;
 
-include 'footer.php';
+require 'footer.php';
 ?>

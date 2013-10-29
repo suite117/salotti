@@ -47,7 +47,7 @@ $(document).ready(function() {
   <form class="form-horizontal" role="form" method="post" action="">
 
     <div class="form-group <?= isset($errors['name']) ? 'has-error' : '' ?>">
-      <input type="hidden" name="id" id="product_id" value="<?= $product['id']?>">
+      <input type="hidden" name="id" id="product_id" value="<?= @$product['id']?>">
 
       <div class="col-md-6">
         <label for="name" class="control-label">Nome modello</label> <input type="text" class="form-control" name="name"
