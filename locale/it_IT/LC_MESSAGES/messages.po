@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-29 19:25+0100\n"
-"PO-Revision-Date: 2013-10-29 19:25+0100\n"
+"POT-Creation-Date: 2013-10-30 19:09+0100\n"
+"PO-Revision-Date: 2013-10-30 19:10+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,100 +16,106 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 
-#: c:\wamp\www\git\salotti\header.php:70
+#: c:\wamp\www\git\salotti\header.php:81
 msgid "Toggle navigation"
 msgstr "Alterna navigazione"
 
-#: c:\wamp\www\git\salotti\header.php:80
+#: c:\wamp\www\git\salotti\header.php:91
 msgid "Home"
 msgstr "Home"
 
-#: c:\wamp\www\git\salotti\header.php:82
+#: c:\wamp\www\git\salotti\header.php:95
 msgid "Company"
 msgstr "Azienda"
 
-#: c:\wamp\www\git\salotti\header.php:85
-#: c:\wamp\www\git\salotti\header.php:135
+#: c:\wamp\www\git\salotti\header.php:98
+#: c:\wamp\www\git\salotti\header.php:148
 msgid "Products"
 msgstr "Prodotti"
 
-#: c:\wamp\www\git\salotti\header.php:88
+#: c:\wamp\www\git\salotti\header.php:101
 #, fuzzy
 msgid "Products list"
 msgstr "Lista prodotti"
 
-#: c:\wamp\www\git\salotti\header.php:90
+#: c:\wamp\www\git\salotti\header.php:103
 #, fuzzy
 msgid "Add product"
 msgstr "prodotto"
 
-#: c:\wamp\www\git\salotti\header.php:92
+#: c:\wamp\www\git\salotti\header.php:105
 #, fuzzy
 msgid "Add category"
 msgstr "categoria"
 
-#: c:\wamp\www\git\salotti\header.php:94 c:\wamp\www\git\salotti\index.php:132
+#: c:\wamp\www\git\salotti\header.php:107
+#: c:\wamp\www\git\salotti\index.php:134
 msgid "Category list"
 msgstr "Lista categorie"
 
-#: c:\wamp\www\git\salotti\header.php:99
+#: c:\wamp\www\git\salotti\header.php:112
 #, fuzzy
 msgid "All sofas"
 msgstr "divani"
 
-#: c:\wamp\www\git\salotti\header.php:102
+#: c:\wamp\www\git\salotti\header.php:115
 #, fuzzy
 msgid "All modern sofas"
 msgstr "divani moderni"
 
-#: c:\wamp\www\git\salotti\header.php:105
+#: c:\wamp\www\git\salotti\header.php:118
 #, fuzzy
 msgid "All classic sofa"
 msgstr "divani classici"
 
-#: c:\wamp\www\git\salotti\header.php:108
+#: c:\wamp\www\git\salotti\header.php:121
 msgid "Sofa beds"
 msgstr "Divani letto"
 
-#: c:\wamp\www\git\salotti\header.php:113
+#: c:\wamp\www\git\salotti\header.php:126
 msgid "Beds"
 msgstr "Letti"
 
-#: c:\wamp\www\git\salotti\header.php:119
+#: c:\wamp\www\git\salotti\header.php:132
 msgid "Administration"
 msgstr "Amministrazione"
 
-#: c:\wamp\www\git\salotti\header.php:123
+#: c:\wamp\www\git\salotti\header.php:136
+#: c:\wamp\www\git\salotti\index.php:130
 msgid "User list"
 msgstr "Lista utenti"
 
-#: c:\wamp\www\git\salotti\header.php:127
+#: c:\wamp\www\git\salotti\header.php:140
 msgid "My profile"
 msgstr "Il mio profilo"
 
-#: c:\wamp\www\git\salotti\header.php:138
-#: c:\wamp\www\git\salotti\index.php:136
+#: c:\wamp\www\git\salotti\header.php:152
+#: c:\wamp\www\git\salotti\index.php:138
 msgid "Contacts"
 msgstr "Contatti"
 
-#: c:\wamp\www\git\salotti\header.php:141
-#: c:\wamp\www\git\salotti\index.php:120
+#: c:\wamp\www\git\salotti\header.php:156
+#: c:\wamp\www\git\salotti\index.php:121
 msgid "Logout"
 msgstr "Esci"
 
-#: c:\wamp\www\git\salotti\header.php:144
+#: c:\wamp\www\git\salotti\header.php:160
 msgid "Login"
 msgstr "Accedi"
 
-#: c:\wamp\www\git\salotti\index.php:124
+#: c:\wamp\www\git\salotti\index.php:91 c:\wamp\www\git\salotti\index.php:101
+msgid "Galleria"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\index.php:102
+msgid "Visualizza i prodotti"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\index.php:125
 msgid "Registration"
 msgstr "Registrazione"
 
-#: c:\wamp\www\git\salotti\index.php:128
-msgid "Members"
-msgstr "Soci"
-
-#: c:\wamp\www\git\salotti\index.php:140
+#: c:\wamp\www\git\salotti\index.php:142
 msgid "Activate"
 msgstr "Attiva"
 
@@ -121,62 +127,70 @@ msgstr "Ciao Mondo"
 msgid "Prodotti"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:53
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:87
 msgid "Model name"
 msgstr "Nome modello"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:54
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:88
 msgid "Insert the product name"
 msgstr "Inserisci il nome del prodotto"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:59
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:93
 msgid "Not published"
 msgstr "Non pubblicato"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:59
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:93
 msgid "Published"
 msgstr "Pubblicato"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:67
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:101
 msgid "Avaiable"
 msgstr "Disponibile"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:69
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:103
 msgid "No"
 msgstr "No"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:69
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:103
 msgid "Yes"
 msgstr "Si"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:114
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:124
+#, fuzzy
+msgid "Category"
+msgstr "categoria"
+
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:131
+msgid "Versions"
+msgstr "Versioni"
+
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:140
 #, fuzzy
 msgid "Description"
 msgstr "Registrazione"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:121
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:147
 msgid "Specifications"
 msgstr "Scheda tecnica"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:130
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:156
 msgid "Save"
 msgstr "Salva"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:134
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:160
 msgid "Create"
 msgstr "Crea"
 
-#: c:\wamp\www\git\salotti\views\store\product-edit.php:134
+#: c:\wamp\www\git\salotti\views\store\product-edit.php:160
 #, fuzzy
 msgid "product"
 msgstr "Prodotti"
 
+#~ msgid "Members"
+#~ msgstr "Soci"
+
 #~ msgid "add"
 #~ msgstr "aggiungi"
-
-#, fuzzy
-#~ msgid "category"
-#~ msgstr "categoria"
 
 #~ msgid "breadcrumb"
 #~ msgstr "breadcrumb"

@@ -1,17 +1,23 @@
 $.fn.bootselect = function(arg1, arg2, optionals) {
 
-  defaults = {
-	"label" : "label",
-	"value" : "value"
-  };
-  // make sure any supplied options take precedence over defaults
+  if (arg1 == null) {
+	$('select').selectpicker();
+	return this;
+  }
 
-  // optionals = $.extend({}, optionals, defaults);
-  if (optionals != null)
-	$.fn.optionals = optionals;
+  // make sure any supplied options take precedence over defaults
+  if (optionals != null) {
+	defaults = {
+	  "label" : "label",
+	  "value" : "value"
+	};
+	optionals = $.extend({}, defaults, optionals);
+	this.data("label", optionals["label"]);
+	this.data("value", optionals["value"]);
+  }
 
   // console.log(this, arg1, arg2);
-  $select = this;
+  
   switch (arg1) {
   case 'source':
 	var options = arg2;
@@ -19,25 +25,24 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
 	for ( var i in options) {
 	  // console.log(options[i]);
 	  this.append($('<option>', {
-		value : options[i][$.fn.optionals.value],
-		text : options[i][$.fn.optionals.label]
+		value : options[i][$(this).data("value")],
+		text : options[i][$(this).data("label")]
 	  }));
 	}
 	this.selectpicker('');
 	break;
   case 'select':
-	if (arg2 instanceof Array) {
-	  selecteds = arg2;
-	  $.each(selecteds, function(index, selected) {
-		$("option", $select).each(function() {
-		  //console.log('selected', selected[$.fn.optionals.value], $(this).val());
+	$select = this;
+	selecteds = arg2;
+	console.log(selecteds);
+	$.each(selecteds, function(index, selected) {
+	  $("option", $.fn.$select).each(function() {
+		console.log('selected', $select.data("value"), selected[$select.data("value")], $(this).val());
 
-		  if ($(this).val() == selected[$.fn.optionals.value])
-			$(this).attr("selected", true);
-		});
+		if ($(this).val() == selected[$select.data("value")])
+		  $(this).attr("selected", true);
 	  });
-	  this.selectpicker('refresh');
-	}
+	});
 	break;
   case 'onchange':
 	$.fn.selectpicker.callback = arg2;
@@ -84,7 +89,7 @@ $(document).ready(
 	  }
 
 	  /* Widget Select */
-	  $('select').selectpicker();
+	  $('select').bootselect();
 
 	  // spazi fix
 	  // $('textarea').text($('textarea').text().trim());

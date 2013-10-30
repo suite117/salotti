@@ -525,17 +525,20 @@
 
 			$option.prop('selected', !state);
 		  }
-		  
-		  
+
 		  // cambio opzione select
 		  console.log($option);
-		  console.log($.fn.optionals);
-		  var json = {};
-		  json[$.fn.optionals["label"]] = $option.text().trim();
-		  json[$.fn.optionals["value"]] = $option.val();
-		  json['selected'] = $option.prop('selected');
-		  $.fn.selectpicker.callback(json);
+		  // console.log(this.data("label"));
+		  var $select = $option.parent();
 
+		  if ($.fn.selectpicker.callback != null) {
+			var json = {};
+			json[$select.data("label")] = $option.text().trim();
+			json[$select.data("value")] = $option.val();
+			json['selected'] = $option.prop('selected');
+			$.fn.selectpicker.callback(json);
+		  }
+		  
 		  that.$button.focus();
 
 		  // Trigger select 'change'

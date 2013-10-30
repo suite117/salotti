@@ -64,7 +64,10 @@
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.js"></script>
     -->
+
 <?php if ($general -> logged_in() === true) : ?>
+
+
 <body data-base_url="<?= curUrl() ?>">
   <?php else : ?>
 
@@ -72,6 +75,11 @@
 <body oncontextmenu="return false;" data-base_url="<?= curUrl() ?>">
   <?php endif;?>
 
+  <script type="text/javascript">
+//prepara l'url base per javascript
+//l'url base per javascript
+  var base_url = $("body").data("base_url");
+</script>
 
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= CurUrl() ?>images/background_top.png')">
     <a class="navbar-brand" href="index.html"><img id="logo" src="<?=curURL() ?>images/logo.png" /> </a>

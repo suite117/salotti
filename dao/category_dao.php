@@ -20,7 +20,8 @@ class CategoryDAO {
 		}
 
 		# We use fetchAll() instead of fetch() to get an array of all the selected records.
-		return $query -> fetchAll();
+		$rows = $query -> fetchAll(); 
+		return $rows[0];
 	}
 
 	public function get_categories() {

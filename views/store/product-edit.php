@@ -1,66 +1,52 @@
 <?php require 'product-edit-submit.php';?>
 <script type="text/javascript">
 
-// prepara l'url base per javascript
 
-// l'url base per javascript
-var base_url = $("body").data("base_url");
+function get_options_by_type() {
+  // recupera le opzioni in base al tipo
+  $.getJSON(base_url + 'rest/options_rest.php?type=' + $("#type").val() , function(data) {
+		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code" });
 
-function get_category_by_type(type, destination_id) {
-  $.getJSON(base_url + "rest/category_rest.php?type=" + type, function(categories) {
+		<?php if (isset($product)) : ?>
+		 // recupera le opzioni selezionate
+	       $.getJSON(base_url + 'rest/options_rest.php?id=' + $("#product_id").val() , function(data) {
+			$('#options').bootselect('select', data);
 
-	$("#" + destination_id).html("");
-	$.each(categories, function(index, category) {
-
-	  $("#" + destination_id).append($('<option>', {
-		value : category['category_id'],
-		text : category['category_name'],
-		selected : true
-	  }));
-
-	});
-
-  });
-}
+			// invia dati appena viene selezionato un elemento
+			$('#options').bootselect('onchange', function(data){
+				console.log(data);
+				$.post( base_url + 'rest/options_rest.php?id=' + $("#product_id").val(), data );
+			});
+	  		});
+	       <?php endif; ?>
+	  });
+  }
 
 $(document).ready(function() {
 
-  	// recupero campo type
-  	type = $("#type").val();
-
-    // aggiorna le categorie al cambio del tipo
-    function categoryUpdate() {
-      //get_category_by_type(type, "category_id");
-    }
-    
-    $("#type").change(categoryUpdate);
-
+  	
+    $("#type").change(function(){
+      $.getJSON(base_url + 'rest/category_rest.php?type=' + $(this).val() , function(data) {
+		$('#category_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
+		get_options_by_type();
+     });
+    });
     //categoryUpdate();
 
     // recupera le opzioni in base al tipo
-    $.getJSON(base_url + 'rest/category_rest.php?type=' + type , function(data) {
+    $.getJSON(base_url + 'rest/category_rest.php?type=' + $("#type").val() , function(data) {
 		$('#category_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
-	  });  	
-	
-    <?php if (isset($product)) : ?>
-    // recupera le opzioni in base al tipo
-    $.getJSON(base_url + 'rest/options_rest.php?type=' + type , function(data) {
-		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code" });
-	  });
-  	
-    // recupera le opzioni selezionate
-       $.getJSON(base_url + 'rest/options_rest.php?id=' + $("#product_id").val() , function(data) {
-		$('#options').bootselect('select', data);
 
-		// invia dati appena viene selezionato un elemento
-		$('#options').bootselect('onchange', function(data){
-			//console.log(data);
-			$.post( base_url + 'rest/options_rest.php?id=' + $("#product_id").val(), data );
-		});
-	  });
-    <?php endif; ?>
+		<?php if (isset($product)) : ?>
+		 // recupera le opzioni selezionate
+	       $.getJSON(base_url + 'rest/category_rest.php?id=' + '<?= $product['category_id'] ?>' , function(data) {
+			$('#category_id').bootselect('select', [data]);	
+	       });	
+	       get_options_by_type(type); 
+	     <?php endif;  ?>
+	  });  	
     
-	  
+    get_options_by_type(type); 
 });
 
 </script>
@@ -121,17 +107,17 @@ $(document).ready(function() {
         </select>
       </div>
       <div class="col-md-4">
-        <label for="category_id" class="control-label">Categoria</label> <select class="form-control" name="category_id"
-          id="category_id">
+        <label for="category_id" class="control-label"><?= _('Category') ?> </label> <select class="form-control"
+          name="category_id" id="category_id">
         </select>
       </div>
 
       <div class="col-md-6">
-        <?php if  (isset($product)) : ?>
-        <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
-          multiple>
+       <?php if (isset($product)) : ?>
+        <label for="options" class="control-label"><?= _('Versions') ?> </label> <select name="update_options[]"
+          id="options" multiple>
         </select>
-        <?php endif; ?>
+       <?php endif; ?>
       </div>
     </div>
 
