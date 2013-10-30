@@ -2,31 +2,65 @@
 <script type="text/javascript">
 
 // prepara l'url base per javascript
-$("body").data("base_url", "<?= curUrl() ?>");
+
 // l'url base per javascript
 var base_url = $("body").data("base_url");
 
+function get_category_by_type(type, destination_id) {
+  $.getJSON(base_url + "rest/category_rest.php?type=" + type, function(categories) {
+
+	$("#" + destination_id).html("");
+	$.each(categories, function(index, category) {
+
+	  $("#" + destination_id).append($('<option>', {
+		value : category['category_id'],
+		text : category['category_name'],
+		selected : true
+	  }));
+
+	});
+
+  });
+}
 
 $(document).ready(function() {
 
   	// recupero campo type
   	type = $("#type").val();
-    console.log(type);
 
     // aggiorna le categorie al cambio del tipo
     function categoryUpdate() {
-      get_category_by_type(type, "category_id");
-      get_options_by_type(type, "options");
+      //get_category_by_type(type, "category_id");
     }
     
     $("#type").change(categoryUpdate);
 
-    categoryUpdate();
+    //categoryUpdate();
 
-    // recupera le opzioni selezionate
+    // recupera le opzioni in base al tipo
+    $.getJSON(base_url + 'rest/category_rest.php?type=' + type , function(data) {
+		$('#category_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
+	  });  	
+	
     <?php if (isset($product)) : ?>
-    get_selected_options_by_id($("#product_id").val(), "options");
+    // recupera le opzioni in base al tipo
+    $.getJSON(base_url + 'rest/options_rest.php?type=' + type , function(data) {
+		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code" });
+	  });
+  	
+    // recupera le opzioni selezionate
+       $.getJSON(base_url + 'rest/options_rest.php?id=' + $("#product_id").val() , function(data) {
+		$('#options').bootselect('select', data);
+
+		// invia dati appena viene selezionato un elemento
+		$('#options').bootselect('onchange', function(data){
+			//console.log(data);
+			$.post( base_url + 'rest/options_rest.php?id=' + $("#product_id").val(), data );
+		});
+	  });
     <?php endif; ?>
+    
+	  
 });
 
 </script>
@@ -50,8 +84,8 @@ $(document).ready(function() {
       <input type="hidden" name="id" id="product_id" value="<?= @$product['id']?>">
 
       <div class="col-md-6">
-        <label for="name" class="control-label"><?= _("Model name") ?></label> <input type="text" class="form-control" name="name"
-          id="name" value="<?= @$product['nome']?>" placeholder="<?= _("Insert the product name") ?>">
+        <label for="name" class="control-label"><?= _("Model name") ?> </label> <input type="text" class="form-control"
+          name="name" id="name" value="<?= @$product['nome']?>" placeholder="<?= _("Insert the product name") ?>">
       </div>
 
       <div class="col-md-3">
@@ -89,23 +123,15 @@ $(document).ready(function() {
       <div class="col-md-4">
         <label for="category_id" class="control-label">Categoria</label> <select class="form-control" name="category_id"
           id="category_id">
-          <?php foreach ($categories as $cat ) :?>
-          <option <?= $cat['category_id'] == $product['category_id'] ? 'selected' : '' ?>
-            value="<?=$cat['category_id'] ?>"><?=ucfirst($cat['category_name']) ?></option>
-          <?php endforeach; ?>
         </select>
       </div>
-      <div class="col-md-6">
-        <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
-          class="multiselect" multiple="multiple">
-          <?php for ($i=0; $i < sizeof($options); $i++) :?>
-          <option value="<?= $options[$i]['option_code'];?>">
-            <?= $options[$i]['option_name']; ?>
-          </option>
-          </label>
 
-          <?php endfor;?>
+      <div class="col-md-6">
+        <?php if  (isset($product)) : ?>
+        <label for="options" class="control-label">Versioni</label> <select name="update_options[]" id="options"
+          multiple>
         </select>
+        <?php endif; ?>
       </div>
     </div>
 

@@ -5,7 +5,6 @@
 	
 }
 
-
 /* form */
 .form-horizontal .form-group {
 	margin: 30px 0;
@@ -335,4 +334,9 @@ footer li,footer li a,footer {
 /* debug */
 .xdebug-var-dump {
 	
+}
+
+/* Bootstrap SelectPicker */
+.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]) {
+	width: 100%;
 }

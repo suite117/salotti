@@ -69,6 +69,42 @@ class OptionsDAO {
 		}
 	}
 
+	public function create_option($product_id, $option_code){
+
+
+		$q = "INSERT INTO product_options (`product_id`, `option_code`)	VALUES ( ?, ?)";
+		
+
+		$query = $this->db->prepare($q);
+		$query->bindValue(1, $product_id);
+		$query->bindValue(2, $option_code);
+
+		try{
+			$query->execute();
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}
+
+	}
+
+	public function delete_option($product_id, $option_code){
+
+
+		$q = "DELETE FROM product_options WHERE product_id=? AND option_code=? ";
+		
+
+		$query = $this->db->prepare($q);
+		$query->bindValue(1, $product_id);
+		$query->bindValue(2, $option_code);
+
+		try{
+			$query->execute();
+		}catch(PDOException $e){
+			die($e->getMessage());
+		}
+
+	}
+
 	public function create_selected_options($options, $product){
 
 		for ($i=0; $i < sizeof($options); $i++) {

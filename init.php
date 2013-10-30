@@ -3,6 +3,7 @@ ob_start(); // Added to avoid a common error of 'header already sent' (not discu
 if(!isset($_SESSION))
 	session_start();
 
+require_once 'config/database.php';
 require_once 'dao/users.php';
 require_once 'dao/category_dao.php';
 require_once 'dao/options_dao.php';
@@ -25,7 +26,7 @@ if ($general->logged_in() === true)  { // check if the user is logged in
 
 // Locale configuration
 if ($isLocalhost)
-	require_once('./locale/gettext.inc');
+	require_once('locale/gettext.inc');
 
 // define constants
 define('PROJECT_DIR', realpath('./'));

@@ -48,7 +48,7 @@
 <script type="text/javascript"
   src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<!-- Bootstrap core JavaScript -->
+<!-- Bootstrap 3.0 core JavaScript -->
 <?php if ($config['isOnline']) : ?>
 <script type="text/javascript"
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>

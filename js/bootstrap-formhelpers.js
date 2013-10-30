@@ -5050,7 +5050,7 @@ var BFHLanguagesList = {
   'nr' : 'isiNdebele',
   'xh' : 'isiXhosa',
   'zu' : 'isiZulu',
-  'it' : 'italiano',
+  'it' : 'Italiano',
   'ik' : 'Iñupiaq',
   'pl' : 'polski',
   'mh' : 'Kajin M̧ajeļ',

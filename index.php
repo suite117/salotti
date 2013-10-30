@@ -3,7 +3,6 @@
 // riporta tutti gli errori
 error_reporting(E_ALL | E_STRICT);
 
-require_once 'config/database.php';
 require_once 'utils.php';
 require_once 'init.php';
 
@@ -25,12 +24,14 @@ require_once 'header.php';
 // POST CONTROLLER
 $errors = array();
 if (isset($_POST))
-	foreach ($_POST as $key => $value) {
-		if (is_array($value)) {
-			${$key} = $value;
-		} else
-			${$key} = strtolower(trim($value));
-	}
+foreach ($_POST as $key => $value) {
+	if (is_array($value)) {
+		${
+			$key} = $value;
+	} else
+		${
+		$key} = strtolower(trim($value));
+}
 
 // GET CONTROLLER
 // setta la categoria se esiste
@@ -79,7 +80,7 @@ if (isset($_GET["controller"])) {
 		}
 	} else/* TUTTI GLI ALTRI CASI */
 		switch($controller) {
-			/* per Aruba - caso solo cartella principale */
+		/* per Aruba - caso solo cartella principale */
 			case 'index' :
 			case 'index.php' :
 			case 'index.html' :
@@ -87,9 +88,9 @@ if (isset($_GET["controller"])) {
 				break;
 			case 'breadcrumb' :
 				$view = 'views/store/products.php';
-				$page_title = 'Galleria';
+				$page_title = _('Galleria');
 				break;
-
+			case 'products':
 			case 'prodotti' :
 				if (isset($_GET['title'])) {
 					$product = $products_dao -> get_product_by_field('nome', $_GET['title']);
@@ -97,8 +98,8 @@ if (isset($_GET["controller"])) {
 					$page_title = $product['nome'];
 				} else {
 					$view = 'views/store/products.php';
-					$page_title = 'Galleria';
-					$page_description = 'Visualizza i prodotti';
+					$page_title = _('Galleria');
+					$page_description = _('Visualizza i prodotti');
 				}
 
 				break;
@@ -123,9 +124,10 @@ if (isset($_GET["controller"])) {
 				$view = 'views/user/register.php';
 				$page_title = _("Registration");
 				break;
+			case 'user-list':
 			case 'lista-utenti' :
-				$view = 'views/user/members.php';
-				$page_title = _("Members");
+				$view = 'views/user/users-list.php';
+				$page_title = _("User list");
 				break;
 			case 'lista-categorie' :
 				$view = 'views/store/categories.php';
@@ -141,7 +143,7 @@ if (isset($_GET["controller"])) {
 			default :
 				$view = 'views/' . $controller . '.php';
 				$page_title = $controller;
-		}
+	}
 }
 
 // se passa il test non sono nella home

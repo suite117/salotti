@@ -22,8 +22,16 @@
 <script type="text/javascript" src="<?= curUrl(). 'js/jquery.js' ?>"></script>
 <?php endif; ?>
 
-<!-- Bootstrap styles -->
+<!--  Select plugin -->
+<script type="text/javascript" src="<?=curURL() ?>js/bootstrap-select.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=curURL() ?>css/bootstrap-select.css">
+
+<!-- Bootstrap styles 3.0 -->
+<?php if ($config['isOnline']) : ?>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<?php else: ?>
 <link href="<?=curURL() ?>css/bootstrap.min.css" rel="stylesheet">
+<?php endif; ?>
 
 <!-- Add custom CSS here -->
 <link href="<?=curURL() ?>css/modern-business.css" rel="stylesheet">
@@ -51,14 +59,17 @@
       <script src="<?=curUrl() ?>js/respond.min.js"></script>
     <![endif]-->
 
-</head>
 
+<!-- 2.3.2
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.js"></script>
+    -->
 <?php if ($general -> logged_in() === true) : ?>
-<body>
+<body data-base_url="<?= curUrl() ?>">
   <?php else : ?>
 
 
-<body oncontextmenu="return false;">
+<body oncontextmenu="return false;" data-base_url="<?= curUrl() ?>">
   <?php endif;?>
 
 
@@ -79,7 +90,9 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="<?=curUrl() ."index.html"?>"><?=_("Home")?> </a>
           
-          <li><a href="<?=curUrl() ."azienda.html"?>"><?= _("Company") ?> </a>
+          <li><a hr ef="<?=curUrl()
+          
+          ."azienda.html"?>"><?= _("Company") ?> </a>
           </li>
           <?php if ($general -> logged_in() === true) : ?>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=_("Products") ?><b
@@ -132,16 +145,20 @@
           </li>
           <?php endif; ?>
           <?php  else:?>
-          <li><a href="<?=curUrl(). "prodotti.html"?>"><?= _("Products")?> </a></li>
+          <li><a href="<?=curUrl(). "prodotti.html"?>"><?= _("Products")?> </a>
+          </li>
           <?php endif;?>
 
-          <li><a href="<?=curUrl() ."contatti.html" ?>"><?= _("Contacts") ?> </a></li>
+          <li><a href="<?=curUrl() ."contatti.html" ?>"><?= _("Contacts") ?> </a>
+          </li>
           <?php if ($general -> logged_in() === true) : ?>
 
-          <li><a href="<?=curUrl(). "logout.html"?>"><?= _("Logout") ?> </a></li>
+          <li><a href="<?=curUrl(). "logout.html"?>"><?= _("Logout") ?> </a>
+          </li>
           <?php else : ?>
 
-          <li><a href="<?=curUrl() ?>login.html"><?= _("Login") ?> </a></li>
+          <li><a href="<?=curUrl() ?>login.html"><?= _("Login") ?> </a>
+          </li>
 
 
           <?php endif; ?>

@@ -1,3 +1,53 @@
+$.fn.bootselect = function(arg1, arg2, optionals) {
+
+  defaults = {
+	"label" : "label",
+	"value" : "value"
+  };
+  // make sure any supplied options take precedence over defaults
+
+  // optionals = $.extend({}, optionals, defaults);
+  if (optionals != null)
+	$.fn.optionals = optionals;
+
+  // console.log(this, arg1, arg2);
+  $select = this;
+  switch (arg1) {
+  case 'source':
+	var options = arg2;
+	this.html('');
+	for ( var i in options) {
+	  // console.log(options[i]);
+	  this.append($('<option>', {
+		value : options[i][$.fn.optionals.value],
+		text : options[i][$.fn.optionals.label]
+	  }));
+	}
+	this.selectpicker('');
+	break;
+  case 'select':
+	if (arg2 instanceof Array) {
+	  selecteds = arg2;
+	  $.each(selecteds, function(index, selected) {
+		$("option", $select).each(function() {
+		  //console.log('selected', selected[$.fn.optionals.value], $(this).val());
+
+		  if ($(this).val() == selected[$.fn.optionals.value])
+			$(this).attr("selected", true);
+		});
+	  });
+	  this.selectpicker('refresh');
+	}
+	break;
+  case 'onchange':
+	$.fn.selectpicker.callback = arg2;
+	break;
+  }
+
+  this.selectpicker('refresh');
+  return this;
+};
+
 function isSmartphone() {
   if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i)
 	  || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)
@@ -26,59 +76,6 @@ function confirmbox(message, button_input, callback) {
 
 }
 
-function get_category_by_type(type, destination_id) {
-  $.getJSON(base_url + "rest/category_rest.php?type=" + type, function(categories) {
-
-	$("#" + destination_id).html("");
-	$.each(categories, function(index, category) {
-
-	  $("#" + destination_id).append($('<option>', {
-		value : category['category_id'],
-		text : category['category_name'],
-		selected : true
-	  }));
-
-	});
-
-  });
-}
-
-function get_options_by_type(type, destination_id) {
-  $.getJSON(base_url + "rest/options_rest.php?type=" + type, function(options) {
-
-	$("#" + destination_id).html("");
-	$.each(options, function(index, option) {
-
-	  $("#" + destination_id).append($('<option>', {
-		value : option['option_code'],
-		text : option['option_name'],
-	  }));
-
-	});
-
-	$("#" + destination_id).multiselect('rebuild'); // cancella se selezionato
-
-  });
-}
-
-function get_selected_options_by_id(id, destination_id) {
-  $.getJSON(base_url + "rest/options_rest.php?id=" + id, function(options) {
-
-	$.each(options, function(index, option) {
-
-	  $("#" + destination_id + " option").each(function() {
-		if (option['option_code'] == $(this).val())
-		  $(this).attr("selected", true);
-	  });
-
-	});
-
-	$("#" + destination_id).multiselect('rebuild'); // cancella se selezionato
-
-  });
-}
-
-
 $(document).ready(
 	function() {
 
@@ -86,15 +83,13 @@ $(document).ready(
 		$('#sidebar-left').remove();
 	  }
 
-	  // Initialize the plugin multiselect:
-	  $('.multiselect').multiselect({
-		includeSelectAllOption : true
-	  });
+	  /* Widget Select */
+	  $('select').selectpicker();
 
 	  // spazi fix
 	  // $('textarea').text($('textarea').text().trim());
 
-	  // sub menu principale fix
+	  // sub menu principale fix per gli smartphone
 	  $('body').on('touchstart.dropdown', '.dropdown-menu', '.dropdown-submenu', function(e) {
 		e.stopPropagation();
 	  });
@@ -103,7 +98,7 @@ $(document).ready(
 	  $('a.delete').on('click', function() {
 		message = 'Eliminare definitavemente il contenuto? Non sarà possile tornare indietro.';
 		confirmbox(message, this, function(button_input) {
-		  console.log($(button_input).parent().parent());
+		  // console.log($(button_input).parent().parent());
 		  id = $(button_input).parent().parent().children()[0].innerHTML;
 
 		  $.ajax({
