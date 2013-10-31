@@ -1,27 +1,16 @@
 <?php require 'category-edit-submit.php';?>
 <script type="text/javascript">
+
+
 $(document).ready(function() {
 
-    console.log($("#type").val());
-
-	$.getJSON( "<?= curUrl() ?>rest/category_rest.php", function( list ) {
-	   console.log(list);
-		var items = [];
-		$.each( list, function( index, element ) {
-
-
-			
-			$.each(element, function(property, value ){
-			    items.push( value );
-				});
-			
-		});
-		console.log(items);
-		$( "#content" ).append(items);
-		
-	}); 
+  	
+       // recupera le opzioni in base al tipo
+    $.getJSON(base_url + 'rest/category_rest.php' , function(data) {
+		$('#category_parent_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
+	  });  	
+    
 });
-
 </script>
 
 
@@ -48,8 +37,8 @@ $(document).ready(function() {
       </div>
 
       <div class="col-md-2">
-        <label for="category_id" class="control-label">Categoria Padre</label> <select class="form-control" name="category_id"
-          id="category_id">
+        <label for="category_parent_id" class="control-label">Categoria Padre</label> <select class="form-control" name="category_parent_id"
+          id="category_parent_id">
           <?php foreach ($categories as $cat ) :?>
           <option <?= $cat['category_parent_id'] == $category['category_id'] ? 'hidden' : '' ?>
             value="<?=$cat['category_parent_id'] ?>"><?=ucfirst($cat['category_parent_name']) ?></option>

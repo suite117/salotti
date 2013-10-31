@@ -13,9 +13,9 @@ elseif( !empty($_GET)) {
 	}
 	elseif( isset($_GET['type'])){
 		$categories = $category_dao->get_categories_by_type($_GET['type']);
+	}
 	}else{
 		$categories = $category_dao->get_categories();
-	}
 
 }
 
