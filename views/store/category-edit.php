@@ -5,7 +5,7 @@
 $(document).ready(function() {
 
   	
-       // recupera le opzioni in base al tipo
+       // recupera le categorie
     $.getJSON(base_url + 'rest/category_rest.php' , function(data) {
 		$('#category_parent_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
 	  });  	
