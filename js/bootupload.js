@@ -10,7 +10,6 @@ $.fn.bootupload = function(optionals) {
 	readonly : true,
 	input_text_id : this.attr("id")
   };
-  
 
   optionals = $.extend({}, defaults, optionals);
 
@@ -21,10 +20,15 @@ $.fn.bootupload = function(optionals) {
   this.after('<span class="input-group-btn"><input type="file" id="' + id
 	  + '" name="file" /></span>');
 
-  //console.log($("#" + id));
-  
-
-  $("#" + optionals.preview_id).append();
+  // console.log($("#" + id));
+  if (optionals.type == 'image') {
+	var file_name = $("#" + optionals.input_text_id).val();
+	if (file_name.length != 0) {
+	  var img = '<img class="img-responsive" src="' + optionals.base_url + optionals.relative_url
+		  + file_name + '" />';
+	  $("#" + optionals.preview_id).html(img);
+	}
+  }
 
   $('#' + id).pekeUpload(optionals);
   return this;

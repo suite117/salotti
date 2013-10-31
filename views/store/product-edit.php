@@ -52,7 +52,6 @@ $(document).ready(function() {
 
 
     // widget dell'upload immagine
-    console.log(base_url);
     $("#image").bootupload({base_url : base_url, relative_url : 'files/images/' + $('#type').val() + '/', type : "image", preview_id : 'image-thumbnail' }); 
 });
 
@@ -103,7 +102,7 @@ $(document).ready(function() {
 
     <div class="form-group">
       <div class="col-md-2">
-        <label for="category_id" class="control-label"><?= _('Type') ?> </label> <select class="form-control"
+        <label for="type" class="control-label"><?= _('Type') ?> </label> <select class="form-control"
           name="type" id="type">
 
           <?php foreach ($types as $type ) :?>
@@ -132,7 +131,7 @@ $(document).ready(function() {
       <div class="col-md-6">
         <div class="input-group">
           <!-- form immagine -->
-          <input id="image" name="image" type="text" class="form-control">
+          <input id="image" name="image" type="text" class="form-control" value="<?= @$product['immagine']?>">
         </div>
         <!-- /input-group -->
       </div>

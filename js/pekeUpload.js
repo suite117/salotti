@@ -74,8 +74,10 @@
 				UploadFile();
 				// appendo l'immagine nel caso in cui il tipo si immagine
 				if (options.type == "image") {
+
 				  var img = '<img class="img-responsive" src="' + options.base_url
 					  + options.relative_url + file.name + '" />';
+
 				  if (options.multi == true) {
 					var $imgs = $("#" + options.preview_id + " img");
 					console.log($imgs, $imgs.length);
@@ -247,7 +249,7 @@
 		  canUpload = true;
 		}
 	  }
-	  return canUpload
+	  return canUpload;
 	}
 	// Validate extension of file
 	function validateExtension() {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 12:02+0100\n"
+"POT-Creation-Date: 2013-10-31 15:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgid "Add category"
 msgstr ""
 
 #: c:\wamp\www\git\salotti\header.php:117
-#: c:\wamp\www\git\salotti\index.php:134
+#: c:\wamp\www\git\salotti\index.php:135
 msgid "Category list"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgid "Administration"
 msgstr ""
 
 #: c:\wamp\www\git\salotti\header.php:146
-#: c:\wamp\www\git\salotti\index.php:130
+#: c:\wamp\www\git\salotti\index.php:131
 msgid "User list"
 msgstr ""
 
@@ -84,12 +84,12 @@ msgid "My profile"
 msgstr ""
 
 #: c:\wamp\www\git\salotti\header.php:162
-#: c:\wamp\www\git\salotti\index.php:138
+#: c:\wamp\www\git\salotti\index.php:139
 msgid "Contacts"
 msgstr ""
 
 #: c:\wamp\www\git\salotti\header.php:166
-#: c:\wamp\www\git\salotti\index.php:121
+#: c:\wamp\www\git\salotti\index.php:122
 msgid "Logout"
 msgstr ""
 
@@ -97,19 +97,19 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:91 c:\wamp\www\git\salotti\index.php:101
+#: c:\wamp\www\git\salotti\index.php:92 c:\wamp\www\git\salotti\index.php:102
 msgid "Galleria"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:102
+#: c:\wamp\www\git\salotti\index.php:103
 msgid "Visualizza i prodotti"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:125
+#: c:\wamp\www\git\salotti\index.php:126
 msgid "Registration"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:142
+#: c:\wamp\www\git\salotti\index.php:143
 msgid "Activate"
 msgstr ""
 
