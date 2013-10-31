@@ -3,6 +3,17 @@ ob_start(); // Added to avoid a common error of 'header already sent' (not discu
 if(!isset($_SESSION))
 	session_start();
 
+
+//gestione delle eccezioni in fase di connessione con PDO
+// collegamento al database
+$host = 'localhost';
+$isLocalhost = true;
+$host = $_SERVER['HTTP_HOST'];
+if ($host == 'localhost' || strpos($host, '192') !== false)
+	$isLocalhost = true;
+else
+	$isLocalhost = false;
+
 require_once 'config/database.php';
 require_once 'dao/users.php';
 require_once 'dao/category_dao.php';
@@ -31,7 +42,7 @@ if ($isLocalhost)
 // define constants
 define('PROJECT_DIR', realpath('./'));
 define('LOCALE_DIR', './locale/');
-define('DEFAULT_LOCALE', "en_US");
+define('DEFAULT_LOCALE', "it_IT");
 //define('DEFAULT_LOCALE', "it-IT");
 $encoding = "UTF-8";
 
@@ -55,6 +66,7 @@ $loc= setlocale(LC_ALL, $lang.'.'.$encoding);
 bindtextdomain($domain, LOCALE_DIR);
 textdomain($domain);
 
+// UTF-8 encoding
 header("Content-type: text/html; charset=$encoding");
 
 

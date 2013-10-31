@@ -4,12 +4,13 @@ $.fn.bootupload = function(optionals) {
 	theme : 'bootstrap',
 	multi : false,
 	allowedExtensions : "jpeg|jpg|png|gif",
-	base_url : "./",
+	base_url : "/",
 	relative_url : 'files/',
 	type : "file",
 	readonly : true,
 	input_text_id : this.attr("id")
   };
+  
 
   optionals = $.extend({}, defaults, optionals);
 

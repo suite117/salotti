@@ -3,8 +3,9 @@
 // riporta tutti gli errori
 error_reporting(E_ALL | E_STRICT);
 
-require_once 'utils.php';
 require_once 'init.php';
+require_once 'utils.php';
+
 
 $view = 'views/home.php';
 $page_title = '';

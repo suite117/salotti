@@ -2,7 +2,7 @@
 
 <hr>
 
-<footer style="background-image: url('<?= CurUrl() ?>images/footer.png')">
+<footer style="background-image: url('<?= BASE_URL ?>images/footer.png')">
 
   <div class="row" style="padding: 85px 60px;">
     <div class="col-sx-1 col-md-2">
@@ -53,28 +53,28 @@
 <script type="text/javascript"
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <?php else: ?>
-<script type="text/javascript" src="<?=curUrl(). 'js/bootstrap.min.js' ?>"></script>
+<script type="text/javascript" src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
 <?php endif; ?>
 
 <!-- Bootstrap Form Helpers -->
-<script src="<?=curUrl() ?>js/bootstrap-formhelpers.js"></script>
+<script src="<?=BASE_URL ?>js/bootstrap-formhelpers.js"></script>
 
 <!-- Plugin multiselect per la selezione multipla -->
 <script type="text/javascript"
-  src="<?=curUrl() ?>js/bootstrap-multiselect.js"></script>
+  src="<?=BASE_URL ?>js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet"
-  href="<?=curUrl() ?>css/bootstrap-multiselect.css" type="text/css" />
+  href="<?=BASE_URL ?>css/bootstrap-multiselect.css" type="text/css" />
 
 <!-- Plugin PekeUpload per l'upload di immagini-->
 <script type="text/javascript"
-  src="<?=curUrl() ?>js/pekeUpload.js"></script>
+  src="<?=BASE_URL ?>js/pekeUpload.js"></script>
 <!-- Wrapper plugin PekeUpload -->
-<script type="text/javascript" src="<?=curUrl() ?>js/bootupload.js"></script>
+<script type="text/javascript" src="<?=BASE_URL ?>js/bootupload.js"></script>
 
 <!-- BootBox 4.1.0 -->
-<script src="<?= curUrl() ?>js/bootbox.js"></script>
+<script src="<?= BASE_URL ?>js/bootbox.js"></script>
 
 <!-- Main -->
-<script src="<?= curUrl() ?>js/init.js"></script>
+<script src="<?= BASE_URL ?>js/init.js"></script>
 </body>
 </html>

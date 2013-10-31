@@ -97,7 +97,7 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
 
     $prodotto_path = curUrl() . 'prodotti/' . (isset($category_name) ? $category_name . '/' : '') . $prodotto['nome'] . '.html';
     $prodotto['nome'] = isset($prodotto['nome']) ? $prodotto['nome'] : 'Nome modello '. $product_index;
-    $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=images/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
+    $prodotto['immagine'] =  curUrl() .'image.php?width=800&height=600&path=files/images/'. $type['type'] . '/' . (isset($prodotto['immagine']) && strlen(trim($prodotto['immagine'])) != 0 ? $prodotto['immagine'] : 'default.png');
 
     $product_index++;
     ?>
@@ -117,7 +117,7 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
         <?php if ($general -> logged_in() === true) : ?>
         <div class="col-md-3 col-lg-3">
           <a class="gallery-lightbox" href="#" style="text-decoration: none;"><div
-						style="width:30px; height: 30px; background-image: url('<?= curUrl() ?>images/lente.png')">&nbsp;</div> </a>
+						style="width:30px; height: 30px; background-image: url('<?= BASE_URL ?>images/lente.png')">&nbsp;</div> </a>
         </div>
         <?php endif; ?>
       </div>

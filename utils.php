@@ -1,13 +1,36 @@
 <?php
 
+/* 
+ * Aggiunta costante BASE_PATH che punta alla directory principale del file system 
+ * Aggiunta costante BASE_URL che punta all'url principale del sito
+ * */
+define('BASE_PATH', str_replace('\\', '/', dirname(__FILE__)) . '/');
+
+$tempPath1 = explode('/', str_replace('\\', '/', dirname($_SERVER['SCRIPT_FILENAME'])));
+$tempPath2 = explode('/', substr(BASE_PATH, 0, -1));
+$tempPath3 = explode('/', str_replace('\\', '/', dirname($_SERVER['PHP_SELF'])));
+
+for ($i = count($tempPath2); $i < count($tempPath1); $i++)
+	array_pop ($tempPath3);
+
+$BASE_URL = $_SERVER['HTTP_HOST'] . implode('/', $tempPath3);
+
+if ($BASE_URL{strlen($BASE_URL) - 1}== '/')
+	define('BASE_URL', 'http://' . $BASE_URL);
+else
+	define('BASE_URL', 'http://' . $BASE_URL . '/');
+
+unset($tempPath1, $tempPath2, $tempPath3, $BASE_URL);
+
 function curURL() {
 
 	$uri = $_SERVER['REQUEST_URI'];
+	$uri = $_SERVER['HTTP_HOST'];
 	$paths = explode("/", $uri);
-
-	return '/'. $paths[1].'/' . $paths[2] . '/';
-
+	//return '/' . $paths[0].'/' . $paths[1] . '/'; 
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
+
+	return BASE_URL;
 }
 
 

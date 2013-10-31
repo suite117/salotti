@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-30 21:59+0100\n"
+"POT-Creation-Date: 2013-10-30 22:01+0100\n"
 "PO-Revision-Date: 2013-10-30 21:58+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,7 +143,7 @@ msgstr "Registrazione"
 
 #: c:\wamp\www\git\salotti\index.php:126
 #, fuzzy
-msgid "user list"
+msgid "user_list"
 msgstr "Lista utenti"
 
 #: c:\wamp\www\git\salotti\index.php:140

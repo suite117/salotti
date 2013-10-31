@@ -1,15 +1,5 @@
 <?php 
 
-//gestione delle eccezioni in fase di connessione con PDO
-// collegamento al database
-$host = 'localhost';
-$isLocalhost = true;
-$host = $_SERVER['HTTP_HOST'];
-if ($host == 'localhost' || strpos($host, '192') !== false)
-	$isLocalhost = true;
-else
-	$isLocalhost = false;
-
 # We are storing the information in this config array that will be required to connect to the database.
 if ($isLocalhost) {
 	$config = array(

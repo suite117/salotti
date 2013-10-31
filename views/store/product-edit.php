@@ -52,7 +52,8 @@ $(document).ready(function() {
 
 
     // widget dell'upload immagine
-    $("#image").bootupload({base_url : base_url, type : "image", preview_id : 'image-thumbnail' }); 
+    console.log(base_url);
+    $("#image").bootupload({base_url : base_url, relative_url : 'files/images/' + $('#type').val() + '/', type : "image", preview_id : 'image-thumbnail' }); 
 });
 
 </script>
@@ -71,7 +72,7 @@ $(document).ready(function() {
 
   <form class="form-horizontal" role="form" method="post" action="">
 
-    <div class="form-group <?= isset($errors['name']) ? 'has-error' : '' ?>">
+    <div class="form-group">
       <input type="hidden" name="id" id="product_id" value="<?= @$product['id']?>">
 
       <div class="col-md-6">
@@ -173,18 +174,3 @@ $(document).ready(function() {
   </form>
 
 </div>
-
-
-
-<script type="text/javascript">
-function fileError(file,error){
-    alert("Errore sul file: "+file.name+" Errore: "+error+"");
-   }
-
-    $(document).ready(function(){ 
-	$("#file_image").pekeUpload({theme:'bootstrap', multi: false, allowedExtensions:"jpeg|jpg|png|gif", base_url: "<?=curUrl() ?>", relative_url : 'images/'});
-      
-    });
-  </script>
-
-

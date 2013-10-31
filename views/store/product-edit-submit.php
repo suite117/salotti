@@ -1,7 +1,7 @@
 <?php
 $general->not_admin_out_protect();
 
-if (isset($id)){
+if (!empty($id)){
 	$product = $products_dao->get_product($id);
 	//var_dump("product", $product);
 }
@@ -33,7 +33,7 @@ if (isset($_POST['save'])) {
 
 	if (empty($errors) === true) {
 		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, @$immagine, $product['id']);
-		
+
 		//$options_dao->delete_selected_options($product);
 		//$options_dao->create_selected_options(@$update_options, $product);
 
@@ -41,15 +41,15 @@ if (isset($_POST['save'])) {
 		$product = $products_dao->get_product($id);
 		//var_dump("options", $options);
 		//var_dump($product);
-		
-		$success= 'Il prodotto è stato aggiornato correttamente. <a href="'.curUrl() .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
+
+		$success= 'Il prodotto è stato aggiornato correttamente. <a href="'.BASE_URL .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
 	}
 }
 elseif (isset($_POST['create'])) {
 
 	if (empty($errors) === true) {
 		$products_dao -> insert($name, null, $description, $scheda_tecnica, $category_id, $version_id);
-		$success= 'Il prodotto è stato inserito correttamente. <a href="'.curUrl() .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
+		$success= 'Il prodotto è stato inserito correttamente. <a href="'.BASE_URL .'prodotti/' .   $product['nome']  . '.html">Visualizza le modifiche</a>';
 
 	}
 }
