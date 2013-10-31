@@ -31,12 +31,12 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
 <div class="container">
 
 
-  <!-- <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
+  <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
     <ul class="nav bs-sidenav nav-list">
-      <?php //require 'menu.php';?>
+      <?php require 'menu.php';?>
     </ul>
   </div>
-  -->
+
   <?php
 
   foreach ($types as $type) :
