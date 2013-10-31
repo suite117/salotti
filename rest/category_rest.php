@@ -2,8 +2,7 @@
 
 require '../init.php';
 
-header('Content-type: application/json');
-
+$categories = array();
 
 if( !empty($_POST))   {
 
@@ -20,7 +19,7 @@ elseif( !empty($_GET)) {
 
 }
 
-
+header('Content-type: application/json');
 echo json_encode($categories);
 ?>
 

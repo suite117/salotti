@@ -10,7 +10,7 @@ $view = 'views/home.php';
 $page_title = '';
 $page_description = '';
 $category_name = null;
-$config['isOnline'] = true;
+$config['isOnline'] = false;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';

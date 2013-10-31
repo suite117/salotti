@@ -1,4 +1,5 @@
 <?php require 'product-edit-submit.php';?>
+
 <script type="text/javascript">
 
 
@@ -7,18 +8,17 @@ function get_options_by_type() {
   $.getJSON(base_url + 'rest/options_rest.php?type=' + $("#type").val() , function(data) {
 		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code" });
 
-		<?php if (isset($product)) : ?>
+		
 		 // recupera le opzioni selezionate
 	       $.getJSON(base_url + 'rest/options_rest.php?id=' + $("#product_id").val() , function(data) {
 			$('#options').bootselect('select', data);
 
 			// invia dati appena viene selezionato un elemento
-			$('#options').bootselect('onchange', function(data){
-				console.log(data);
+			$('#options').bootselect('onchange', function(data){	
 				$.post( base_url + 'rest/options_rest.php?id=' + $("#product_id").val(), data );
 			});
 	  		});
-	       <?php endif; ?>
+	      
 	  });
   }
 
@@ -27,11 +27,13 @@ $(document).ready(function() {
   	
     $("#type").change(function(){
       $.getJSON(base_url + 'rest/category_rest.php?type=' + $(this).val() , function(data) {
+    	console.log(data);
 		$('#category_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
+		<?php if (isset($product)) : ?>
 		get_options_by_type();
+		 <?php endif; ?>
      });
     });
-    //categoryUpdate();
 
     // recupera le opzioni in base al tipo
     $.getJSON(base_url + 'rest/category_rest.php?type=' + $("#type").val() , function(data) {
@@ -42,15 +44,18 @@ $(document).ready(function() {
 	       $.getJSON(base_url + 'rest/category_rest.php?id=' + '<?= $product['category_id'] ?>' , function(data) {
 			$('#category_id').bootselect('select', [data]);	
 	       });	
-	       get_options_by_type(type); 
+	       get_options_by_type(); 
 	     <?php endif;  ?>
 	  });  	
     
-    get_options_by_type(type); 
+    get_options_by_type(type);
+
+
+    // widget dell'upload immagine
+    $("#image").bootupload({base_url : base_url, type : "image", preview_id : 'image-thumbnail' }); 
 });
 
 </script>
-
 
 <div class="container">
   <?php
@@ -97,8 +102,8 @@ $(document).ready(function() {
 
     <div class="form-group">
       <div class="col-md-2">
-        <label for="category_id" class="control-label"><?= ('Type') ?> </label> <select class="form-control" name="type"
-          id="type">
+        <label for="category_id" class="control-label"><?= _('Type') ?> </label> <select class="form-control"
+          name="type" id="type">
 
           <?php foreach ($types as $type ) :?>
           <option value="<?=$type['type'] ?>"><?=ucfirst($type['type']) ?></option>
@@ -113,13 +118,29 @@ $(document).ready(function() {
       </div>
 
       <div class="col-md-6">
-       <?php if (isset($product)) : ?>
+        <?php if (isset($product)) : ?>
         <label for="options" class="control-label"><?= _('Versions') ?> </label> <select name="update_options[]"
           id="options" multiple>
         </select>
-       <?php endif; ?>
+        <?php endif; ?>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="name" class="col-md-2">Immagine</label>
+      <div class="col-md-6">
+        <div class="input-group">
+          <!-- form immagine -->
+          <input id="image" name="image" type="text" class="form-control">
+        </div>
+        <!-- /input-group -->
+      </div>
+      <div class="col-md-2 col-lg-4">
+        <div id="image-thumbnail"></div>
+        <!-- div destinzione dell'anteprima -->
+      </div>
+    </div>
+    <!-- /.form-group -->
 
     <div class="form-group">
       <div class="col-md-12">

@@ -192,7 +192,7 @@ class ProductsDAO {
 	}
 
 
-	public function update_product($nome, $is_published, $is_avaiable, $description, $schedatecnica, $idcategoria, $id){
+	public function update_product($nome, $is_published, $is_avaiable, $description, $schedatecnica, $idcategoria, $image, $id){
 
 		$query = $this->db->prepare("UPDATE `prodotto` SET
 				`nome`				= ?,
@@ -200,7 +200,8 @@ class ProductsDAO {
 				`is_avaiable`		    = ?,
 				`description`		= ?,
 				`schedatecnica`		= ?,
-				`idcategoria`		= ?
+				`idcategoria`		= ?,
+				`immagine`		= ? 
 
 					
 				WHERE `id` 			= ?
@@ -212,7 +213,8 @@ class ProductsDAO {
 		$query->bindValue(4, $description);
 		$query->bindValue(5, $schedatecnica);
 		$query->bindValue(6, $idcategoria);
-		$query->bindValue(7, $id);
+		$query->bindValue(7, $image);
+		$query->bindValue(8, $id);
 
 		try{
 			$query->execute();

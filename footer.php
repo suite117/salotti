@@ -68,6 +68,8 @@
 <!-- Plugin PekeUpload per l'upload di immagini-->
 <script type="text/javascript"
   src="<?=curUrl() ?>js/pekeUpload.js"></script>
+<!-- Wrapper plugin PekeUpload -->
+<script type="text/javascript" src="<?=curUrl() ?>js/bootupload.js"></script>
 
 <!-- BootBox 4.1.0 -->
 <script src="<?= curUrl() ?>js/bootbox.js"></script>

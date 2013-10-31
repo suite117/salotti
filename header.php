@@ -24,6 +24,8 @@
 
 <!--  Select plugin -->
 <script type="text/javascript" src="<?=curURL() ?>js/bootstrap-select.js"></script>
+<!-- Wrapper Select plugin -->
+<script type="text/javascript" src="<?=curURL() ?>js/bootselect.js"></script>
 <link rel="stylesheet" type="text/css" href="<?=curURL() ?>css/bootstrap-select.css">
 
 <!-- Bootstrap styles 3.0 -->

@@ -31,7 +31,7 @@ if ($isLocalhost)
 // define constants
 define('PROJECT_DIR', realpath('./'));
 define('LOCALE_DIR', './locale/');
-define('DEFAULT_LOCALE', "it_IT");
+define('DEFAULT_LOCALE', "en_US");
 //define('DEFAULT_LOCALE', "it-IT");
 $encoding = "UTF-8";
 
