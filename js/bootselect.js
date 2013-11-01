@@ -1,7 +1,7 @@
 $.fn.bootselect = function(arg1, arg2, optionals) {
 
   if (arg1 == null) {
-	$('select').selectpicker();
+	this.selectpicker();
 	return this;
   }
 
@@ -17,11 +17,14 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
   }
 
   // console.log(this, arg1, arg2);
-  
+
   switch (arg1) {
   case 'source':
 	var options = arg2;
 	this.html('');
+	if (!optionals.selected)
+	  this.append('<option value="">Nessuno</option>');
+
 	for ( var i in options) {
 	  // console.log(options[i]);
 	  this.append($('<option>', {
@@ -34,10 +37,11 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
   case 'select':
 	$select = this;
 	selecteds = arg2;
-	//console.log(selecteds);
+	// console.log(selecteds);
 	$.each(selecteds, function(index, selected) {
 	  $("option", $.fn.$select).each(function() {
-		//console.log('selected', $select.data("value"), selected[$select.data("value")], $(this).val());
+		// console.log('selected', $select.data("value"),
+		// selected[$select.data("value")], $(this).val());
 
 		if ($(this).val() == selected[$select.data("value")])
 		  $(this).attr("selected", true);
