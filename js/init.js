@@ -1,4 +1,3 @@
-
 function isSmartphone() {
   if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i)
 	  || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)
@@ -54,11 +53,15 @@ $(document).ready(
 		confirmbox(message, this, function(button_input) {
 		  // console.log($(button_input).parent().parent());
 		  id = $(button_input).parent().parent().children()[0].innerHTML;
-
+		  var tableEl = $(button_input).parent().parent().parent().parent();
+		  console.log(tableEl);
 		  $.ajax({
 
 			type : "POST",
-			data : "id=" + id,
+			data : {
+			  "id" : id,
+			  "table" : tableEl.data("name")
+			},
 			URL : "",
 
 			success : function(msg) {
