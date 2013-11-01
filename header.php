@@ -105,7 +105,7 @@
           <?php if ($general -> logged_in() === true) : ?>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=_("Products") ?><b
               class="caret"></b> </a> <?php  
-              $categories = $category_dao -> get_categories_ordered_by_id();
+              $categories = $category_dao -> get_categories();
               //var_dump("categorie", $categories);
               echo category_menu($categories, BASE_URL . 'prodotti/');
                
