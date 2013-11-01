@@ -5,6 +5,17 @@
 	
 }
 
+/* languages */
+.languages {
+	float: left;
+	line-height: 20px;
+	padding: 42px 0 42px 100px;
+}
+
+.languages a {
+	padding-right: 15px; 
+}
+
 /* form */
 .form-horizontal .form-group {
 	margin: 30px 0;
@@ -108,7 +119,6 @@ nav.navbar {
 
 #logo {
 	position: relative;
-	left: 50px;
 }
 
 .header {
@@ -356,6 +366,9 @@ footer table td {
 	footer .first {
 		padding: 85px 60px;
 	}
-	
 	footer
+	
+	
+
+
 }

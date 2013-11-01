@@ -67,15 +67,9 @@
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.js"></script>
     -->
 
-<?php if ($general -> logged_in() === true) : ?>
 
+<body data-base_url="<?= BASE_URL ?>" <?= ($general -> logged_in() === false) ? 'oncontextmenu="return false;"' : ''  ?>>
 
-<body data-base_url="<?= BASE_URL ?>">
-  <?php else : ?>
-
-
-<body oncontextmenu="return false;" data-base_url="<?= BASE_URL ?>">
-  <?php endif;?>
 
   <script type="text/javascript">
 //prepara l'url base per javascript
@@ -84,8 +78,17 @@
 </script>
 
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= BASE_URL ?>images/background_top.png')">
-    <a class="navbar-brand" href="index.html"><img id="logo" src="<?=BASE_URL ?>images/logo.png" /> </a>
+
+
     <div class="container">
+      <a class="navbar-brand" href="index.html"><img id="logo" src="<?=BASE_URL ?>images/logo.png" /> </a>
+
+      <div class="languages">
+        <?php for($i = 0; $i < count($language_codes); $i++) :?>
+        <a href="#" style="<?= $lang == $language_codes[$i] ? 'font-weight: bold' : '' ?>"> <?= $language_labels[$i] ?>
+        </a>
+        <?php endfor;?>
+      </div>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
           <span class="sr-only"><?= _("Toggle navigation")?> </span> <span class="icon-bar"></span> <span

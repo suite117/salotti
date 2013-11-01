@@ -29,6 +29,15 @@ function confirmbox(message, button_input, callback) {
 $(document).ready(
 	function() {
 
+	  // caricamento linguaggi
+	  $(".languages a").click(function() {
+		$.post(base_url + "locale/locale_rest.php", {
+		  lang : $(this).data("language")
+		}).done(function(data) {
+		  location.reload();
+		});
+	  });
+
 	  if (isSmartphone()) {
 		$('#sidebar-left').remove();
 		$("ul.navbar-right").css('background-color', 'white');
