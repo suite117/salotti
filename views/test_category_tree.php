@@ -1,24 +1,27 @@
 <?php
 
-function toUL($arr){
-	$html = '<ul>';
-	foreach ($arr as $v) {
-		if ($v['mark']) {
-			$html .= '<li><a href="category.php?id=' . $v['catid'] . '">' . $v['name'] . '</a>';
-			if (array_key_exists('children', $v)){
-				$html .= toUL($v['children']);
-			}
-			$html .= '</li>';
+$categories = $category_dao -> get_categories_ordered_by_id();
+//var_dump("categorie", $categories);
+echo category_menu($categories, BASE_URL . 'prodotti/');
+
+
+
+function build_menu2($rows,$parent_id=0)
+{
+	$result = "<ul>";
+	foreach ($rows as $row)
+	{
+		if ($row['category_parent_id'] == $parent_id){
+			$result.= "<li>{$row['category_name']}";
+			if (has_children($rows,$row['category_id']))
+				$result.= build_menu($rows,$row['category_id']);
+			$result.= "</li>";
 		}
 	}
-	$html .= '</ul>';
-	return $html;
+	$result.= "</ul>";
+
+	return $result;
 }
-
-$refs = array();
-$list = array();
+?>
 
 
-$list = $category_dao->get_categories();
-markLikedSubtree($list);
-echo toUL($list);

@@ -1,26 +1,45 @@
 <?php
 
-/* 
- * Aggiunta costante BASE_PATH che punta alla directory principale del file system 
- * Aggiunta costante BASE_URL che punta all'url principale del sito
- * */
-define('BASE_PATH', str_replace('\\', '/', dirname(__FILE__)) . '/');
+function has_children($rows,$id) {
+	foreach ($rows as $row) {
+		if ($row['category_parent_id'] == $id)
+			return true;
+	}
+	return false;
+}
 
-$tempPath1 = explode('/', str_replace('\\', '/', dirname($_SERVER['SCRIPT_FILENAME'])));
-$tempPath2 = explode('/', substr(BASE_PATH, 0, -1));
-$tempPath3 = explode('/', str_replace('\\', '/', dirname($_SERVER['PHP_SELF'])));
+function category_menu($rows, $base_path, $relative_path='', $parent_id=null, $parent_name=null) {
+	$result = '<ul class="dropdown-menu">';
 
-for ($i = count($tempPath2); $i < count($tempPath1); $i++)
-	array_pop ($tempPath3);
+	if($parent_name != null)
+		$result.= '<li><a href="' . $base_path . $relative_path. '">Tutti i ' . str_replace(" ", "-",$parent_name) . '</a></li>';
 
-$BASE_URL = $_SERVER['HTTP_HOST'] . implode('/', $tempPath3);
+	foreach ($rows as $row) {
 
-if ($BASE_URL{strlen($BASE_URL) - 1}== '/')
-	define('BASE_URL', 'http://' . $BASE_URL);
-else
-	define('BASE_URL', 'http://' . $BASE_URL . '/');
+		$category_with_slash = str_replace(" ", "-", $row['category_name']) . '/';
+		if ($row['category_parent_id'] == $parent_id){
+			$result.= "<li";
 
-unset($tempPath1, $tempPath2, $tempPath3, $BASE_URL);
+			if (has_children($rows,$row['category_id'])) {
+				$result.= ' class="dropdown-submenu"';
+				$result.= '><a href="#">' . ucfirst($row['category_name']) . '</a>';
+
+				$result.= category_menu($rows, $base_path, $category_with_slash, $row['category_id'], $row["category_name"]);
+
+			}
+			else {
+				//var_dump($base_path);
+
+				$result.= '><a href="' . $base_path . $relative_path . $category_with_slash . '">' . ucfirst($row["category_name"]) . '</a>';
+			}
+
+			$result.= "</li>";
+		}
+	}
+	$result.= "</ul>";
+
+	return $result;
+}
 
 function curURL() {
 

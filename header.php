@@ -100,57 +100,40 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="<?=BASE_URL ."index.html"?>"><?=_("Home")?> </a>
           
-          <li><a hr ef="<?=BASE_URL
-          
-          ."azienda.html"?>"><?= _("Company") ?> </a>
+          <li><a href="<?=BASE_URL ."azienda.html"?>"><?= _("Company") ?> </a>
           </li>
           <?php if ($general -> logged_in() === true) : ?>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=_("Products") ?><b
-              class="caret"></b> </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-              <li><a href="<?=BASE_URL . "prodotti.html"?>"><?= _("Products list") ?> </a>
-              
-              <li><a href="<?=BASE_URL . "aggiungi"."/"."prodotto.html" ?>"><?= _("Add product") ?> </a>
-              </li>
-              <li><a href="<?=BASE_URL . "aggiungi"."/"."categoria.html"?>"><?= _("Add category") ?> </a>
-              </li>
-              <li><a href="<?=BASE_URL ?>lista-categorie.html"><?= _("Category list") ?> </a>
-              </li>
-              <li class="divider"></li>
-              <li class="dropdown-submenu"><a tabindex="-1" href="#">Divani</a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="<?=BASE_URL . "prodotti"."/"."divani/"?>" alt="sofa"><?= _("All sofas") ?>
-                  </a>
-                  </li>
-                  <li><a tabindex="-1" href="<?=BASE_URL . "prodotti"."/"."divani/divani-moderni/"?>"><?= _("All modern sofas") ?>
-                  </a>
-                  </li>
-                  <li><a tabindex="-1" href="<?=BASE_URL . "prodotti"."/"."divani/divani-classici/"?>"><?= _("All classic sofa") ?>
-                  </a>
-                  </li>
-                  <li><a tabindex="-1" href="<?=BASE_URL . "prodotti"."/"."divani/divani-letto/"?>"><?= _("Sofa beds") ?>
-                  </a>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="<?=BASE_URL ."prodotti"."/"."letti/"?>" alt="sofa"><?= _("Beds") ?> </a>
-            
-            </ul>
-          </li>
+              class="caret"></b> </a> <?php  
+              $categories = $category_dao -> get_categories_ordered_by_id();
+              //var_dump("categorie", $categories);
+              echo category_menu($categories, BASE_URL . 'prodotti/');
+               
+              ?></li>
+
           <?php if($general -> logged_in()) : ?>
 
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= _("Administration") ?><b
               class="caret"></b> </a>
             <ul class="dropdown-menu">
-              <?php  if($general -> isAdmin() === true): ?>
-              <li><a href="<?=BASE_URL ?>lista-utenti.html"><?= _("User list") ?> </a>
-              </li>
-              <?php endif; ?>
               <?php if ($general -> logged_in() === true) : ?>
               <li><a href="<?=BASE_URL ?>lista-utenti.html"><?= _("My profile") ?> </a>
               </li>
               <?php endif;?>
 
+              <?php  if($general -> isAdmin() === true): ?>
+              <li><a href="<?=BASE_URL ?>lista-utenti.html"><?= _("User list") ?> </a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="<?=BASE_URL . "prodotti.html"?>"><?= _("Products list") ?> </a></li>
+
+              <li><a href="<?=BASE_URL . "aggiungi"."/"."prodotto.html" ?>"><?= _("Add product") ?> </a></li>
+              <li class="divider"></li>
+              <li><a href="<?=BASE_URL ?>lista-categorie.html"><?= _("Category list") ?> </a>
+              </li>
+              <li><a href="<?=BASE_URL . "aggiungi"."/"."categoria.html"?>"><?= _("Add category") ?> </a>
+              </li>
+              <?php endif; ?>
             </ul>
           </li>
           <?php endif; ?>
