@@ -61,9 +61,49 @@ nav.navbar {
 	}
 }
 
-.navbar-inverse .navbar-nav>li>a {
-	color: white;
+.navbar-inverse .navbar-nav>ul li>a {
+	color: black;
 	text-transform: uppercase;
+}
+
+.navbar-inverse .navbar-nav>ul li>a:hover,.navbar-inverse .navbar-nav>ul li>a:focus
+	{
+	background-color: white;
+	color: black;
+}
+
+/* menu smartphone fix */
+.dropdown-menu ul li,.nav>ul li {
+	background-color: #FFFFFF;
+}
+
+@media screen and (min-width: 480px) {
+	.navbar-inverse .navbar-nav>li>ul,ul.dropdown-menu {
+		background-color: white;
+	}
+	.navbar-inverse .navbar-nav>li>a {
+		color: white;
+		text-transform: uppercase;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.navbar-collapse.in {
+		overflow-y: visible;
+	}
+	ul.navbar-right {
+		position: relative;
+		top: 0;
+		background-color: white !important;
+	}
+	.navbar-inverse .navbar-nav>ul li>a {
+		color: black;
+	}
+	#myCarousel {
+		height: auto;
+		width: auto;
+		margin: auto;
+	}
 }
 
 #logo {
@@ -110,10 +150,6 @@ table {
 .table thead th {
 	background-color: #555555;
 	color: white !important;
-}
-
-tbody td {
-	background-color: #EBECEC;
 }
 
 tr td:first-child,tr th:first-child {
@@ -312,31 +348,14 @@ footer li,footer li a,footer {
 	list-style: none outside none;
 }
 
-/* menu smartphone fix */
-@media screen and (max-width: 480px) {
-	.navbar-collapse ul {
-		background-color: black;
-	}
-	.navbar-collapse.in {
-		overflow-y: visible;
-	}
-	.navbar-collapse ul.navbar-right {
-		position: relative;
-		top: 0;
-	}
-	#myCarousel {
-		height: auto;
-		width: auto;
-		margin: auto;
-	}
+footer table td {
+	vertical-align: top;
 }
 
-/* debug */
-.xdebug-var-dump {
+@media screen and (min-width: 480px) {
+	footer .first {
+		padding: 85px 60px;
+	}
 	
-}
-
-/* Bootstrap SelectPicker */
-.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]) {
-	width: 100%;
+	footer
 }

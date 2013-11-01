@@ -32,6 +32,9 @@ $(document).ready(
 
 	  if (isSmartphone()) {
 		$('#sidebar-left').remove();
+		$("ul.navbar-right").css('background-color', 'white');
+		$("ul.navbar-right a").css('color', 'black');
+		$("#footer_information").parent().parent().next().prepend($("#footer_information"));
 	  }
 
 	  /* Widget Select */

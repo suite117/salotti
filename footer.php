@@ -2,32 +2,39 @@
 
 <hr>
 
-<footer style="background-image: url('<?= BASE_URL ?>images/footer.png')">
+<footer style="background-image: url('<?= BASE_URL ?>images/footer.png'); background-repeat:repeat-x">
 
-  <div class="row" style="padding: 85px 60px;">
-    <div class="col-sx-1 col-md-2">
-      <ul>
-        <li><b>SOFA</b></li>
-        <li>&nbsp;</li>
-        <li>Divani moderni</li>
-        <li>Divani classici</li>
-        <li>Divani letto</li>
-      </ul>
-    </div>
+  <div class="row first">
     <div class="col-sx-1 col-md-3">
-      <ul>
-        <li><b>BED</b></li>
-        <li>&nbsp;</li>
-        <li>Letti</li>
-      </ul>
+      <table>
+        <tbody>
+          <tr>
+            <td><ul>
+                <li><b>SOFA</b></li>
+                <li>&nbsp;</li>
+                <li>Divani moderni</li>
+                <li>Divani classici</li>
+                <li>Divani letto</li>
+              </ul></td>
+            <td>
+              <ul>
+                <li><b>BED</b></li>
+                <li>&nbsp;</li>
+                <li>Letti</li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="col-sx-1 col-md-4">
+
+    <div class="col-sx-0 col-md-4">
       <br> <span class='st_facebook_large' displayText='Facebook'></span> <span class='st_twitter_large'
         displayText='Tweet'></span> <span class='st_pinterest_large' displayText='Pinterest'></span> <span
         class='st_googleplus_large' displayText='Google +'></span>
     </div>
     <div class="col-sx-0 col-md-1"></div>
-    <div class="col-sx-1 col-md-2" style="font-size: 10px;">
+    <div id="footer_information" class="col-sx-1 col-md-2" style="font-size: 10px;">
       <b>ALESSI SALOTTI</b><br>di Alessi Giuseppe<br> <br>contrada Cultrera<br>San Giovanni Gemini, AG 92020<br>
       telefono : 0922 901540<br>e-mail : <br>P. IVA :
     </div>
