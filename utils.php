@@ -28,8 +28,6 @@ function category_menu($rows, $base_path, $relative_path='', $parent_id=null, $p
 
 			}
 			else {
-				//var_dump($base_path);
-
 				$result.= '><a href="' . $base_path . $relative_path . $category_with_slash . '">' . ucfirst($row["category_name"]) . '</a>';
 			}
 
@@ -41,12 +39,46 @@ function category_menu($rows, $base_path, $relative_path='', $parent_id=null, $p
 	return $result;
 }
 
+function left_menu($rows, $base_path, $relative_path='', $parent_id=null, $parent_name=null) {
+
+	$result = '';
+
+	foreach ($rows as $row) {
+
+		$category_with_slash = str_replace(" ", "-", $row['category_name']) . '/';
+		if ($row['category_parent_id'] == $parent_id){
+			$result.= "<li";
+
+			if (has_children($rows,$row['category_id'])) {
+				$result.= '><label class="tree-toggle nav-header">' . ucfirst($row['category_name']) . '</label>';
+				$result.= '<ul class="nav nav-list tree">';
+				$result.= '<li><a href="' . $base_path . $relative_path. $row['category_name']. '/">Tutti i ' . $row['category_name'] . '</a></li>';
+				$result.= left_menu($rows, $base_path, $category_with_slash, $row['category_id'], $row["category_name"]);
+				$result.= '</ul></li><li class="divider">&nbsp;</li>';
+			}
+			else {
+				if($parent_id== null) {
+					$result.= '><label class="tree-toggle nav-header">' . ucfirst($row['category_name']) . '</label>';
+					$result.= '<li><a href="' . $base_path . $relative_path. $row['category_name'] . '/">Tutti i ' . $row['category_name'] . '</a></li>';
+				}
+				else
+					$result.= '><a href="' . $base_path . $relative_path . $category_with_slash . '">' . ucfirst($row["category_name"]) . '</a>';
+			}
+
+			$result.= "</li>";
+		}
+	}
+
+	return $result;
+}
+
+
 function curURL() {
 
 	$uri = $_SERVER['REQUEST_URI'];
 	$uri = $_SERVER['HTTP_HOST'];
 	$paths = explode("/", $uri);
-	//return '/' . $paths[0].'/' . $paths[1] . '/'; 
+	//return '/' . $paths[0].'/' . $paths[1] . '/';
 	//return "/web/htdocs/" . $_SERVER['HTTP_HOST'] . '/home'. $_SERVER['REQUEST_URI'];
 
 	return BASE_URL;

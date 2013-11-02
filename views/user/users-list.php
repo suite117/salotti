@@ -54,7 +54,7 @@ $member_count 	= count($members);
 		<div class="modal-content">
 			<div class="modal-header">
 				<button class="close" type="button" data-dismiss="modal">×</button>
-				<h3 class="modal-title">Heading</h3>
+				<h3 class="modal-title"></h3>
 			</div>
 			<div class="modal-body" style="padding: 15px;">
 			</div>

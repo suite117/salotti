@@ -1,6 +1,6 @@
 </div>
 
-<hr>
+
 
 <footer style="background-image: url('<?= BASE_URL ?>images/footer.png'); background-repeat:repeat-x">
 

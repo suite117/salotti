@@ -7,12 +7,13 @@ function isSmartphone() {
   return false;
 }
 
-function confirmbox(message, button_input, callback) {
+function confirmbox(head, message, button_input, callback) {
 
   buttons = '<button data-dismiss="modal" class="btn btn-default">Cancella</button><button data-dismiss="modal" class="btn-confirm btn btn-warning">Ok</button>';
 
   modalDiv = '#modalBox';
 
+  $(modalDiv + '.modal-title').html(head);
   $(modalDiv + ' .modal-footer').html(buttons);
   $(modalDiv + ' .btn-confirm').on('click', function() {
 	callback(button_input, this);
@@ -59,7 +60,7 @@ $(document).ready(
 	  /* BootBox */
 	  $('a.delete').on('click', function() {
 		message = 'Eliminare definitavemente il contenuto? Non sarà possile tornare indietro.';
-		confirmbox(message, this, function(button_input) {
+		confirmbox("Eliminazione", message, this, function(button_input) {
 		  // console.log($(button_input).parent().parent());
 		  id = $(button_input).parent().parent().children()[0].innerHTML;
 		  var tableEl = $(button_input).parent().parent().parent().parent();

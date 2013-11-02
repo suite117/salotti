@@ -31,3 +31,6 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
 
 <div id="container"
   style="min-height: 300px; max-width: 100%;">
+  
+  
+ 
