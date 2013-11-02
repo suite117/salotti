@@ -92,6 +92,6 @@ textdomain($domain);
 
 // UTF-8 encoding
 header("Content-type: text/html; charset=$encoding");
-
+header("Content-language: $lang");
 
 ?>

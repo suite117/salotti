@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<?= str_replace("_", "-", $lang) ?>">
 <head>
 <!-- Force latest IE rendering engine or ChromeFrame if installed -->
 <!--[if IE]>
@@ -46,12 +46,6 @@
 <!-- include summernote css/js-->
 <link rel="stylesheet" href="<?=BASE_URL ?>css/summernote.css" />
 
-<!--  ShareThis -->
-<?php if ($config['isOnline']) : ?>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "d4fd2eca-29cc-4374-bbb3-f62b3fa033bf", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-<?php endif; ?>
-
 <!-- Bootstrap Form Helpers -->
 <link href="<?=BASE_URL ?>css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
 
@@ -75,6 +69,7 @@
 //prepara l'url base per javascript
 //l'url base per javascript
   var base_url = $("body").data("base_url");
+  
 </script>
 
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= BASE_URL ?>images/background_top.png')">
@@ -85,7 +80,8 @@
 
       <div class="languages">
         <?php for($i = 0; $i < count($language_codes); $i++) :?>
-        <a href="#" style="<?= $lang == $language_codes[$i] ? 'font-weight: bold' : '' ?>"> <?= $language_labels[$i] ?>
+        <a href="#" data-language="<?= $language_codes[$i]?>" style="<?= $lang == $language_codes[$i] ? 'font-weight: bold' : '' ?>">
+          <?= $language_labels[$i] ?>
         </a>
         <?php endfor;?>
       </div>
@@ -109,7 +105,7 @@
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=_("Products") ?><b
               class="caret"></b> </a> <?php  
               $categories = $category_dao -> get_categories();
-              
+              //var_dump("categorie", $categories);
               echo category_menu($categories, BASE_URL . 'prodotti/');
                
               ?></li>

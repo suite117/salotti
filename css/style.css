@@ -13,7 +13,7 @@
 }
 
 .languages a {
-	padding-right: 15px; 
+	padding-right: 15px;
 }
 
 /* form */
@@ -246,9 +246,10 @@ table thead {
 
 /* Carousel Home */
 #myCarousel {
-	height: 400px;
+	height: 495px;
 	margin: 0;
 	padding: 0;
+	background-color: #E1E1E1;
 }
 
 #myCarousel img {
@@ -366,9 +367,12 @@ footer table td {
 	footer .first {
 		padding: 85px 60px;
 	}
-	footer
-	
-	
+}
 
-
+/* AddThis */
+.addthis_default_style .addthis_separator,.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300m,.addthis_default_style .at300bs
+	{
+	float: none;
+	display: inline-block;
+	padding: 10px 7px;
 }

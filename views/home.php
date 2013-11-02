@@ -1,5 +1,5 @@
-
-<div class="row text-center" style="position: relative; top: 53px;">
+<div style="padding-bottom: 53px;"></div>
+<div class="row text-center">
 
   <div id="myCarousel" class="carousel slide">
     <!-- Indicators -->

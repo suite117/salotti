@@ -1,6 +1,6 @@
 <?php
 
-$lang = @$_POST['lang'];
+$lang = $_POST['lang'];
 
 if ($lang == null)
 	exit();

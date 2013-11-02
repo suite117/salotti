@@ -5,7 +5,7 @@
 <footer style="background-image: url('<?= BASE_URL ?>images/footer.png'); background-repeat:repeat-x">
 
   <div class="row first">
-    <div class="col-sx-1 col-md-3">
+    <div class="col-sx-1 col-md-4">
       <table>
         <tbody>
           <tr>
@@ -28,10 +28,17 @@
       </table>
     </div>
 
-    <div class="col-sx-0 col-md-4">
-      <br> <span class='st_facebook_large' displayText='Facebook'></span> <span class='st_twitter_large'
-        displayText='Tweet'></span> <span class='st_pinterest_large' displayText='Pinterest'></span> <span
-        class='st_googleplus_large' displayText='Google +'></span>
+    <div class="col-sx-1 col-md-4 text-center">
+      <!-- AddThis Widget -->
+      <p>Seguici su</p>
+      <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+        <a class="addthis_button_facebook_follow" addthis:userid="YOUR-PROFILE" alt="Seguici su Facebook"></a> <a
+          class="addthis_button_twitter_follow" addthis:userid="YOUR-USERNAME"></a> <a
+          class="addthis_button_google_follow" addthis:userid="googt"></a> <a class="addthis_button_pinterest_follow"
+          addthis:userid="pinttes"></a>
+      </div>
+      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526e58b6283c3045"></script>
+      <!-- AddThis Follow END -->
     </div>
     <div class="col-sx-0 col-md-1"></div>
     <div id="footer_information" class="col-sx-1 col-md-2" style="font-size: 10px;">
@@ -60,7 +67,8 @@
 <script type="text/javascript"
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <?php else: ?>
-<script type="text/javascript" src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
+<script type="text/javascript"
+  src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
 <?php endif; ?>
 
 <!-- Bootstrap Form Helpers -->
@@ -73,10 +81,10 @@
   href="<?=BASE_URL ?>css/bootstrap-multiselect.css" type="text/css" />
 
 <!-- Plugin PekeUpload per l'upload di immagini-->
-<script type="text/javascript"
-  src="<?=BASE_URL ?>js/pekeUpload.js"></script>
+<script type="text/javascript" src="<?=BASE_URL ?>js/pekeUpload.js"></script>
 <!-- Wrapper plugin PekeUpload -->
-<script type="text/javascript" src="<?=BASE_URL ?>js/bootupload.js"></script>
+<script type="text/javascript"
+  src="<?=BASE_URL ?>js/bootupload.js"></script>
 
 <!-- BootBox 4.1.0 -->
 <script src="<?= BASE_URL ?>js/bootbox.js"></script>
