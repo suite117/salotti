@@ -74,7 +74,7 @@ $domain = 'messages';
 $lang = (isset($_SESSION['lang']))? $_SESSION['lang'] : DEFAULT_LOCALE;
 
 $language_codes = array('it_IT', 'en_US');
-$language_labels = array('Italiano', 'Inglese');
+$language_labels = array('Ita', 'Eng');
 
 // for windows compatibility (e.g. xampp) : theses 3 lines are useless for linux systems
 putenv("LC_ALL=$lang"); // Windows locale

@@ -125,6 +125,10 @@ if (isset($_GET["controller"])) {
 				$view = 'views/user/register.php';
 				$page_title = _("Registration");
 				break;
+			case 'profilo' :
+				$view = 'views/user/profile.php';
+				$page_title = _("My profile");
+				break;
 			case 'user-list':
 			case 'lista-utenti' :
 				$view = 'views/user/users-list.php';

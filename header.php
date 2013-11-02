@@ -116,7 +116,7 @@
               class="caret"></b> </a>
             <ul class="dropdown-menu">
               <?php if ($general -> logged_in() === true) : ?>
-              <li><a href="<?=BASE_URL ?>lista-utenti.html"><?= _("My profile") ?> </a>
+              <li><a href="<?=BASE_URL ?>profilo.html"><?= _("My profile") ?> </a>
               </li>
               <?php endif;?>
 

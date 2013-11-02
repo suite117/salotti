@@ -31,7 +31,7 @@ $types = isset($category_name) ? $products_dao->get_types_by_category_id($catego
 <div class="container">
 
 
-  <div id="sidebar-left" style="position: absolute; width: 260px; top: 142px; float: left;">
+  <div id="sidebar-left" style="position: absolute; width: 260px; top: 133px; float: left;">
     <ul class="nav bs-sidenav nav-list">
       <?=left_menu($categories, BASE_URL . 'prodotti/')?>
     </ul>
