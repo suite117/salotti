@@ -79,6 +79,17 @@ if (isset($_GET["controller"])) {
 				$page_description = 'Inserisci una categoria';
 				break;
 		}
+	} /* CASO ORDINA */
+	elseif ($controller === 'ordina') {
+		$type = $_GET['title'];
+
+		switch($type) {
+			case 'categoria' :
+				$view = 'views/store/category-sort.php';
+				$page_title = 'Ordina ' . $type;
+				$page_description = 'Ordina la categoria';
+				break;
+		}
 	} else/* TUTTI GLI ALTRI CASI */
 		switch($controller) {
 		/* per Aruba - caso solo cartella principale */

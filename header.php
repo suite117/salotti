@@ -130,6 +130,8 @@
               </li>
               <li><a href="<?=BASE_URL . "aggiungi"."/"."categoria.html"?>"><?= _("Add category") ?> </a>
               </li>
+              <li><a href="<?=BASE_URL . "ordina"."/"."categoria.html"?>"><?= _("Sort category") ?> </a>
+              </li>
               <?php endif; ?>
             </ul>
           </li>
