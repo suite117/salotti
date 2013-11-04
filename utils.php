@@ -1,5 +1,23 @@
 <?php
 
+// collects all nodes that belong to a certain parent id
+function toNestedArray($nodeList, $field, $parent_field, $parentId = null) {
+	$nodes = array();
+
+	foreach ($nodeList as $node) {
+		if ($node[$parent_field] == $parentId) {
+			$node['children'] = toNestedArray($nodeList, $field, $parent_field, $node[$field]);
+			unset($node[$parent_field]);
+			if (empty($node['children']))
+				unset($node['children']);
+			$nodes[] = $node;
+		}
+	}
+
+	return $nodes;
+}
+
+
 function has_children($rows,$id) {
 	foreach ($rows as $row) {
 		if ($row['category_parent_id'] == $id)

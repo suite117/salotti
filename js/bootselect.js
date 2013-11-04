@@ -5,12 +5,14 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
 	return this;
   }
 
+  var defaults = {
+	"label" : "label",
+	"value" : "value"
+  };
+
   // make sure any supplied options take precedence over defaults
+
   if (optionals != null) {
-	defaults = {
-	  "label" : "label",
-	  "value" : "value"
-	};
 	optionals = $.extend({}, defaults, optionals);
 	this.data("label", optionals["label"]);
 	this.data("value", optionals["value"]);

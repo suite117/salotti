@@ -1,4 +1,6 @@
-<?php 
+<?php
+require_once 'utils.php';
+
 ob_start(); // Added to avoid a common error of 'header already sent' (not discussed in the tutorial)
 if(!isset($_SESSION))
 	session_start();

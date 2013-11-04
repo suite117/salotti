@@ -35,11 +35,6 @@
 <link href="<?=BASE_URL ?>css/bootstrap.min.css" rel="stylesheet">
 <?php endif; ?>
 
-<!-- Add custom CSS here -->
-<link href="<?=BASE_URL ?>css/modern-business.css" rel="stylesheet">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
-<link href="<?=BASE_URL ?>css/style.css" rel="stylesheet">
-
 <!-- Google Prettify -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" rel="stylesheet">
 
@@ -55,11 +50,14 @@
       <script src="<?=BASE_URL ?>js/respond.min.js"></script>
     <![endif]-->
 
+<!-- Nestable Plugin 2.0 -->
+<link rel="stylesheet" href="<?= BASE_URL ?>css/nestable.css" />
 
-<!-- 2.3.2
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.js"></script>
-    -->
+<!-- Add custom CSS here -->
+<link href="<?=BASE_URL ?>css/modern-business.css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
+<link href="<?=BASE_URL ?>css/style.css" rel="stylesheet">
+
 
 
 <body data-base_url="<?= BASE_URL ?>" <?= ($general -> logged_in() === false) ? 'oncontextmenu="return false;"' : ''  ?>>
