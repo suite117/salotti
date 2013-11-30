@@ -10,7 +10,7 @@
 				data-cycle-next=".nextControl" data-cycle-pager="#adv-custom-pager"
 				data-cycle-pager-template="<a    href='#'>
 				<img src='{{src}}' width=100 height=80></a>"
-				data-cycle-pause-on-hover="true">
+				>
 				<?php
 				$subdir = 'images/slideshow';
 				$imagesPaths = getImagePaths($subdir);

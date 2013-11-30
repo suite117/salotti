@@ -11,7 +11,7 @@ $view = 'views/home.php';
 $page_title = '';
 $page_description = '';
 $category_name = null;
-$config['isOnline'] = false;
+$config['isOnline'] = true;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
@@ -146,7 +146,7 @@ if (isset($_GET["controller"])) {
 				$page_title = _("User list");
 				break;
 			case 'lista-categorie' :
-				$view = 'views/store/categories.php';
+				$view = 'views/store/category-view.php';
 				$page_title = _("Category list");
 				break;
 			case 'contatti' :

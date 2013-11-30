@@ -30,6 +30,18 @@ function confirmbox(head, message, button_input, callback) {
 $(document).ready(
 	function() {
 
+	  // fix top menu
+	  $('.dropdown-submenu a').each(function() {
+
+		$(this).click(function(e) {
+		  console.log(this);
+		  $(this).blur(); // remove focus per deselezionare
+		  //$(this).css('background-color', '#ffffff').css();
+		  e.stopPropagation(); // evita la chiusura del menu
+		});
+
+	  });
+
 	  // caricamento linguaggi
 	  $(".languages a").click(function() {
 		$.post(base_url + "locale/locale_rest.php", {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-31 15:22+0100\n"
+"POT-Creation-Date: 2013-11-30 13:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,100 +16,85 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: c:\wamp\www\git\salotti\header.php:91
+#: c:\wamp\www\git\salotti\header.php:88
 msgid "Toggle navigation"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:101
+#: c:\wamp\www\git\salotti\header.php:98
 msgid "Home"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:105
+#: c:\wamp\www\git\salotti\header.php:100
 msgid "Company"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:108
-#: c:\wamp\www\git\salotti\header.php:158
+#: c:\wamp\www\git\salotti\header.php:103
+#: c:\wamp\www\git\salotti\header.php:140
 msgid "Products"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:111
-msgid "Products list"
-msgstr ""
-
 #: c:\wamp\www\git\salotti\header.php:113
-msgid "Add product"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:115
-msgid "Add category"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:117
-#: c:\wamp\www\git\salotti\index.php:135
-msgid "Category list"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:122
-msgid "All sofas"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:125
-msgid "All modern sofas"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:128
-msgid "All classic sofa"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:131
-msgid "Sofa beds"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:136
-msgid "Beds"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:142
 msgid "Administration"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:146
-#: c:\wamp\www\git\salotti\index.php:131
-msgid "User list"
-msgstr ""
-
-#: c:\wamp\www\git\salotti\header.php:150
+#: c:\wamp\www\git\salotti\header.php:117
+#: c:\wamp\www\git\salotti\index.php:141
 msgid "My profile"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:162
-#: c:\wamp\www\git\salotti\index.php:139
+#: c:\wamp\www\git\salotti\header.php:122
+#: c:\wamp\www\git\salotti\index.php:146
+msgid "User list"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\header.php:125
+msgid "Products list"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\header.php:127
+msgid "Add product"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\header.php:129
+#: c:\wamp\www\git\salotti\index.php:150
+msgid "Category list"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\header.php:131
+msgid "Add category"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\header.php:133
+msgid "Sort categories"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\header.php:144
+#: c:\wamp\www\git\salotti\index.php:154
 msgid "Contacts"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:166
-#: c:\wamp\www\git\salotti\index.php:122
+#: c:\wamp\www\git\salotti\header.php:148
+#: c:\wamp\www\git\salotti\index.php:133
 msgid "Logout"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\header.php:170
+#: c:\wamp\www\git\salotti\header.php:152
 msgid "Login"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:92 c:\wamp\www\git\salotti\index.php:102
+#: c:\wamp\www\git\salotti\index.php:103 c:\wamp\www\git\salotti\index.php:113
 msgid "Galleria"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:103
+#: c:\wamp\www\git\salotti\index.php:114
 msgid "Visualizza i prodotti"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:126
+#: c:\wamp\www\git\salotti\index.php:137
 msgid "Registration"
 msgstr ""
 
-#: c:\wamp\www\git\salotti\index.php:143
+#: c:\wamp\www\git\salotti\index.php:158
 msgid "Activate"
 msgstr ""
 
@@ -123,6 +108,38 @@ msgstr ""
 
 #: c:\wamp\www\git\salotti\locale\test.php:12
 msgid "Prodotti"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:14
+msgid "Category management"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:20
+msgid "Id"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:21
+msgid "Name"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:22
+msgid "Parent category"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:23
+msgid "Operations"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:32
+msgid "Edit"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:33
+msgid "Delete"
+msgstr ""
+
+#: c:\wamp\www\git\salotti\views\store\category-view.php:42
+msgid "Category sort"
 msgstr ""
 
 #: c:\wamp\www\git\salotti\views\store\product-edit.php:78

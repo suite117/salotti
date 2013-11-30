@@ -102,6 +102,7 @@ $.fn.bootnestable = function(arg1) {
 		items.push(item);
 	  });
 	  console.log(items);
+	  return items;
 	  break;
 	}
   }
