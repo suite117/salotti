@@ -93,9 +93,9 @@ $.fn.bootnestable = function(arg1) {
 	  var items = [];
 	  var $li_arr = this.find("li");
 	  $.each($li_arr, function(index, li) {
-		//console.log(li);
+		// console.log(li);
 		var item = {};
-		//console.log("first", $($(li).children()[0]).text());
+		// console.log("first", $($(li).children()[0]).text());
 		item[$.fn.optionals.label] = $($(li).children()[0]).text();
 		item[$.fn.optionals.value] = $(li).data("id");
 		item[$.fn.optionals.parent_label] = $(li).parent().parent().data("id");

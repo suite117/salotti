@@ -6,7 +6,7 @@ $general->logged_out_protect();
 $product['immagine'] = curURL() .'image.php?path=images/' . (isset($product['immagine']) ?  $product['immagine'] : 'default.png');
 
 if ($category_name == 'divani')
-	$product['model2d'] = 'images/letto2d.jpg';
+  $product['model2d'] = 'images/letto2d.jpg';
 elseif ($category_name == 'letti')
 $product['model2d'] = 'images/letto2d.jpg';
 
@@ -41,11 +41,10 @@ $options = $options_dao->get_options_by_id($product['id']);
         </div>
       </div>
       <div class="row">
-        <div>
-          <h1 class="page-header">
-            <?=ucfirst($page_title) ?>
-            <?='<small> '.$page_description.'</small>' ?>
-          </h1>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h2>
+            <?= ucfirst($product['nome']) ?>
+          </h2>
           <p>
             <?= @$product['description'] ?>
           </p>
@@ -84,16 +83,16 @@ $options = $options_dao->get_options_by_id($product['id']);
                       <?php for ($i=0; $i< count($options); $i++) : ?>
                       <?php
                       if($i%3==0)
-                      	echo '<tr>';
+                        echo '<tr>';
                       ?>
                       <td style="text-align: center"><?=ucfirst($options[$i]['option_name']) ?></td>
                       <?php
                       if(($i+1)%3==0)
-                      	echo '</tr>';
+                        echo '</tr>';
                       ?>
                       <?php endfor; ?>
                       <?php for ($i = 0; $i < 3 -count($options)%3; $i++)
-                      	echo '<td></td>';
+                        echo '<td></td>';
                       ?>
                     </tr>
                   </tbody>
@@ -113,7 +112,9 @@ $options = $options_dao->get_options_by_id($product['id']);
               </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse colored">
-              <div class="panel-body"><?= @$product['schedatecnica']; ?></div>
+              <div class="panel-body">
+                <?= @$product['schedatecnica']; ?>
+              </div>
             </div>
           </div>
           <!-- end Panel -->

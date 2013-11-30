@@ -113,7 +113,7 @@ class CategoryDAO {
 
   public function insert($nome, $description, $category_parent_id){
 
-    $query = $this -> db -> prepare("INSERT INTO `categoria` (`category_name`, `description`, `category_parent_id`) VALUES ( ?, ?, ?) ");
+    $query = $this -> db -> prepare("INSERT INTO `categoria` (`category_name`, `category_description`, `category_parent_id`) VALUES ( ?, ?, ?) ");
 
 
     $query -> bindValue(1, $nome);

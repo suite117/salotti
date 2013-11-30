@@ -24,8 +24,6 @@ if (isset($_POST['create']) || isset($_POST['save']))  {
 		$errors['category_id'] = 'Devi inserire la categoria.';
 	//if(empty($description))
 	//	$errors['description'] = 'Devi inserire la descrizione.';
-	//if(empty($version_id))
-	//	$errors['version_id'] = 'Devi inserire la versione.';
 }
 
 # if form is submitted

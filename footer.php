@@ -67,7 +67,8 @@
 <script type="text/javascript"
   src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <?php else: ?>
-<script type="text/javascript" src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
+<script type="text/javascript"
+  src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
 <?php endif; ?>
 
 <!-- Bootstrap Form Helpers -->
@@ -80,19 +81,19 @@
   href="<?=BASE_URL ?>css/bootstrap-multiselect.css" type="text/css" />
 
 <!-- Plugin PekeUpload per l'upload di immagini-->
-<script type="text/javascript"
-  src="<?=BASE_URL ?>js/pekeUpload.js"></script>
+<script type="text/javascript" src="<?=BASE_URL ?>js/pekeUpload.js"></script>
 <!-- Wrapper plugin PekeUpload -->
-<script type="text/javascript" src="<?=BASE_URL ?>js/bootupload.js"></script>
+<script type="text/javascript"
+  src="<?=BASE_URL ?>js/bootupload.js"></script>
 
 <!-- Nestable Plugin 2.0 -->
-<script type="text/javascript"
-  src="<?= BASE_URL ?>js/jquery.nestable.js"></script>
- <script type="text/javascript"
-  src="<?= BASE_URL ?>js/bootnestable.js"></script>
+<script type="text/javascript" src="<?= BASE_URL ?>js/jquery.nestable.js"></script>
+<script type="text/javascript" src="<?= BASE_URL ?>js/bootnestable.js"></script>
 
 <!-- BootBox 4.1.0 -->
 <script src="<?= BASE_URL ?>js/bootbox.js"></script>
+
+<!-- Left Menu Scrollspy -->
 
 <!-- Main -->
 <script src="<?= BASE_URL ?>js/init.js"></script>

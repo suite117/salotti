@@ -28,19 +28,25 @@
 
 /* template */
 .page-header {
-	margin-bottom: 10px;
-	margin-top: 10px;
-	border-bottom: 0;
+	
 }
 
 h1,.h1 {
-	font-size: 25px;
+	font-size: 28px;
 }
 
 h1 small,.h1 small {
 	font-size: 16px;
 	padding-left: 10px;
 }
+
+
+h2, .h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+	margin-top: 0px;
+}
+
 
 .breadcrumb {
 	font-size: 12px;
@@ -342,11 +348,15 @@ table thead {
 	background-color: #F7F5FA;
 	border-radius: 5px 5px 5px 5px;
 	margin-bottom: 30px;
-	margin-top: 30px;
 	padding-bottom: 10px;
 	padding-left: 16px;
-	padding-top: 25px;
+	padding-top: 5px;
 	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.nav-header {
+	margin-top: 20px;
+	font-size: 105%;
 }
 
 /* footer */
@@ -375,4 +385,9 @@ footer table td {
 	float: none;
 	display: inline-block;
 	padding: 10px 7px;
+}
+
+/* nestable fix button */
+.nestable-menu button {
+	margin-left: -40px;
 }

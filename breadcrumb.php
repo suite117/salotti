@@ -9,6 +9,14 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
 
   <div class="row">
     <div class="col-md-12">
+
+      <?php if(!isset($product)) : ?>
+      <h1 class="page-header">
+        <?=ucfirst($page_title) ?>
+        <?='<small> '.$page_description.'</small>' ?>
+      </h1>
+      <?php  endif;?>
+      
       <ol class="breadcrumb">
         <li><a href="<?=curURL()?>">Home</a>
         </li>
@@ -26,11 +34,9 @@ $type = isset($_GET['type']) ? $_GET['type'] . '/' : '';
   </div>
   <!-- /.row -->
 </div>
- 
 
 
-<div id="container"
-  style="min-height: 300px; max-width: 100%;">
-  
+
+<div id="container" style="min-height: 300px; max-width: 100%;">
+
   <?php //var_dump($lang); ?>
- 

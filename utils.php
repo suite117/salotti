@@ -72,7 +72,7 @@ function left_menu($rows, $base_path, $relative_path='', $parent_id=null, $paren
 				$result.= '<ul class="nav nav-list tree">';
 				$result.= '<li><a href="' . $base_path . $relative_path. $row['category_name']. '/">Tutti i ' . $row['category_name'] . '</a></li>';
 				$result.= left_menu($rows, $base_path, $category_with_slash, $row['category_id'], $row["category_name"]);
-				$result.= '</ul></li><li class="divider">&nbsp;</li>';
+				//$result.= '</ul></li><li class="divider">&nbsp;</li>';
 			}
 			else {
 				if($parent_id== null) {

@@ -1,9 +1,9 @@
 <?php
 $general->not_admin_out_protect();
 
+
 if (isset($id)){
 	$category = $category_dao->get_category($id);
-	//var_dump("product", $product);
 }
 
 
@@ -18,7 +18,7 @@ if (isset($_POST['create']) || isset($_POST['save']))  {
 if (isset($_POST['save'])) {
 
 	if (empty($errors) === true) {
-		$category_dao->update_category($name, $descriprion, $category['id']);
+		$category_dao->update_category($name, @$description, $category['id']);
 		$success= 'La categoria è stata aggiornata correttamente. <a href="'.BASE_URL .'categorie/' .   $cat_name  . '.html">Visualizza le modifiche</a>';
 
 		// recupero il bean aggiornato
@@ -27,9 +27,9 @@ if (isset($_POST['save'])) {
 	}
 }
 elseif (isset($_POST['create'])) {
-
+  
 	if (empty($errors) === true) {
-		$category_dao -> insert($cat_name, $description, @$category_parent_id);
+		$category_dao -> insert($cat_name, @$description, @$category_parent_id);
 		$success= 'La categoria è stato inserita correttamente. <a href="'.BASE_URL .'categorie/' .   $cat_name  . '.html">Visualizza le modifiche</a>';
 
 	}

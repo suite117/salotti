@@ -10,40 +10,52 @@ $category_count = count($categories);
 <div class="container">
 
 
-  <h2>
-    <?= _('Category management') ?>
-  </h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th><?=_('Id') ?></th>
-          <th><?=_('Name') ?></th>
-          <th><?=_('Parent category') ?></th>
-          <th><?=_('Operations') ?></th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($categories as $category) :?>
-        <tr>
-          <td><?= $category['category_id'] ?></td>
-          <td><?= $category['category_name'] ?></td>
-          <td><?= $category['category_parent_id'] ?></td>
-          <td><a class="btn btn-primary" href="modifica/categoria/<?= $category['category_id'] ?>.html"><?= _('Edit') ?>
-          </a> <!-- Button trigger modal --> <a data-toggle="modal" href="#modalBox" class="btn btn-danger delete"><?= _('Delete') ?></a>
-          </td>
-        </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>
+        <?= _('Category management') ?>
+      </h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th><?=_('Id') ?></th>
+              <th><?=_('Name') ?></th>
+              <th><?=_('Parent category') ?></th>
+              <th><?=_('Operations') ?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($categories as $category) :?>
+            <tr>
+              <td><?= $category['category_id'] ?></td>
+              <td><?= $category['category_name'] ?></td>
+              <td><?= $category['category_parent_id'] ?></td>
+              <td><a class="btn btn-primary" href="modifica/categoria/<?= $category['category_id'] ?>.html"><?= _('Edit') ?>
+              </a> <!-- Button trigger modal --> <a data-toggle="modal" href="#modalBox" class="btn btn-danger delete"><?= _('Delete') ?>
+              </a>
+              </td>
+            </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!-- end col -->
   </div>
+  <!-- end row -->
+
+  <div class="row">
+    <div class="col-md-12">
+
+      <h2>
+        <?= _('Category sort') ?>
+      </h2>
+      <div class="dd" id="njson"></div>
 
 
-  <h2><?= _('Category sort') ?></h2>
-  <div class="dd" id="njson"></div>
-
-
-  <script type="text/javascript">
+      <script type="text/javascript">
 
 $(document).ready(function() {
   $.getJSON(base_url + 'rest/category_rest.php?nested=true', function(data) {
@@ -69,6 +81,18 @@ $(document).ready(function() {
 });
 </script>
 
+    </div>
+    <!-- end col -->
+  </div>
+  <!-- end row -->
 </div>
 <!-- end container -->
 
+<h2>
+  <?= _('Add category') ?>
+</h2>
+<?php 
+// fix for category-edit - elimino var $category
+unset($category);
+require 'category-edit.php';
+?>
