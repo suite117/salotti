@@ -19,21 +19,12 @@ switch ($method) {
       $errors[] = 'L\'email '. $email. ' esiste già.';
 
     if (empty($errors) === true) {
-      
-      $confirmed = false;
-      if(!isset($username))
-        $username = $email;
-      
+      $confirmed = true;
       $users_dao -> insert($confirmed, @$ragionesociale, @$partitaiva, $password, $email, @$firstname, @$lastname, @$indirizzo, @$numero_civico, @$citta, @$cap, @$telefono, @$cellulare, $username);
 
-      $subject = "attivazione utente" . $email;
-      $email_content = "Ciao, Un utente ha chiesto di registrarsi sul sito ,\r\n email" . $email ." ,\r\n partitaiva:" . $partitaiva .",\r\n Ragione sociale: " . $ragionesociale . " Clicca sul link sottostante per attivarlo :\r\n\r\nhttp://http://www.pulenergy.it/git/salotti/activate.html?email=" . $email . "&email_code=" . $email_code . "\r\n\r\n-- Example team";
-      sendEmail($email, $site_email, $subject, $email_content);
-
-      $success = 'Grazie per esserti registrato. Per favore controlla la tua email.';
+      $success = 'Utente con email ' . $email . ' aggiunto con successo.';
     }
     break;
 }
-
 
 ?>

@@ -1,5 +1,3 @@
-<?php require 'register-submit.php';?>
-
 <div class="container">
 	<?php
 	// check for a successful form post
@@ -13,7 +11,7 @@
 	?>
 
 
-	<form class="form-horizontal" role="form" method="post" action="">
+	<form class="form-horizontal" method="post" action="">
 
 		<div class="form-group">
 			<label for="username" class="col-md-2">Username:</label>

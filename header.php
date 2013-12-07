@@ -34,6 +34,11 @@
 <link href="<?=BASE_URL ?>css/bootstrap.min.css" rel="stylesheet">
 <?php endif; ?>
 
+<!-- JQuery UI Bootstrap -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" href="<?=BASE_URL ?>jquery.ui.theme.css" />
+
+
 <!-- Google Prettify -->
 <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" rel="stylesheet">
 
@@ -57,16 +62,11 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
 <link href="<?=BASE_URL ?>css/style.css" rel="stylesheet">
 
-
-
-<body data-base_url="<?= BASE_URL ?>" <?= ($general -> logged_in() === false) ? 'oncontextmenu="return false;"' : ''  ?>>
-
-
+<?php // oncontextmenu blocca il tasto destro del mouse ?>
+<body <?= ($general -> logged_in() === false) ? 'oncontextmenu="return false;"' : ''  ?>>
   <script type="text/javascript">
 //prepara l'url base per javascript
-//l'url base per javascript
-  var base_url = $("body").data("base_url");
-  
+var base_url = '<?= BASE_URL ?>';  
 </script>
 
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-image: url('<?= BASE_URL ?>images/background_top.png')">
@@ -96,16 +96,24 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="<?=BASE_URL ."index.html"?>"><?=_("Home")?> </a>
           
-          <li><a href="<?=BASE_URL ."azienda.html"?>"><?= _("Company") ?> </a>
+          <li><a href="<?=BASE_URL
+        
+          ."azienda.html"?>"><?= _("Company") ?> </a>
           </li>
           <?php if ($general -> logged_in() === true) : ?>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=_("Products") ?><b
-              class="caret"></b> </a> <?php  
+              class="caret"></b> </a>
+
+            <ul class="dropdown-menu">
+              <li><a href="<?=BASE_URL ?>profilo.html"><?= _("All products") ?> </a>
+              </li>
+              <?php  
               $categories = $category_dao -> get_categories();
               //var_dump("categorie", $categories);
               echo category_menu($categories, BASE_URL . 'prodotti/');
-               
-              ?></li>
+              ?>
+            </ul>
+          </li>
 
           <?php if($general -> logged_in()) : ?>
 
@@ -121,13 +129,15 @@
               <li><a href="<?=BASE_URL ?>lista-utenti.html"><?= _("User list") ?> </a>
               </li>
               <li class="divider"></li>
-              <li><a href="<?=BASE_URL . "prodotti.html"?>"><?= _("Products list") ?> </a></li>
+              <li><a href="<?=BASE_URL . "prodotti.html"?>"><?= _("Products list") ?> </a>
+              </li>
 
-              <li><a href="<?=BASE_URL . "aggiungi"."/"."prodotto.html" ?>"><?= _("Add product") ?> </a></li>
+              <li><a href="<?=BASE_URL . "aggiungi"."/"."prodotto.html" ?>"><?= _("Add product") ?> </a>
+              </li>
               <li class="divider"></li>
               <li><a href="<?=BASE_URL ?>lista-categorie.html"><?= _("Categories") ?> </a>
-              </li>
-              <li><a href="<?=BASE_URL . "aggiungi"."/"."categoria.html"?>"><?= _("Add category") ?> </a>
+              
+              <li><a href="<?=BASE_URL ?>lista-opzioni.html"><?= _("Options") ?> </a>
               </li>
               <?php endif; ?>
             </ul>

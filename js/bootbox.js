@@ -522,6 +522,11 @@ window.bootbox = window.bootbox || (function init($, undefined) {
   };
 
   exports.dialog = function(options) {
+    
+    // Aggiunta callfirst per il form riga 526
+    console.log(options.buttons.success);
+    options.buttons.success.callfirst();
+    
     options = sanitize(options);
 
     var dialog = $(templates.dialog);

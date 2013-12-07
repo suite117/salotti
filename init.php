@@ -40,14 +40,14 @@ else
 	$isLocalhost = false;
 
 require_once 'config/database.php';
-require_once 'dao/users.php';
+require_once 'dao/users_dao.php';
 require_once 'dao/category_dao.php';
 require_once 'dao/options_dao.php';
 require_once 'dao/products_dao.php';
 require_once 'dao/general.php';
 require_once 'dao/bcrypt.php';
 
-$users 		= new Users($db);
+$users_dao 		= new UsersDAO($db);
 $products_dao	= new ProductsDAO($db);
 $category_dao = new CategoryDAO($db);
 $options_dao =  new OptionsDAO($db);
@@ -57,7 +57,7 @@ $bcrypt 	= new Bcrypt(); // Instantiating the Bcrypt class
 
 if ($general->logged_in() === true)  { // check if the user is logged in
 	$user_id 	= $_SESSION['id']; // getting user's id from the session.
-	$user 	= $users->get_user($user_id); // getting all the data about the logged in user.
+	$user 	= $users_dao->get_user($user_id); // getting all the data about the logged in user.
 }
 
 // Locale configuration
@@ -92,8 +92,9 @@ $loc= setlocale(LC_ALL, $lang.'.'.$encoding);
 bindtextdomain($domain, LOCALE_DIR);
 textdomain($domain);
 
-// UTF-8 encoding
-header("Content-type: text/html; charset=$encoding");
+// Aggiunta linguaggio all'header
 header("Content-language: $lang");
 
+// recupero del metodo GET,POST,O DELETE
+$method = $_SERVER['REQUEST_METHOD'];
 ?>

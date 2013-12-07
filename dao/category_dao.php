@@ -140,7 +140,7 @@ class CategoryDAO {
         `category_parent_id` = ?,
 
         `category_order` = ?
-        	
+         
         WHERE `category_id`	= ?
         ");
 
@@ -153,6 +153,20 @@ class CategoryDAO {
       $query->execute();
     }catch(PDOException $e){
       die($e->getMessage());
+    }
+  }
+
+  public function delete($category_id)
+  {
+    $query = $this -> db -> prepare("DELETE FROM `categoria` WHERE `category_id` = ?");
+    $query -> bindValue(1, $category_id);
+
+    try {
+
+      $query -> execute();
+
+    } catch(PDOException $e) {
+      die($e -> getMessage());
     }
   }
 

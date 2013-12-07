@@ -29,8 +29,8 @@
 
 			<label for="username" class="col-md-12">Indirizzo Email o Username</label>
 			<div class="col-md-12">
-				<input type="username" class="form-control" name="user_login" id="email"
-					placeholder="Iserisci la tua email o il tuo username" value="<?=@$user_login ?>">
+				<input type="text" class="form-control" name="email" id="email"
+					placeholder="Iserisci la tua email o il tuo username" value="<?=@$email ?>">
 
 			</div>
 		</div>

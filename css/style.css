@@ -235,12 +235,8 @@ table thead {
 /* Carousel Modal */
 #modal-carousel .modal-dialog {
 	max-width: 90%;
-	width: 690px;
+	width: 670px;
 	padding-top: 5px;
-}
-
-.modal-body .carousel {
-	height: 76%;
 }
 
 #modal-carousel .modal-footer {
@@ -248,6 +244,10 @@ table thead {
 	margin-top: 0;
 	padding: 10px 20px;
 	text-align: right;
+}
+
+#modal-carousel .modal-body {
+	padding:0;
 }
 
 /* Carousel Home */
@@ -389,5 +389,28 @@ footer table td {
 
 /* nestable fix button */
 .nestable-menu button {
-	margin-left: -40px;
+	position: relative;
+	left: -40px;
+	margin: 5px 10px;
+}
+
+/* JQUery UI - Sortable list */
+ul.ui-sortable {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 60%;
+}
+
+ul.ui-sortable li {
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 1.5em;
+}
+
+ul.ui-sortable li span {
+	
+	margin-left: -1.3em;
+	margin-top: 2px;
+	float: left;
 }

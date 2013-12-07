@@ -97,5 +97,11 @@
 
 <!-- Main -->
 <script src="<?= BASE_URL ?>js/init.js"></script>
+<!-- Classe Render per la conversione JSON/ELEMENTI HTML -->
+<script src="<?= BASE_URL ?>js/render.js"></script>
+<!--
+
+//-->
+</script>
 </body>
 </html>

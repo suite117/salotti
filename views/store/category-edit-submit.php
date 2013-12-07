@@ -30,7 +30,7 @@ elseif (isset($_POST['create'])) {
   
 	if (empty($errors) === true) {
 		$category_dao -> insert($cat_name, @$description, @$category_parent_id);
-		$success= 'La categoria è stato inserita correttamente. <a href="'.BASE_URL .'categorie/' .   $cat_name  . '.html">Visualizza le modifiche</a>';
+		$success= 'La categoria è stata inserita correttamente. <a href="'.BASE_URL .'lista-categorie.html">Visualizza le modifiche</a>';
 
 	}
 }
