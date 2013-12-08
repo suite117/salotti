@@ -7,7 +7,14 @@ $(document).ready(function() {
     // recupera le categorie
     $.getJSON(base_url + 'rest/category_rest.php' , function(data) {
 		$('#category_parent_id').bootselect('source', data, {"label" : "category_name", "value": "category_id", "selected" : false });
-	  });  	
+
+		// recupero la categoria selezionata
+		var category_id = $("#category_id").val();
+		$.getJSON(base_url + 'rest/category_rest.php?id=' + category_id , function(data) {
+			console.log("category_id", category_id);
+		   $('#category_parent_id').bootselect('select', [data]);
+	  }); 
+    });  	
     
 });
 </script>
@@ -31,12 +38,14 @@ $(document).ready(function() {
 
   <form class="form-horizontal" role="form" method="post" action="">
 
+    <input type="hidden" name="category_id" id="category_id" value="<?= @$category['category_id']?>" />
+    <input type="hidden" name="category_order" value="<?= @$category['category_order']?>" /> 
     <div class="form-group <?= isset($errors['name']) ? 'has-error' : '' ?>">
 
       <div class="col-md-6">
-        <label for="category_name" class="control-label"><?= _('Category name') ?> </label> <input type="text"
+        <label for="cat_name" class="control-label"><?= _('Category name') ?> </label> <input type="text"
           class="form-control" name="cat_name" id="cat_name" value="<?= @$category['category_name']?>"
-          placeholder="Iserisci il nome della categoria">
+          placeholder="Iserisci il nome della categoria" />
       </div>
 
       <div class="col-md-2">
@@ -76,15 +85,3 @@ $(document).ready(function() {
 
 </div>
 
-
-
-<script type="text/javascript">
-function fileError(file,error){
-    alert("Errore sul file: "+file.name+" Errore: "+error+"");
-   }
-
-    $(document).ready(function(){ 
-	$("#file_image").pekeUpload({theme:'bootstrap', multi: false, allowedExtensions:"jpeg|jpg|png|gif", base_url: "<?=curUrl() ?>", relative_url : 'images/'});
-      
-    });
-  </script>

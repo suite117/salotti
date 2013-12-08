@@ -16,6 +16,7 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
     optionals = $.extend({}, defaults, optionals);
     this.data("label", optionals["label"]);
     this.data("value", optionals["value"]);
+    this.data("callback", optionals["callback"]);
   }
 
   // console.log(this, arg1, arg2);
@@ -23,9 +24,8 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
   switch (arg1) {
     case 'source':
       
-      
       var options = arg2;
-      console.log(this);
+      //console.log(this);
       $('.bootstrap-select', this).remove();
       
       this.html('');
@@ -39,7 +39,7 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
           text : options[i][$(this).data("label")]
         }));
       }
-      this.selectpicker('');
+    
       break;
     case 'select':
       $select = this;
@@ -56,7 +56,8 @@ $.fn.bootselect = function(arg1, arg2, optionals) {
       });
       break;
     case 'onchange':
-      $.fn.selectpicker.callback = arg2;
+      console.log("tihs", this);
+      $(this).callback = arg2;
       break;
   }
 

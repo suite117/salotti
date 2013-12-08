@@ -39,7 +39,7 @@ $(document).ready(function() {
 
       <div class="col-md-6">
         <label for="category_name" class="control-label"><?= _('Category name') ?> </label> <input type="text"
-          class="form-control" name="cat_name" id="cat_name" value="<?= @$category['category_name']?>"
+          class="form-control" name="category_name" id="category_name" value="<?= @$category['category_name']?>"
           placeholder="Iserisci il nome della categoria">
       </div>
 

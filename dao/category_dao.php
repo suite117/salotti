@@ -131,23 +131,25 @@ class CategoryDAO {
     }
   }
 
-
-  public function update_category($category_id, $category_parent_id, $order){
+  public function update_category($category_id, $category_name, $category_description, $category_parent_id, $category_order){
 
     $query = $this->db->prepare("UPDATE `categoria` SET
         `category_id` = ?,
+         
+        `category_name` = ?,
 
         `category_parent_id` = ?,
 
-        `category_order` = ?
+        `category_order` = ? 
          
         WHERE `category_id`	= ?
         ");
 
     $query->bindValue(1, $category_id);
-    $query->bindValue(2, $category_parent_id);
-    $query->bindValue(3, $order);
-    $query->bindValue(4, $category_id);
+    $query->bindValue(2, $category_name);
+    $query->bindValue(3, $category_parent_id);
+    $query->bindValue(4, $category_order);
+    $query->bindValue(5, $category_id);
 
     try{
       $query->execute();

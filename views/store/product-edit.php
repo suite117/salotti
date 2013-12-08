@@ -6,21 +6,20 @@
 function get_options_by_type() {
   // recupera le opzioni in base al tipo
   $.getJSON(base_url + 'rest/options_rest.php?type=' + $("#type").val() , function(data) {
-		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code" });
+		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code", 
+			"callback" : function(data) {  // invia dati appena viene selezionato un elemento
+			   $.post( base_url + 'rest/options_rest.php?id=' + $("#product_id").val(), data );
+			   }});
 
 		
 		 // recupera le opzioni selezionate
 	       $.getJSON(base_url + 'rest/options_rest.php?id=' + $("#product_id").val() , function(data) {
 			$('#options').bootselect('select', data);
-
-			// invia dati appena viene selezionato un elemento
-			$('#options').bootselect('onchange', function(data){	
-				$.post( base_url + 'rest/options_rest.php?id=' + $("#product_id").val(), data );
-			});
-	  		});
 	      
 	  });
-  }
+  });
+
+}
 
 $(document).ready(function() {
 
@@ -42,9 +41,9 @@ $(document).ready(function() {
 		<?php if (isset($product)) : ?>
 		 // recupera le opzioni selezionate
 	       $.getJSON(base_url + 'rest/category_rest.php?id=' + '<?= $product['category_id'] ?>' , function(data) {
-			$('#category_id').bootselect('select', [data]);	
+			$('#category_id').bootselect('select', data);	
 	       });	
-	       get_options_by_type(); 
+	       //get_options_by_type(); 
 	     <?php endif;  ?>
 	  });  	
     
