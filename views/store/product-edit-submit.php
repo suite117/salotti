@@ -30,7 +30,7 @@ if (isset($_POST['create']) || isset($_POST['save']))  {
 if (isset($_POST['save'])) {
 
 	if (empty($errors) === true) {
-		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, @$immagine, $product['id']);
+		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, @$image, $product['id']);
 
 		//$options_dao->delete_selected_options($product);
 		//$options_dao->create_selected_options(@$update_options, $product);

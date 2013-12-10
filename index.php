@@ -27,19 +27,20 @@ require_once 'header.php';
 $errors = array();
 if (isset($_POST))
 foreach ($_POST as $key => $value) {
-    if (is_array($value)) {
+    if (is_array($value)|| is_numeric($value)) {
         ${
             $key} = $value;
-    } else
+    } elseif (!is_array($key)) {
         ${
-        $key} = strtolower(trim($value));
+            $key} = strtolower(trim($value));
 
-        // se la variabile è vuota viene settata a null
-        if (strlen(${
-            $key}) == 0)
-                ${
-                $key} = null;
+            // se la variabile è vuota viene settata a null
+            if (strlen(${
+                $key}) == 0)
+                    ${
+                    $key} = null;
 
+    }
 }
 
 // redirect alla home se non settato

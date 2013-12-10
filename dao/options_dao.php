@@ -7,6 +7,22 @@ class OptionsDAO {
     public function __construct($database) {
         $this -> db = $database;
     }
+    
+    public function insert($option_code, $option_name, $product_type){
+    
+        $query = $this -> db -> prepare("INSERT INTO `options` (`option_code, product_type, option_name`) VALUES (?,?,?) ");
+        $query -> bindValue(1, $option_code);
+        $query -> bindValue(2, $product_type);
+        $query -> bindValue(3, $option_name);
+        
+        try{
+            $query->execute();
+    
+    
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
 
     public function update_option($product_code, $order){
 

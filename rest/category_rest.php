@@ -26,12 +26,11 @@ switch($method) {
         $command = @$_POST["command"];
         $data = $_POST["data"];
 
-        // caso inserimento
         switch($command) {
-            case 'INSERT':
+            case 'INSERT':  // caso inserimento
                 $category_dao->insert($data['category_name'], null, @cleanSQL($data['category_parent_id']));
                 break;
-            case 'UPDATE':
+            case 'UPDATE': // caso aggiornamento
             default:
                 foreach ($_POST["data"] as $index => $item) {
                     

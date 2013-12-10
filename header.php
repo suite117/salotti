@@ -105,7 +105,7 @@ var base_url = '<?= BASE_URL ?>';
               class="caret"></b> </a>
 
             <ul class="dropdown-menu">
-              <li><a href="<?=BASE_URL ?>profilo.html"><?= _("All products") ?> </a>
+              <li><a href="<?=BASE_URL ?>prodotti.html"><?= _("All products") ?> </a>
               </li>
               <?php  
               $categories = $category_dao -> get_categories();
