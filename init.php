@@ -34,7 +34,7 @@ unset($tempPath1, $tempPath2, $tempPath3, $BASE_URL);
 $host = 'localhost';
 $isLocalhost = true;
 $host = $_SERVER['HTTP_HOST'];
-if ($host == 'localhost' || strpos($host, '192') !== false)
+if ($host == 'localhost' || strpos($host, '192.') !== false)
 	$isLocalhost = true;
 else
 	$isLocalhost = false;
@@ -46,6 +46,9 @@ require_once 'dao/options_dao.php';
 require_once 'dao/products_dao.php';
 require_once 'dao/general.php';
 require_once 'dao/bcrypt.php';
+
+// NEW DATABASE API
+require_once "config/database/Db.class.php";
 
 $users_dao 		= new UsersDAO($db);
 $products_dao	= new ProductsDAO($db);
@@ -94,6 +97,7 @@ textdomain($domain);
 
 // Aggiunta linguaggio all'header
 header("Content-language: $lang");
+
 
 // recupero del metodo GET,POST,O DELETE
 $method = $_SERVER['REQUEST_METHOD'];

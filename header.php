@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-ty" content="text/html; charset=UTF-8">
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 
 <title><?= @$page_title ?></title>
@@ -35,13 +35,18 @@
 <?php endif; ?>
 
 <!-- JQuery UI Bootstrap -->
+<?php if ($config['isOnline']) : ?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<?php else: ?>
+<link href="<?=BASE_URL ?>css/jquery-ui.css" rel="stylesheet">
+<?php endif; ?>
 <link rel="stylesheet" href="<?=BASE_URL ?>jquery.ui.theme.css" />
 
 
 <!-- Google Prettify -->
+<?php if ($config['isOnline']) : ?>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.css" rel="stylesheet">
-
+<?php endif; ?>
 <!-- include summernote css/js-->
 <link rel="stylesheet" href="<?=BASE_URL ?>css/summernote.css" />
 
@@ -63,6 +68,8 @@
 <link href="<?=BASE_URL ?>css/style.css" rel="stylesheet">
 
 <?php // oncontextmenu blocca il tasto destro del mouse ?>
+
+
 <body <?= ($general -> logged_in() === false) ? 'oncontextmenu="return false;"' : ''  ?>>
   <script type="text/javascript">
 //prepara l'url base per javascript

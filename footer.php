@@ -29,6 +29,8 @@
     </div>
 
     <div class="col-sx-1 col-md-4 text-center">
+
+      <?php if($config['isOnline']) : ?>
       <!-- AddThis Widget -->
       <p>Seguici su</p>
       <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
@@ -39,6 +41,7 @@
       </div>
       <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-526e58b6283c3045"></script>
       <!-- AddThis Follow END -->
+      <?php endif; ?>
     </div>
     <div class="col-sx-0 col-md-1"></div>
     <div id="footer_information" class="col-sx-1 col-md-2" style="font-size: 10px;">
@@ -58,17 +61,24 @@
 </div>
 <!-- Placed at the end of the document so the pages load faster -->
 
+<?php if ($config['isOnline']) : ?>
+
+<!-- Bootstrap 3.0 core JavaScript -->
+<script type="text/javascript"
+  src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
 <!-- JQuery UI core JavaScript -->
 <script type="text/javascript"
   src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<!-- Bootstrap 3.0 core JavaScript -->
-<?php if ($config['isOnline']) : ?>
-<script type="text/javascript"
-  src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <?php else: ?>
-<script type="text/javascript"
-  src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
+
+<!-- Bootstrap 3.0 core JavaScript -->
+<script type="text/javascript" src="<?=BASE_URL. 'js/bootstrap.min.js' ?>"></script>
+
+<!-- JQuery UI core JavaScript -->
+<script type="text/javascript" src="<?=BASE_URL. 'js/jquery-ui.js' ?>"></script>
+
 <?php endif; ?>
 
 <!-- Bootstrap Form Helpers -->
@@ -81,14 +91,16 @@
   href="<?=BASE_URL ?>css/bootstrap-multiselect.css" type="text/css" />
 
 <!-- Plugin PekeUpload per l'upload di immagini-->
-<script type="text/javascript" src="<?=BASE_URL ?>js/pekeUpload.js"></script>
-<!-- Wrapper plugin PekeUpload -->
 <script type="text/javascript"
-  src="<?=BASE_URL ?>js/bootupload.js"></script>
+  src="<?=BASE_URL ?>js/pekeUpload.js"></script>
+<!-- Wrapper plugin PekeUpload -->
+<script type="text/javascript" src="<?=BASE_URL ?>js/bootupload.js"></script>
 
 <!-- Nestable Plugin 2.0 -->
-<script type="text/javascript" src="<?= BASE_URL ?>js/jquery.nestable.js"></script>
-<script type="text/javascript" src="<?= BASE_URL ?>js/bootnestable.js"></script>
+<script type="text/javascript"
+  src="<?= BASE_URL ?>js/jquery.nestable.js"></script>
+<script type="text/javascript"
+  src="<?= BASE_URL ?>js/bootnestable.js"></script>
 
 <!-- BootBox 4.1.0 -->
 <script src="<?= BASE_URL ?>js/bootbox.js"></script>

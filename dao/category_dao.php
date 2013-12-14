@@ -2,175 +2,153 @@
 
 class CategoryDAO {
 
-  private $db;
+    private $db;
 
-  public function __construct($database) {
-    $this -> db = $database;
-  }
-
-  public function get_categories_ordered_by_id() {
-
-    #preparing a statement that will select all the registered users, with the most recent ones first.
-    $query = $this -> db -> prepare("SELECT * FROM `categoria` ORDER BY `category_id` ASC");
-
-    try {
-      $query -> execute();
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+    public function __construct($database) {
+        $this -> db = $database;
+        $this->dbs = new Db();
     }
 
-    # We use fetchAll() instead of fetch() to get an array of all the selected records.
-    $rows = $query -> fetchAll();
-    return $rows;
-  }
-
-  public function get_categories() {
-
-    #preparing a statement that will select all the registered users, with the most recent ones first.
-    $query = $this -> db -> prepare("SELECT * FROM `categoria` ORDER BY category_order, category_name");
-
-    try {
-      $query -> execute();
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+    public function get_categories_ordered_by_id() {
+        return $this -> dbs -> query("SELECT * FROM `categoria` ORDER BY `category_id` ASC");
     }
 
-    # We use fetchAll() instead of fetch() to get an array of all the selected records.
-    return $query -> fetchAll();
-  }
-
-  public function get_category($id) {
-
-    #preparing a statement that will select all the registered users, with the most recent ones first.
-    $query = $this -> db -> prepare("SELECT * FROM `categoria` WHERE category_id=$id ORDER BY category_name");
-
-    try {
-      $query -> execute();
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+    public function get_categories() {
+        return $this -> dbs -> query("SELECT * FROM `categoria` ORDER BY category_order, category_name");
     }
 
-    # We use fetchAll() instead of fetch() to get an array of all the selected records.
-    $rows = $query -> fetchAll();
-    return $rows[0];
-  }
+    public function get_category($id) {
 
+        #preparing a statement that will select all the registered users, with the most recent ones first.
+        $query = $this -> db -> prepare("SELECT * FROM `categoria` WHERE category_id=?");
+        $query->bindValue(1, $id);
+        try {
+            $query -> execute();
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
 
-
-  public function get_categories_by_type($type) {
-
-    #preparing a statement that will select all the registered users, with the most recent ones first.
-    $query = $this -> db -> prepare("SELECT c1.category_id, c1.category_name FROM categoria as c1, categoria as c2 WHERE c1.category_name=? OR (c1.category_parent_id=c2.category_id AND c2.category_name=?) GROUP BY c1.category_name");
-    $query->bindValue(1, $type);
-    $query->bindValue(2, $type);
-
-    try {
-      $query -> execute();
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+        # We use fetchAll() instead of fetch() to get an array of all the selected records.
+        $rows = $query -> fetchAll();
+        return $rows[0];
     }
 
-    # We use fetchAll() instead of fetch() to get an array of all the selected records.
-    $rows = $query -> fetchAll();
 
-    return $rows;
-  }
 
-  public function get_category_by_name($category_name) {
+    public function get_categories_by_type($type) {
 
-    #preparing a statement that will select all the registered users, with the most recent ones first.
-    $query = $this -> db -> prepare("SELECT * FROM `categoria` WHERE category_name=? ORDER BY category_order, category_name");
-    $query->bindValue(1, $category_name);
+        #preparing a statement that will select all the registered users, with the most recent ones first.
+        $query = $this -> db -> prepare("SELECT c1.category_id, c1.category_name FROM categoria as c1, categoria as c2 WHERE c1.category_name=? OR (c1.category_parent_id=c2.category_id AND c2.category_name=?) GROUP BY c1.category_name");
+        $query->bindValue(1, $type);
+        $query->bindValue(2, $type);
 
-    try {
-      $query -> execute();
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+        try {
+            $query -> execute();
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+
+        # We use fetchAll() instead of fetch() to get an array of all the selected records.
+        $rows = $query -> fetchAll();
+
+        return $rows;
     }
 
-    # We use fetchAll() instead of fetch() to get an array of all the selected records.
-    $rows = $query -> fetchAll();
-    if(empty($rows))
-      return array();
-    else
-      return $rows[0];
-  }
+    public function get_category_by_name($category_name) {
 
-  public function get_subcategories($category_id) {
+        #preparing a statement that will select all the registered users, with the most recent ones first.
+        $query = $this -> db -> prepare("SELECT * FROM `categoria` WHERE category_name=? ORDER BY category_order, category_name");
+        $query->bindValue(1, $category_name);
 
-    #preparing a statement that will select all the registered users, with the most recent ones first.
-    $query = $this -> db -> prepare("SELECT * FROM `categoria` WHERE category_id=$category_id OR category_parent_id=$category_id ORDER BY category_name");
+        try {
+            $query -> execute();
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
 
-    try {
-      $query -> execute();
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+        # We use fetchAll() instead of fetch() to get an array of all the selected records.
+        $rows = $query -> fetchAll();
+        if(empty($rows))
+            return array();
+        else
+            return $rows[0];
     }
 
-    # We use fetchAll() instead of fetch() to get an array of all the selected records.
-    return $query -> fetchAll();
-  }
+    public function get_subcategories($category_id) {
 
-  public function insert($nome, $description, $category_parent_id){
+        #preparing a statement that will select all the registered users, with the most recent ones first.
+        $query = $this -> db -> prepare("SELECT * FROM `categoria` WHERE category_id=$category_id OR category_parent_id=$category_id ORDER BY category_name");
 
-    $query = $this -> db -> prepare("INSERT INTO `categoria` (`category_name`, `category_description`, `category_parent_id`) VALUES ( ?, ?, ?) ");
+        try {
+            $query -> execute();
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
 
-
-    $query -> bindValue(1, $nome);
-    $query -> bindValue(2, $description);
-    $query -> bindValue(3, $category_parent_id);
-
-
-
-    try{
-      $query->execute();
-
-
-    }catch(PDOException $e){
-      die($e->getMessage());
+        # We use fetchAll() instead of fetch() to get an array of all the selected records.
+        return $query -> fetchAll();
     }
-  }
 
-  public function update_category($category_id, $category_name, $category_description, $category_parent_id, $category_order){
+    public function insert($nome, $description, $category_parent_id){
 
-    $query = $this->db->prepare("UPDATE `categoria` SET
-        `category_id` = ?,
-         
-        `category_name` = ?,
+        $query = $this -> db -> prepare("INSERT INTO `categoria` (`category_name`, `category_description`, `category_parent_id`) VALUES ( ?, ?, ?) ");
 
-        `category_parent_id` = ?,
 
-        `category_order` = ? 
-         
-        WHERE `category_id`	= ?
-        ");
+        $query -> bindValue(1, $nome);
+        $query -> bindValue(2, $description);
+        $query -> bindValue(3, $category_parent_id);
 
-    $query->bindValue(1, $category_id);
-    $query->bindValue(2, $category_name);
-    $query->bindValue(3, $category_parent_id);
-    $query->bindValue(4, $category_order);
-    $query->bindValue(5, $category_id);
 
-    try{
-      $query->execute();
-    }catch(PDOException $e){
-      die($e->getMessage());
+
+        try{
+            $query->execute();
+
+
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
     }
-  }
 
-  public function delete($category_id)
-  {
-    $query = $this -> db -> prepare("DELETE FROM `categoria` WHERE `category_id` = ?");
-    $query -> bindValue(1, $category_id);
+    public function update_category($category_id, $category_name, $category_description, $category_parent_id, $category_order){
 
-    try {
+        $query = $this->db->prepare("UPDATE `categoria` SET
+                `category_id` = ?,
+                 
+                `category_name` = ?,
 
-      $query -> execute();
+                `category_parent_id` = ?,
 
-    } catch(PDOException $e) {
-      die($e -> getMessage());
+                `category_order` = ?
+                 
+                WHERE `category_id`	= ?
+                ");
+
+        $query->bindValue(1, $category_id);
+        $query->bindValue(2, $category_name);
+        $query->bindValue(3, $category_parent_id);
+        $query->bindValue(4, $category_order);
+        $query->bindValue(5, $category_id);
+
+        try{
+            $query->execute();
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
     }
-  }
+
+    public function delete($category_id)
+    {
+        $query = $this -> db -> prepare("DELETE FROM `categoria` WHERE `category_id` = ?");
+        $query -> bindValue(1, $category_id);
+
+        try {
+
+            $query -> execute();
+
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+    }
 
 }
 

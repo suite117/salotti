@@ -1,0 +1,7 @@
+Time : 20:36:01
+SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected
+Raw SQL : SELECT * FROM `categoria` ORDER BY category_order, category_name
+
+Time : 19:19:56
+SQLSTATE[HY000]: General error: 2031 
+Raw SQL : SELECT * FROM `users` WHERE `id`= ?

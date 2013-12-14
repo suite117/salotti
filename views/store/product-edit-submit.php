@@ -10,7 +10,7 @@ if (!empty($id)){
 if (isset($product)) {
 
 	$categories = $category_dao->get_categories_by_type($product['type']);
-	//$options = $options_dao->get_options_by_type($product['type']);
+	//$options = $options_dao->get_options_by_product_ids_by_type($product['type']);
 	//var_dump("options", $options);
 }
 
@@ -33,7 +33,7 @@ if (isset($_POST['save'])) {
 		$products_dao->update_product($name, $is_published, $is_avaiable, $description, $scheda_tecnica, $category_id, @$image, $product['id']);
 
 		//$options_dao->delete_selected_options($product);
-		//$options_dao->create_selected_options(@$update_options, $product);
+		//$options_dao->create_selected_options(@$update_orders, $product);
 
 		// recupero il bean aggiornato
 		$product = $products_dao->get_product($id);

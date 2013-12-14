@@ -7,34 +7,91 @@ class OptionsDAO {
     public function __construct($database) {
         $this -> db = $database;
     }
-    
+
+    public function get_option($option_code) {
+
+
+        #preparing a statement that will select all the registered users, with the most recent ones first.
+        $query = $this -> db -> prepare("SELECT * FROM options WHERE option_code=?");
+        $query -> bindValue(1, $option_code);
+
+        try {
+            $query -> execute();
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+
+        # We use fetchAll() instead of fetch() to get an array of all the selected records.
+        $rows = $query -> fetchAll();
+        return $rows[0];
+
+
+    }
+
     public function insert($option_code, $option_name, $product_type){
-    
-        $query = $this -> db -> prepare("INSERT INTO `options` (`option_code, product_type, option_name`) VALUES (?,?,?) ");
+
+        $query = $this -> db -> prepare("INSERT INTO `options` (option_code, product_type, option_name) VALUES (?,?,?) ");
         $query -> bindValue(1, $option_code);
         $query -> bindValue(2, $product_type);
         $query -> bindValue(3, $option_name);
-        
+
         try{
             $query->execute();
-    
-    
+
+
         }catch(PDOException $e){
             die($e->getMessage());
         }
     }
 
-    public function update_option($product_code, $order){
+
+    public function update($option_code, $option_name, $product_type, $option_order){
 
         $query = $this->db->prepare("UPDATE `options` SET
-               
+
+                `option_name` = ?,
+                `product_type` = ?,
+                `option_order` = ?
+
+                WHERE `option_code`	= ?
+                ");
+
+        $query->bindValue(1, $option_name);
+        $query->bindValue(2, $product_type);
+        $query->bindValue(3, $option_order);
+        $query->bindValue(4, $option_code);
+        try{
+            $query->execute();
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+    }
+
+    public function delete($option_code)
+    {
+        $query = $this -> db -> prepare("DELETE FROM `options` WHERE `option_code` = ?");
+        $query -> bindValue(1, $option_code);
+
+        try {
+
+            $query -> execute();
+
+        } catch(PDOException $e) {
+            die($e -> getMessage());
+        }
+    }
+
+    public function update_order($option_code, $order){
+
+        $query = $this->db->prepare("UPDATE `options` SET
+                 
                 `option_order` = ?
                  
                 WHERE `option_code`	= ?
                 ");
 
         $query->bindValue(1, $order);
-        $query->bindValue(2, $product_code);
+        $query->bindValue(2, $option_code);
         try{
             $query->execute();
         }catch(PDOException $e){
@@ -43,7 +100,7 @@ class OptionsDAO {
     }
 
 
-    public function get_options() {
+    public function get_options_by_product_ids() {
 
         #preparing a statement that will select all the registered users, with the most recent ones first.
         $query = $this -> db -> prepare("SELECT * FROM `options` ORDER BY option_order");
@@ -58,7 +115,7 @@ class OptionsDAO {
         return $query -> fetchAll();
     }
 
-    public function get_options_by_type($type) {
+    public function get_options_by_product_ids_by_type($type) {
 
         #preparing a statement that will select all the registered users, with the most recent ones first.
         $query = $this -> db -> prepare("SELECT * FROM `options` WHERE product_type=? ORDER BY option_order");
@@ -75,7 +132,7 @@ class OptionsDAO {
     }
 
 
-    public function get_options_by_id($id) {
+    public function get_options_by_product_id($id) {
         $query = $this -> db -> prepare("SELECT o.option_code, o.option_name FROM prodotto as p , product_options as po, options as o WHERE p.id= ? AND p.id=po.product_id AND po.option_code = o.option_code ORDER BY option_order");
         $query -> bindValue(1, $id);
 

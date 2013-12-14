@@ -3,7 +3,7 @@
 <script type="text/javascript">
 
 
-function get_options_by_type() {
+function get_options_by_product_ids_by_type() {
   // recupera le opzioni in base al tipo
   $.getJSON(base_url + 'rest/options_rest.php?type=' + $("#type").val() , function(data) {
 		$('#options').bootselect('source', data, {"label" : "option_name", "value": "option_code", 
@@ -29,7 +29,7 @@ $(document).ready(function() {
     	console.log(data);
 		$('#category_id').bootselect('source', data, {"label" : "category_name", "value": "category_id" });
 		<?php if (isset($product)) : ?>
-		get_options_by_type();
+		get_options_by_product_ids_by_type();
 		 <?php endif; ?>
      });
     });
@@ -43,11 +43,11 @@ $(document).ready(function() {
 	       $.getJSON(base_url + 'rest/category_rest.php?id=' + '<?= $product['category_id'] ?>' , function(data) {
 			$('#category_id').bootselect('select', data);	
 	       });	
-	       //get_options_by_type(); 
+	       //get_options_by_product_ids_by_type(); 
 	     <?php endif;  ?>
 	  });  	
     
-    get_options_by_type(type);
+    get_options_by_product_ids_by_type(type);
 
 
     // widget dell'upload immagine
@@ -118,7 +118,7 @@ $(document).ready(function() {
 
       <div class="col-md-6">
         <?php if (isset($product)) : ?>
-        <label for="options" class="control-label"><?= _('Versions') ?> </label> <select name="update_options[]"
+        <label for="options" class="control-label"><?= _('Versions') ?> </label> <select name="update_orders[]"
           id="options" multiple>
         </select>
         <?php endif; ?>

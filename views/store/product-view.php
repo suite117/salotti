@@ -11,7 +11,7 @@ elseif ($category_name == 'letti')
 $product['model2d'] = 'images/letto2d.jpg';
 
 
-$options = $options_dao->get_options_by_id($product['id']);
+$options = $options_dao->get_options_by_product_id($product['id']);
 //var_dump($options);
 
 ?>

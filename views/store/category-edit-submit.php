@@ -1,7 +1,9 @@
 <?php
 $general->not_admin_out_protect();
 
-if(isset($id))
+// CASO MODIFICA - RIEMPIMENTO FORM
+// se è presente l'id della categoria
+if(isset($id)) // recupero il bean categoria
     $category = $category_dao->get_category($id);
 
 /* controlli validazione */

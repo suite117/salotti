@@ -73,10 +73,14 @@ $(document).ready(function() {
 
     <div class="form-group">
       <div class="col-md-1">
-        <?php if (isset($category)): ?>
-        <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
+        <?php if ($controller == 'aggiungi'): ?>
+        <button type="submit" name="create" class="btn btn-default">
+          <?=_('Add category') ?>
+        </button>
         <?php else : ?>
-        <button type="submit" name="create" class="btn btn-default">Crea categoria</button>
+        <button type="submit" name="save" class="btn btn-default">
+          <?=_('Update category') ?>
+        </button>
         <?php endif;?>
       </div>
     </div>

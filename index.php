@@ -11,12 +11,13 @@ $view = 'views/home.php';
 $page_title = '';
 $page_description = '';
 $category_name = null;
-$config['isOnline'] = true;
+$config['isOnline'] = false;
 
 /* informazioni generali del sito */
 $site_name = 'Alessi Salotti';
 $site_email = 'suite117@gmail.com';
 
+// Intestazione pagina HTML
 require_once 'header.php';
 
 
@@ -55,12 +56,12 @@ switch($controller) {
             case 'utente' :
                 $action = 'views/user/user-submit.php';
                 $view = 'views/user/register.php';
-                $page_title = 'Aggiungi un' . $type;
+                $page_title = 'Aggiungi un ' . $type;
                 $page_description = 'Inserisci un nuovo utente';
                 break;
             case 'prodotto' :
                 $view = 'views/store/product-edit.php';
-                $page_title = 'Aggiungi un' . $type;
+                $page_title = 'Aggiungi un ' . $type;
                 $page_description = 'Inserisci un nuovo prodotto';
                 break;
             case 'categoria' :
@@ -70,7 +71,7 @@ switch($controller) {
                 break;
             case 'opzione':
                 $view = 'views/store/options-edit.php';
-                $page_title = 'Aggiungi una' . $type;
+                $page_title = 'Aggiungi una ' . $type;
                 $page_description = 'Inserisci una nuova opzione';
                 break;
         }
@@ -190,6 +191,7 @@ $subcategory_name = isset($_GET["subcategory"]) ? $_GET["subcategory"] : null;
 
 // UTF-8 encoding
 header("Content-type: text/html; charset=$encoding");
+
 
 // se passa il test non sono nella home
 if (!empty($_GET['controller']) && strpos($controller, 'index') === false)

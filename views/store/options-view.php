@@ -6,11 +6,11 @@ $types = $products_dao->get_types();
 
   <div class="row">
     <div class="col-md-12">
-      <form class="form-horizontal" role="form" method="post" action="">
+      <form class="form-horizontal" method="post" action="">
         <div class="form-group">
           <div class="col-md-2">
-            <label for="type" class="control-label"><?= _('Type') ?> </label> <select class="form-control" name="type"
-              id="type">
+            <label for="type" class="control-label"><?= _('Product Type') ?> </label> <select class="form-control"
+              name="type" id="type">
 
               <?php foreach ($types as $type ) :?>
               <option value="<?=$type['type'] ?>"><?=ucfirst($type['type']) ?></option>
@@ -20,7 +20,7 @@ $types = $products_dao->get_types();
 
           </div>
           <div class="col-md-2">
-            <button type="button" id="add" class="btn btn-default">Aggiungi opzione</button>
+            <button type="button" id="add" class="btn btn-default" style="margin-top: 26px;">Aggiungi opzione</button>
           </div>
         </div>
       </form>
@@ -39,19 +39,82 @@ $types = $products_dao->get_types();
 
 <script type="text/javascript">
 
-function get_options_by_type(type) {
-  // crea le opzioni
+function get_options_by_product_ids_by_type(type) {
+  // recupera le opzioni tramite una richiesta JSON
   $.getJSON(base_url + 'rest/options_rest.php?type=' + type , function(data) {
      //console.log(data);
      $("#options").html('');
+
+     // (JSON -> HTML) creazione dell'elemento html lista a partire dal JSON
      JSON2SortableList('options', data, {"label" : "option_name", "value" : "option_code"});
+
+     // Aggiunta bottoni (Aggiungi opzione - Elimina opzione)
+     //console.log($('#options').children());
+       $('#options li').each(function(){
+         //console.log(this);
+          var $div = $("<div />").css('float', 'right').css('margin', '0px 10px');
+
+          $div.append('<a href="modifica/opzione/' + $(this).data('value') + '.html">'
+              + '<?= _("Edit") ?> <i class="icon-edit"></i></a>');
+          $div.append(' | <a class="delete" href="#" data-id="' + $(this).data('value') + '" data-label="'
+              + $(this).data('label') + '">' + '<?= _("Delete") ?> <i class="icon-trash"></i></a>');
+          
+         $(this).append($div);
+       });
+
+
+       // aggiunta evento onclick ai bottoni Elimina
+       $('a.delete').each(function() {
+
+         $(this).click(function(e) {
+
+           var $a = $(this);
+
+           bootbox.dialog({
+             message : "Eliminare definitavemente l'opzione <b>" + $a.data("label") + "</b>? Non sarà possile tornare indietro.",
+             title : "Conferma di eliminazione",
+             buttons : {
+               danger : {
+                 label : '<?= _('Cancel') ?>',
+                 className : "btn-primary"
+               },
+               success : {
+                 label : '<?= _('OK') ?>',
+                 className : "btn-danger",
+                 callback : function() {
+
+                   $.ajax({
+                     url : base_url + 'rest/options_rest.php?id=' + $a.data("id"),
+                     type : 'DELETE',
+                     success : function(response) {
+                       message = "Opzione <b>" + $a.data("label") + "</b> eliminata con successo.";
+                       //bootbox.alert(message);
+                       console.log("$a", $a);
+                       var li = $a.parent().parent();
+                       // console.log(tr);
+                       li.remove();
+                     }
+                   });
+                 }
+               }
+
+             }
+           });
+
+         });
+
+       });
+     
+      
      $( "#options" ).sortable({
        axis: 'y',
+       // catturo l'evento alla fine dell'ordinamento
        stop: function (event, ui) {
-           var data = SortableList2JSON('options', {"label" : "option_name", "value" : "option_code"});
-          $.post(base_url + 'rest/options_rest.php', {
-            "update" : data
-          });
+         // (HTML -> JSON) creazione del JSON da inviare a partire dalla lista html.
+          var data = SortableList2JSON('options', {"label" : "option_name", "value" : "option_code"});
+          $.post(base_url + 'rest/options_rest.php', 
+            {"command" : "UPDATE_ORDER", "data": data }
+          );
        }
    }); 
   });  	
@@ -62,12 +125,15 @@ function get_options_by_type(type) {
 $(document).ready(function() {
 
   // recupera le opzioni per tipo e riempie la select
-  get_options_by_type($('#type').val());
+  get_options_by_product_ids_by_type($('#type').val());
   $('#type').change(function(){
  
-    get_options_by_type($('#type').val());
+    get_options_by_product_ids_by_type($('#type').val());
  
   }); 	
+
+
+ 
 
   // Pulsante aggiungi opzione
   $('#add').click(function(e) {

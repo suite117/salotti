@@ -180,7 +180,7 @@ $(document).ready(function(){
   // $('.modal-body .carousel-inner').html('');
   $('.col-md-4 a img').each(
 	  function(index, image) {
-		console.log(index, image);
+		//console.log(index, image);
 		var image_path = $(image).attr("src");
 		$(
 			'<div class="item"><img class="img-responsive" data-path="' + $(this).data("path")

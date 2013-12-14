@@ -1,84 +1,66 @@
-<?php require 'options-edit-submit.php';
-
-?>
-<script type="text/javascript">
-
-
-$(document).ready(function() {
-
-    // recupera le i tipo
-    $.getJSON(base_url + 'rest/options_rest.phptype=' , function(data) {
-		$('#product_type').bootselect('source', data, {"label" : "option_name", "value": "option_code", "selected" : false });
-
-		// recupero la categoria selezionata
-		var option_code = $("#option_code").val();
-		$.getJSON(base_url + 'rest/options_rest.php?option_code=' + option_code , function(data) {
-			console.log("option_code", option_code);
-		   $('#product_type').bootselect('select', [data]);
-	  }); 
-    });  	
-    
-});
-</script>
-
-
+<?php require 'options-edit-submit.php'; ?>
 
 <div class="container">
   <?php
   // check for a successful form post
   if (isset($success))
-    echo "<div class=\"alert alert-success\">" . $success . "</div>";
+      echo "<div class=\"alert alert-success\">" . $success . "</div>";
 
   // check for a form error
   elseif (isset($errors))
   foreach ($errors as $key => $error)
-    echo "<div class=\"alert alert-danger\">" . $error . "</div>";
-  
+      echo "<div class=\"alert alert-danger\">" . $error . "</div>";
+
   ?>
-  
-  
+
+
 
   <form class="form-horizontal" method="post" action="">
 
-    <input type="hidden" name="option_code" id="option_code" value="<?= @$option['option_code']?>" />
-    <input type="hidden" name="option_order" value="<?= @$option['option_order']?>" /> 
+    <input type="hidden" name="option_order" value="<?= @$option['option_order']?>" />
     <div class="form-group">
-
-      <div class="col-md-6">
-        <label for="option_name" class="control-label"><?= _('Option name') ?> </label> <input type="text"
-          class="form-control" name="option_name" id="option_name" value="<?= @$option['option_name']?>"
-          placeholder="Iserisci il nome della categoria" />
-      </div>
-
       <div class="col-md-2">
-        <label for="product_type" class="control-label"><?= _('Product type') ?> </label> <select
-          class="form-control" name="product_type" id="product_type">
+        <label for="type" class="control-label"><?= _('Product Type') ?> </label> <select class="form-control"
+          name="product_type" id="type">
+
+          <?php foreach ($types as $type ) :?>
+          <option value="<?=$type['type'] ?>"><?=ucfirst($type['type']) ?></option>
+          <?php endforeach; ?>
 
         </select>
       </div>
-    </div>
+      <div class="col-md-4">
 
+        <?php if(isset($option)) : // caso input disabilitato non viene inviato ?> 
+        <input type="hidden" name="option_code" value="<?= @$option['option_code']?>" />
+        <?php endif; ?>
 
+        <label for="option_code" class="control-label"><?= _('Option code') ?> </label> <input type="text"
+        <?= isset($option) ? 'disabled="disabled"' : '' ?> name="option_code" id="option_code"
+          value="<?= @$option['option_code']?>" class="form-control"
+          placeholder="Iserisci il codice univoco per l'opzione" />
 
-    <!-- end formgroup -->
+      </div>
 
-
-    <?php if(false) : ?>
-    <div class="form-group">
-      <div class="col-md-12">
-        <label for="description" class="control-label">Descrizione</label>
-        <textarea name="description" class="form-control editor" rows="6" id="description"><?= @$option['description']?></textarea>
+      <div class="col-md-6">
+        <label for="option_name" class="control-label"><?= _('Option name') ?> </label> <input type="text"
+          name="option_name" id="option_name" value="<?= @$option['option_name']?>" class="form-control"
+          placeholder="Iserisci il nome dell'opzione" />
       </div>
     </div>
-    <?php endif;?>
+    <!-- end formgroup -->
 
 
     <div class="form-group">
       <div class="col-md-1">
-        <?php if (isset($option)): ?>
-        <button type="submit" name="save" class="btn btn-default">Salva modifiche</button>
+        <?php if (!isset($_POST)): ?>
+        <button type="submit" name="create" class="btn btn-default">
+          <?=_('Add option') ?>
+        </button>
         <?php else : ?>
-        <button type="submit" name="create" class="btn btn-default">Crea categoria</button>
+        <button type="submit" name="save" class="btn btn-default">
+          <?=_('Update option') ?>
+        </button>
         <?php endif;?>
       </div>
     </div>

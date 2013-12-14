@@ -19,6 +19,7 @@
 
   $(document).ready(function() {
 
+    // recupera le categorie nella forma di albero (padre -> figli)
     $.getJSON(base_url + 'rest/category_rest.php?nested=true', function(data) {
 
       $('#njson').bootnestable({
@@ -55,7 +56,7 @@
         $(this).prepend($div);
       });
 
-      // bottone Elimina
+      // aggiunta evento onclick ai bottoni Elimina
       $('a.delete').each(function() {
 
         $(this).click(function(e) {
@@ -100,6 +101,13 @@
 
       });
 
+      var form = '<form action="" method="post" role="form" class="form-horizontal">';
+      form += '<div class="form-group "><div class="col-md-8">';
+      form += '<label class="control-label" for="category_name"><?= _('Category name') ?></label> <input type="text" placeholder="Iserisci il nome della categoria" value="" id="category_name" name="category_name" class="form-control">';
+      form += '</div><div class="col-md-4">';
+      form += '<label class="control-label" for="category_parent_id"><?= _('Parent category') ?></label> <select id="category_parent_id" name="category_parent_id" class="form-control" style="display: none;"></select>';          
+      form +='</div></div></form>';
+    
 
      
       // Pulsante aggiungi
@@ -107,14 +115,7 @@
       $add.click(function(e) {
         // redirect
         //window.location = base_url + "aggiungi/categoria.html";
-
-        var form = '<form action="" method="post" role="form" class="form-horizontal">';
-        form += '<div class="form-group "><div class="col-md-8">';
-        form += '<label class="control-label" for="category_name"><?= _('Category name') ?></label> <input type="text" placeholder="Iserisci il nome della categoria" value="" id="category_name" name="category_name" class="form-control">';
-        form += '</div><div class="col-md-4">';
-        form += '<label class="control-label" for="category_parent_id"><?= _('Parent category') ?></label> <select id="category_parent_id" name="category_parent_id" class="form-control" style="display: none;"></select>';          
-        form +='</div></div></form>';
-
+    
         // messaggio ???
         var message =  $('#category-form').html();
         $('#category-form').remove();
